@@ -1,0 +1,14 @@
+@use "../mixins.scss" as *;
+
+.paper-card {
+  @include paper-card;
+}
+
+.note-card {
+  @include note-card;
+  
+}
+
+.library-card {
+  @include library-card;
+}

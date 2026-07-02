@@ -1,0 +1,71 @@
+@use "../mixins.scss" as *;
+
+.admin-content-books-page {
+  @include stack(var(--space-lg));
+}
+
+select,
+input {
+  @include input-base;
+  @include focus-ring;
+
+  min-width: 220px;
+}
+
+.admin-book-grid {
+  @include flex-wrap-auto(320px, var(--space-md));
+}
+
+.admin-book-card {
+  @include stack(var(--space-sm));
+  @include paper-card;
+
+  h2 {
+    color: var(--color-ink);
+    font-size: 1.25rem;
+  }
+}
+
+.admin-book-subject {
+  @include badge-warning;
+
+  align-self: flex-start;
+}
+
+.admin-book-author,
+.admin-book-recommender {
+  color: var(--color-muted);
+
+  font-size: 0.92rem;
+}
+
+.admin-book-reason {
+  color: var(--color-muted);
+
+  line-height: 1.7;
+}
+
+.admin-book-content {
+  @include stack(var(--space-md));
+
+  section {
+    padding: var(--space-md);
+
+    border-radius: var(--radius-card);
+
+    background: rgba(255, 250, 241, 0.62);
+  }
+
+  h3 {
+    margin-bottom: var(--space-xs);
+
+    color: var(--color-forest);
+  }
+
+  p {
+    color: var(--color-ink);
+
+    line-height: 1.9;
+    white-space: pre-wrap;
+  }
+}

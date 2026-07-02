@@ -1,0 +1,85 @@
+@use "../mixins.scss" as *;
+
+.profile-page {
+  padding-block: var(--space-xl);
+}
+
+.profile-card {
+  @include stack(var(--space-lg));
+}
+
+.profile-eyebrow,
+.profile-label {
+  @include eyebrow;
+
+  color: var(--color-forest);
+}
+
+.profile-label {
+  display: inline-flex;
+
+  margin-bottom: var(--space-xs);
+}
+
+.profile-title {
+  font-size: clamp(3rem, 10vw, 6rem);
+}
+
+.profile-activity {
+  @include stack(var(--space-lg));
+}
+
+.profile-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+
+  > div {
+    flex: 1 1 240px;
+
+    padding-block: var(--space-sm);
+
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+.profile-writing-summary {
+  @include stack(18px);
+}
+
+.profile-summary-title {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+}
+
+.profile-summary-list {
+  @include stack(var(--space-sm));
+
+  strong {
+    color: var(--color-forest);
+    font-weight: 700;
+  }
+}
+
+.profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.profile-observer-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+@include tablet {
+  .profile-page {
+    padding-block: var(--section-gap);
+  }
+  .profile-actions {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

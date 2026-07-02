@@ -1,0 +1,67 @@
+.profile-library-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-library-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.profile-book-author {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.profile-book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-top: auto;
+}
+
+.profile-section-count {
+  margin-left: 8px;
+
+  color: var(--color-muted);
+
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.profile-book-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.profile-book-badge {
+  width: fit-content;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  background: rgba(47, 74, 58, 0.1);
+
+  color: var(--color-forest);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profile-book-badge--universe {
+  background: rgba(156, 122, 61, 0.14);
+
+  color: var(--color-brass);
+}

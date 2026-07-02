@@ -1,0 +1,169 @@
+@use "../mixins.scss" as *;
+
+.admin-user-detail-page {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.admin-user-detail-grid {
+  display: grid;
+  gap: var(--space-base);
+}
+
+.admin-user-detail-card {
+  @include stack(var(--space-md));
+
+  padding: var(--space-base);
+
+  h2 {
+    color: var(--color-forest);
+    font-size: 1.35rem;
+  }
+}
+
+.admin-user-detail-list {
+  display: grid;
+  gap: var(--space-sm);
+
+  div {
+    @include stack(var(--space-xs));
+  }
+
+  dt {
+    @include eyebrow;
+
+    color: var(--color-muted);
+  }
+
+  dd {
+    color: var(--color-ink);
+    line-height: 1.6;
+  }
+}
+
+.admin-user-activity-grid {
+  display: grid;
+  gap: var(--space-sm);
+
+  a {
+    padding: var(--space-md);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-soft);
+
+    background: rgba(255, 250, 241, 0.62);
+
+    text-decoration: none;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+
+      border-color: var(--card-library-frame-primary);
+      background: rgba(255, 250, 241, 0.9);
+    }
+
+    strong {
+      display: block;
+
+      color: var(--color-forest);
+
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    span {
+      display: block;
+
+      margin-top: var(--space-xs);
+
+      color: var(--color-muted);
+
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.admin-user-current-role {
+  @include stack(var(--space-xs));
+
+  strong {
+    color: var(--color-forest);
+
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+}
+
+.admin-user-history-card {
+  grid-column: 1 / -1;
+}
+
+.admin-user-history-list {
+  @include stack(var(--space-md));
+
+  position: relative;
+}
+
+.admin-user-history-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+
+  h3 {
+    color: var(--color-ink);
+
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  blockquote {
+    margin-top: 10px;
+    padding: var(--space-sm);
+
+    border-left: 3px solid var(--card-note-margin);
+    border-radius: 0 var(--radius-soft) var(--radius-soft) 0;
+
+    background: rgba(156, 122, 61, 0.08);
+
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+}
+
+.admin-user-history-dot {
+  width: 10px;
+  height: 10px;
+
+  margin-top: 7px;
+
+  border-radius: 50%;
+
+  background: var(--color-forest);
+  box-shadow: 0 0 0 5px rgba(22, 56, 47, 0.08);
+}
+
+@include tablet {
+  .admin-user-detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-user-detail-card {
+    padding: var(--space-lg);
+  }
+
+  .admin-user-detail-card:first-child {
+    grid-row: span 2;
+  }
+}
+
+@include desktop {
+  .admin-user-activity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

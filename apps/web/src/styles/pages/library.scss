@@ -1,0 +1,69 @@
+@use "../mixins.scss" as *;
+
+.library-page {
+  @include stack(var(--space-md));
+}
+
+.library-hero {
+  @include hero;
+}
+
+.library-title {
+  font-size: clamp(3rem, 12vw, 6.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.library-subtitle {
+  @include subtitle;
+}
+
+.library-count {
+  color: var(--color-forest);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.library-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.library-filter {
+  padding: 10px 16px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+
+  background: transparent;
+
+  color: var(--color-muted);
+
+  font-size: 0.9rem;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-forest);
+    color: var(--color-forest);
+  }
+
+  &.active {
+    border-color: var(--color-forest);
+
+    background: var(--color-forest);
+    color: var(--color-paper-light);
+  }
+}
+
+.library-filter-title {
+  @include eyebrow;
+
+  color: var(--color-forest);
+}

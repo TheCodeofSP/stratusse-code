@@ -1,0 +1,17 @@
+@use "../variables" as *;
+
+.note-like,
+.library-detail-like,
+.comment-card__like {
+  color: var(--color-muted);
+
+  transition: color 0.2s ease;
+}
+
+.note-like.active,
+.library-detail-like.active,
+.comment-card__like.active {
+  color: var(--color-forest);
+  font-weight: bold;
+  
+}

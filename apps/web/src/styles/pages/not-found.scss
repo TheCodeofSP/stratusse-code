@@ -1,0 +1,22 @@
+@use "../mixins.scss" as *;
+
+.not-found-page {
+  display: flex;
+  justify-content: center;
+}
+
+.not-found-card {
+  @include stack(24px);
+
+  max-width: 720px;
+
+  text-align: center;
+}
+
+.not-found-reflection {
+  color: var(--color-muted);
+
+  font-style: italic;
+
+  line-height: 1.8;
+}

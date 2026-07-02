@@ -1,0 +1,71 @@
+@use "../mixins.scss" as *;
+
+.form-group {
+  @include stack(var(--space-xs));
+}
+
+.form-label {
+  color: var(--color-forest);
+
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  @include input-base;
+  @include focus-ring;
+
+  line-height: 1.8;
+
+  resize: vertical;
+}
+
+.form-textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.form-error {
+  color: var(--state-danger-color);
+
+  font-size: 0.88rem;
+}
+
+.form-helper {
+  color: var(--color-muted);
+
+  font-size: 0.88rem;
+}
+
+.form-divider {
+  height: 1px;
+  margin-block: var(--space-xs);
+
+  background: var(--color-border-soft);
+}
+
+@include tablet {
+  .form-input,
+  .form-select {
+    min-height: 54px;
+  }
+
+  .form-textarea {
+    min-height: 260px;
+  }
+}
+
+.form-input:disabled,
+.form-select:disabled,
+.form-textarea:disabled,
+.editor-title-input:disabled {
+  cursor: not-allowed;
+
+  background: rgba(22, 56, 47, 0.05);
+
+  color: var(--color-muted);
+
+  opacity: 0.85;
+}

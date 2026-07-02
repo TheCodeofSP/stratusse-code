@@ -1,0 +1,129 @@
+@use "../mixins.scss" as *;
+
+.library-detail-card {
+  width: 100%;
+
+  @include stack(var(--space-lg));
+
+  overflow: hidden;
+}
+
+.library-detail-hero {
+  @include stack(var(--space-sm));
+}
+
+.library-detail-status {
+  align-self: flex-start;
+  gap: 5px;
+}
+
+.library-detail-title {
+  color: var(--color-forest);
+
+  font-size: clamp(3rem, 12vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.library-detail-author {
+  color: var(--color-brass);
+
+  font-family: var(--font-title);
+  font-size: clamp(1.5rem, 5vw, 2.4rem);
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.library-detail-like {
+  @include button-secondary;
+
+  align-self: flex-start;
+
+  min-height: 44px;
+  padding: 10px 14px;
+
+  border-color: rgba(156, 122, 61, 0.28);
+  background: rgba(255, 250, 241, 0.72);
+
+  &:hover {
+    color: var(--color-forest);
+    border-color: rgba(156, 122, 61, 0.46);
+    transform: translateY(-1px);
+  }
+
+  &.active {
+    color: var(--color-forest);
+    border-color: rgba(156, 122, 61, 0.5);
+    background: rgba(156, 122, 61, 0.08);
+  }
+}
+
+.library-detail-divider {
+  height: 1px;
+
+  background: rgba(156, 122, 61, 0.28);
+}
+
+.library-detail-sections {
+  @include stack(var(--space-md));
+}
+
+.library-detail-section {
+  @include stack(10px);
+
+  padding-top: 18px;
+
+  border-top: 1px solid rgba(156, 122, 61, 0.18);
+
+  p {
+    max-width: 720px;
+
+    color: var(--color-muted);
+
+    line-height: 1.9;
+  }
+}
+
+.library-detail-section-label {
+  @include eyebrow;
+
+  color: var(--color-forest);
+}
+
+.library-detail-section--main {
+  p {
+    color: var(--color-ink);
+
+    font-size: clamp(1.05rem, 2vw, 1.18rem);
+    line-height: 2;
+  }
+}
+
+.library-detail-creator-link {
+  display: inline-flex;
+  width: fit-content;
+
+  margin-top: var(--space-sm);
+
+  color: var(--color-forest);
+
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@include tablet {
+  .library-detail-card {
+    max-width: 980px;
+    margin-inline: auto;
+
+    gap: 42px;
+  }
+
+  .library-detail-sections {
+    gap: var(--space-base);
+  }
+}

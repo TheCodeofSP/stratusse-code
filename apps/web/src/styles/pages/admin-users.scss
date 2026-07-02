@@ -1,0 +1,151 @@
+@use "../mixins.scss" as *;
+
+.admin-users-page {
+  @include stack(var(--space-lg));
+}
+
+.admin-users-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.admin-users-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-base);
+
+  > * {
+    flex: 1 1 320px;
+  }
+}
+
+.admin-user-card {
+  @include stack(var(--space-md));
+  @include paper-card;
+  @include card-hover;
+
+  &.is-deleted {
+    opacity: 0.82;
+  }
+}
+
+.admin-user-header {
+  @include stack(var(--space-xs));
+
+  h3 {
+    color: var(--color-ink);
+    font-size: 1.2rem;
+  }
+
+  p {
+    margin-top: var(--space-xs);
+
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+}
+
+.admin-user-role {
+  @include badge-warning;
+
+  align-self: flex-start;
+
+  white-space: nowrap;
+}
+
+.admin-user-meta {
+  @include stack(var(--space-sm));
+
+  color: var(--color-muted);
+
+  p {
+    line-height: 1.7;
+  }
+}
+
+.admin-user-approved {
+  @include stack(var(--space-xs));
+
+  padding: var(--space-sm);
+
+  border: 1px solid var(--state-success-bg);
+  border-radius: var(--radius-card);
+
+  background: var(--state-success-bg);
+
+  p {
+    color: var(--state-success-color);
+    font-weight: 600;
+  }
+
+  span {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+}
+
+.admin-user-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-top: auto;
+
+  .btn {
+    min-width: 72px;
+  }
+}
+
+.admin-user-status {
+  @include badge-base;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-soft);
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-user-status--observer {
+  background: var(--state-default-bg);
+  color: var(--state-default-color);
+}
+
+.admin-user-status--creator {
+  background: var(--state-success-bg);
+  color: var(--state-success-color);
+}
+
+.admin-user-status--admin {
+  background: var(--state-warning-bg);
+  color: var(--state-warning-color);
+}
+
+.admin-user-status--deleted {
+  background: var(--state-danger-bg);
+  color: var(--state-danger-color);
+  border-color: rgba(138, 59, 59, 0.22);
+}
+
+.admin-user-deletion-comment {
+  padding: var(--space-sm);
+
+  color: var(--state-danger-color);
+  line-height: 1.7;
+}
+
+@include tablet {
+  .admin-user-header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .admin-user-actions {
+    .btn {
+      flex: 1;
+    }
+  }
+}

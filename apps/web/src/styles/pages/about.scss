@@ -1,0 +1,108 @@
+@use "../mixins.scss" as *;
+
+.about-page {
+  @include stack(var(--space-xl));
+}
+
+.about-hero {
+  @include hero;
+}
+
+.about-hero__badge {
+  @include eyebrow;
+
+  color: var(--color-brass);
+}
+
+.about-hero__subtitle {
+  @include subtitle;
+}
+
+.about-hero__intro {
+  @include intro;
+}
+
+.about-note {
+  position: relative;
+  overflow: hidden;
+
+  @include note-card;
+  @include stack(var(--space-lg));
+
+  max-width: 860px;
+
+  margin-inline: auto;
+  padding: 42px 28px 42px 48px;
+
+  --card-note-line-height: 34px;
+
+  h2,
+  p {
+    line-height: var(--card-note-line-height);
+  }
+
+  &::after {
+    content: "Note fondatrice";
+
+    position: absolute;
+    right: 20px;
+    bottom: 16px;
+
+    color: rgba(156, 122, 61, 0.12);
+
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 8vw, 4.8rem);
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+
+    pointer-events: none;
+  }
+}
+
+.about-section {
+  position: relative;
+  z-index: 1;
+
+  @include stack(var(--space-base));
+
+  padding-bottom: var(--space-md);
+  margin-left: 28px;
+
+  &:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  h2 {
+    color: var(--color-forest);
+
+    font-family: var(--font-title);
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    line-height: var(--card-note-line-height);
+    letter-spacing: -0.035em;
+  }
+}
+
+.about-section__content {
+  color: var(--color-muted);
+
+  p {
+    margin: 0;
+  }
+
+  p + p {
+    margin-top: 0;
+  }
+}
+
+.quote-closing {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+@include tablet {
+  .about-note {
+    padding: 56px 56px 56px 76px;
+  }
+}

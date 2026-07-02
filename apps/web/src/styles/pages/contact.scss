@@ -1,0 +1,106 @@
+@use "../mixins.scss" as *;
+
+.contact-page {
+  @include stack;
+}
+
+.contact-hero {
+  @include hero;
+}
+
+.contact-hero__badge {
+  @include eyebrow;
+
+  color: var(--color-brass);
+}
+
+.contact-hero__subtitle {
+  @include subtitle;
+}
+
+.contact-hero__intro {
+  @include intro;
+}
+
+.contact-content {
+  @include stack(var(--space-lg));
+
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.contact-section,
+.contact-form-card {
+  position: relative;
+  overflow: hidden;
+
+  padding: 30px 28px;
+
+  border: 1px solid rgba(22, 56, 47, 0.16);
+  border-radius: calc(var(--card-radius) + 8px);
+
+  background: rgba(255, 250, 241, 0.76);
+
+  box-shadow: var(--shadow-soft);
+
+  h2 {
+    margin-bottom: var(--space-sm);
+
+    color: var(--color-forest);
+
+    font-family: var(--font-title);
+    font-size: clamp(1.9rem, 6vw, 3.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+
+  p {
+    color: var(--color-muted);
+    line-height: 1.9;
+  }
+}
+
+.contact-form-card {
+  @include note-card;
+  form {
+    margin-left: 10px;
+
+    position: relative;
+    z-index: 1;
+
+    @include stack(var(--space-base));
+  }
+
+  h2 {
+    position: relative;
+    z-index: 1;
+    margin-left: 5px;
+  }
+
+  .form-textarea {
+    min-height: 220px;
+
+    background: rgba(255, 250, 241, 0.88);
+    line-height: 1.8;
+    border: transparent;
+  }
+
+  .btn {
+    align-self: flex-start;
+  }
+}
+
+.contact-content .quote-closing {
+  margin-top: var(--space-base);
+}
+
+@include tablet {
+  .contact-section,
+  .contact-form-card {
+    padding: 42px;
+  }
+
+  .contact-form-card {
+    padding-left: 58px;
+  }
+}

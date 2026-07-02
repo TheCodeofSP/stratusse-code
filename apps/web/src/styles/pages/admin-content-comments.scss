@@ -1,0 +1,74 @@
+@use "../mixins.scss" as *;
+
+.admin-content-comments-page {
+  @include stack(var(--space-lg));
+}
+
+select,
+input {
+  @include input-base;
+  @include focus-ring;
+
+  min-width: 220px;
+}
+
+.admin-comment-grid {
+  @include flex-wrap-auto(320px, var(--space-md));
+}
+
+.admin-comment-card {
+  @include stack(var(--space-sm));
+  @include paper-card;
+
+  h2 {
+    color: var(--color-ink);
+    font-size: 1.2rem;
+  }
+}
+
+.admin-comment-date {
+  @include badge-warning;
+
+  align-self: flex-start;
+}
+
+.admin-comment-context,
+.admin-comment-likes {
+  color: var(--color-muted);
+
+  font-size: 0.92rem;
+}
+
+.admin-comment-excerpt {
+  color: var(--color-muted);
+
+  line-height: 1.7;
+
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.admin-comment-detail {
+  @include stack(var(--space-base));
+  @include paper-card;
+}
+
+.admin-comment-context-box {
+  p {
+    padding: 10px 14px;
+  }
+}
+
+.admin-comment-content {
+  padding: var(--space-base);
+
+  border-radius: var(--radius-card);
+
+  background: rgba(255, 250, 241, 0.6);
+
+  color: var(--color-ink);
+
+  line-height: 1.9;
+  white-space: pre-wrap;
+}

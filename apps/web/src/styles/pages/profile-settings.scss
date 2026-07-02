@@ -1,0 +1,41 @@
+@use "../mixins.scss" as *;
+
+.profile-settings-page {
+  @include stack(var(--space-base));
+}
+
+.profile-settings-card {
+  @include stack(var(--space-sm));
+}
+
+.profile-settings-card--danger {
+  border-color: var(--button-danger-border);
+
+  h2 {
+    color: var(--state-danger-color);
+  }
+}
+
+.profile-delete-account {
+  @include stack(18px);
+}
+
+.password-rules {
+  display: grid;
+  gap: 6px;
+
+  margin-top: 10px;
+  padding-left: 0;
+
+  list-style: none;
+}
+
+.password-rule {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.password-rule.valid {
+  color: var(--color-forest);
+  font-weight: 600;
+}

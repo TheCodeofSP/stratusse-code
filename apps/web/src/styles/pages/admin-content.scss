@@ -1,0 +1,51 @@
+@use "../mixins.scss" as *;
+
+.admin-content-page {
+  @include stack(var(--space-lg));
+}
+
+.admin-content-grid {
+  @include flex-wrap-auto(300px, var(--space-base));
+}
+
+.admin-content-card {
+  position: relative;
+
+  @include stack((var(--space-xs)));
+  @include paper-card;
+  @include card-hover;
+
+  min-height: 240px;
+
+  h2 {
+    color: var(--color-forest);
+  }
+
+  p {
+    flex: 1;
+  }
+}
+
+.admin-content-icon {
+  font-size: 2rem;
+}
+
+.admin-content-description {
+  color: var(--color-muted);
+
+  line-height: 1.7;
+}
+
+.admin-content-details {
+  color: var(--color-muted);
+
+  font-size: 0.95rem;
+}
+
+.admin-content-link {
+  margin-top: auto;
+
+  color: var(--color-terracotta);
+
+  font-weight: 600;
+}

@@ -1,0 +1,154 @@
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1280px;
+
+:root {
+  /* ======================
+     TYPOGRAPHY
+  ====================== */
+
+  --font-title: "Cormorant Garamond", serif;
+  --font-body: "Inter", sans-serif;
+
+  /* ======================
+     COLORS
+  ====================== */
+
+  --color-forest: #16382f;
+  --color-forest-soft: #1f3d34;
+  --color-forest-light: rgba(22, 56, 47, 0.08);
+
+  --color-paper: #f7f1e7;
+  --color-paper-light: #fffaf1;
+  --color-paper-deep: #e8dccb;
+
+  --color-ink: #211c17;
+  --color-grey: #6b7280;
+  --color-muted: #6f6258;
+
+  --color-brass: #9c7a3d;
+  --color-terracotta: #6b3a0d;
+
+  --color-border: rgba(22, 56, 47, 0.14);
+  --color-border-soft: rgba(22, 56, 47, 0.08);
+
+  /* ======================
+     RADIUS / SHADOWS
+  ====================== */
+
+  --radius-soft: 6px;
+  --radius-card: 10px;
+  --radius-pill: 999px;
+
+  --shadow-paper: 0 18px 40px rgba(22, 56, 47, 0.08);
+  --shadow-soft: 0 10px 26px rgba(22, 56, 47, 0.06);
+
+  /* ======================
+     LAYOUT
+  ====================== */
+
+  --container-width: 1120px;
+  --section-gap: 64px;
+
+  /* ======================
+     SPACING
+  ====================== */
+
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 72px;
+  --space-base: 24px;
+
+  /* ======================
+     BUTTONS
+  ====================== */
+
+  --button-primary-bg: var(--color-forest);
+  --button-primary-color: var(--color-paper-light);
+  --button-primary-border: var(--color-forest);
+
+  --button-secondary-bg: transparent;
+  --button-secondary-color: var(--color-forest);
+  --button-secondary-border: var(--color-border);
+
+  --button-ghost-bg: transparent;
+  --button-ghost-color: var(--color-muted);
+  --button-ghost-border: transparent;
+
+  --button-home-bg: var(--color-brass);
+  --button-home-color: var(--color-paper-light);
+  --button-home-border: var(--color-brass);
+
+  --button-accent-bg: var(--color-brass);
+  --button-accent-color: var(--color-paper-light);
+  --button-accent-border: var(--color-brass);
+
+  --button-danger-bg: transparent;
+  --button-danger-color: #8a3b3b;
+  --button-danger-border: rgba(138, 59, 59, 0.28);
+
+  --button-radius: var(--radius-soft);
+  --button-padding-block: 12px;
+  --button-padding-inline: 18px;
+  --button-font-size: 0.95rem;
+  --button-font-weight: 700;
+
+  /* ======================
+     CARDS
+  ====================== */
+
+  --card-bg: var(--color-paper-light);
+  --card-border: var(--color-border);
+  --card-radius: var(--radius-card);
+  --card-shadow: var(--shadow-paper);
+  --card-padding-mobile: 24px;
+  --card-padding-desktop: 32px;
+
+  --card-note-bg: var(--paper-bg-soft);
+  --card-note-border: var(--paper-border);
+  --card-note-line: var(--notebook-line-color);
+  --card-note-margin: var(--notebook-margin-color);
+  --card-note-line-height: var(--notebook-line-height);
+  --card-note-first-line: var(--notebook-first-line);
+
+  --card-library-bg: var(--library-bg);
+  --card-library-border: var(--library-border);
+  --card-library-frame-primary: var(--library-frame-primary);
+  --card-library-frame-secondary: var(--library-frame-secondary);
+
+  /* ======================
+     FORMS
+  ====================== */
+
+  --input-bg: rgba(255, 250, 241, 0.88);
+  --input-border: rgba(22, 56, 47, 0.16);
+  --input-color: var(--color-ink);
+  --input-placeholder: rgba(111, 98, 88, 0.72);
+  --input-radius: var(--radius-soft);
+  --input-min-height: 50px;
+  --input-padding-block: 14px;
+  --input-padding-inline: 16px;
+
+  /* ======================
+     STATES
+  ====================== */
+
+  --state-success-bg: rgba(61, 122, 76, 0.12);
+  --state-success-color: #2d6a3d;
+
+  --state-warning-bg: rgba(196, 143, 43, 0.12);
+  --state-warning-color: #9a6d16;
+
+  --state-danger-bg: rgba(168, 71, 71, 0.12);
+  --state-danger-color: #8a3b3b;
+
+  --state-info-bg: rgba(58, 92, 168, 0.12);
+  --state-info-color: #3553a4;
+
+  --state-default-bg: rgba(0, 0, 0, 0.06);
+  --state-default-color: var(--color-muted);
+}

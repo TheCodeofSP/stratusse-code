@@ -1,0 +1,266 @@
+@use "../mixins.scss" as *;
+
+.creator-request-page {
+  @include stack(var(--space-lg));
+
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.creator-request-page .page-header {
+  h1 {
+    color: var(--color-forest);
+
+    font-size: clamp(3rem, 11vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+  }
+
+  p {
+    max-width: 720px;
+
+    margin-top: var(--space-sm);
+
+    line-height: 1.85;
+  }
+}
+
+/* ======================
+   INTRO — OBSERVER / CRÉER
+====================== */
+
+.creator-request-intro {
+  position: relative;
+  overflow: hidden;
+
+  display: grid;
+  gap: var(--space-base);
+
+  padding: 32px 28px;
+
+  border: 1px solid rgba(22, 56, 47, 0.16);
+  border-radius: calc(var(--card-radius) + 10px);
+
+  background: rgba(255, 250, 241, 0.72);
+
+  box-shadow: var(--shadow-soft);
+
+  &::after {
+    content: "PARTAGER";
+
+    position: absolute;
+    right: 18px;
+    bottom: 12px;
+
+    color: rgba(156, 122, 61, 0.1);
+
+    font-family: var(--font-title);
+    font-size: clamp(2.6rem, 12vw, 6rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+
+    pointer-events: none;
+  }
+
+  section {
+    position: relative;
+    z-index: 1;
+
+    padding: 24px;
+
+    border: 1px solid rgba(156, 122, 61, 0.18);
+    border-radius: var(--card-radius);
+
+    background: rgba(255, 250, 241, 0.58);
+  }
+
+  h2 {
+    margin-bottom: var(--space-xs);
+
+    color: var(--color-forest);
+
+    font-family: var(--font-title);
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+
+  ul {
+    display: grid;
+    gap: 8px;
+
+    margin: var(--space-sm) 0 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+
+    padding-left: 22px;
+
+    color: var(--color-ink);
+    line-height: 1.65;
+
+    &::before {
+      content: "✓";
+
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      color: var(--color-brass);
+
+      font-weight: 700;
+    }
+  }
+}
+
+/* ======================
+   FORMULAIRE
+====================== */
+
+.creator-request-card {
+  @include stack(var(--space-base));
+
+  padding: var(--notebook-padding-top) var(--notebook-padding-right)
+    var(--notebook-padding-bottom) var(--notebook-padding-left);
+
+  h2,
+  h3 {
+    color: var(--color-forest);
+    font-family: var(--font-title);
+  }
+
+  .form-group {
+    position: relative;
+    z-index: 1;
+  }
+
+  .form-label {
+    color: var(--color-forest);
+    font-weight: 700;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    background: rgba(255, 250, 241, 0.86);
+  }
+
+  .form-textarea {
+    min-height: 150px;
+    line-height: 1.75;
+  }
+
+  button {
+    position: relative;
+    z-index: 1;
+    margin-top: var(--space-xs);
+  }
+}
+
+.creator-request-card .form-divider {
+  margin-block: var(--space-xs);
+}
+
+/* ======================
+   STATUTS
+====================== */
+
+.creator-request-status {
+  position: relative;
+  overflow: hidden;
+
+  @include stack(var(--space-sm));
+
+  padding: 28px;
+
+  border: 1px solid rgba(22, 56, 47, 0.16);
+  border-radius: calc(var(--card-radius) + 8px);
+
+  background: rgba(255, 250, 241, 0.78);
+
+  box-shadow: var(--shadow-soft);
+
+  h2 {
+    color: var(--color-forest);
+
+    font-family: var(--font-title);
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.035em;
+  }
+
+  p {
+    color: var(--color-muted);
+    line-height: 1.75;
+  }
+
+  &::after {
+    position: absolute;
+    right: 20px;
+    bottom: 14px;
+
+    color: rgba(156, 122, 61, 0.12);
+
+    font-family: var(--font-title);
+    font-size: clamp(2.4rem, 10vw, 5rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+
+    pointer-events: none;
+  }
+}
+
+.creator-request-status--pending {
+  border-left: 4px solid var(--state-warning-color);
+
+  &::after {
+    content: "EN LECTURE";
+  }
+}
+
+.creator-request-status--approved {
+  border-left: 4px solid var(--state-success-color);
+
+  &::after {
+    content: "OUVERT";
+  }
+}
+
+.creator-request-status--rejected {
+  border-left: 4px solid var(--state-danger-color);
+
+  &::after {
+    content: "À REVOIR";
+  }
+}
+
+.creator-request-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+
+  margin-top: var(--space-xs);
+}
+
+@include tablet {
+  .creator-request-intro {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 42px;
+  }
+
+  .creator-request-intro section:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .creator-request-card {
+    padding: 42px 42px 42px 58px;
+  }
+
+  .creator-request-status {
+    padding: 38px;
+  }
+}

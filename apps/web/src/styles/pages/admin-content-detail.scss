@@ -1,0 +1,63 @@
+@use "../mixins.scss" as *;
+
+.admin-content-detail-page {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.admin-content-detail-grid {
+  display: grid;
+  gap: var(--space-base);
+}
+
+.admin-content-detail-card {
+  @include stack(18px);
+
+  padding: var(--space-base);
+
+  h2 {
+    color: var(--color-forest);
+    font-size: 1.35rem;
+  }
+}
+
+.admin-content-detail-card--wide {
+  grid-column: 1 / -1;
+}
+
+.admin-content-detail-list {
+  display: grid;
+  gap: var(--space-sm);
+
+  div {
+    @include stack(var(--space-xs));
+  }
+
+  dt {
+    @include eyebrow;
+
+    color: var(--color-muted);
+  }
+
+  dd {
+    color: var(--color-ink);
+    line-height: 1.6;
+  }
+}
+
+.admin-content-detail-text {
+  color: var(--color-ink);
+
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+@include tablet {
+  .admin-content-detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-content-detail-card {
+    padding: var(--space-lg);
+  }
+}

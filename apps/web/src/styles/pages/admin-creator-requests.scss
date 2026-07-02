@@ -1,0 +1,96 @@
+@use "../mixins.scss" as *;
+
+.admin-creator-page {
+  @include stack(var(--space-lg));
+}
+
+.admin-request-grid {
+  @include flex-wrap-auto(300px, 18px);
+}
+
+.admin-request-card {
+  @include stack(var(--space-sm));
+  @include paper-card;
+}
+
+.admin-request-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.admin-request-user {
+  h3 {
+    color: var(--color-ink);
+    font-size: 1.2rem;
+  }
+
+  p {
+    margin-top: var(--space-xs);
+
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+}
+
+.admin-request-status {
+  @include badge-base;
+
+  &.pending {
+    background: var(--state-warning-bg);
+    color: var(--state-warning-color);
+  }
+
+  &.approved {
+    background: var(--state-success-bg);
+    color: var(--state-success-color);
+  }
+
+  &.rejected {
+    background: var(--state-danger-bg);
+    color: var(--state-danger-color);
+  }
+}
+
+.admin-request-preview {
+  color: var(--color-muted);
+  line-height: 1.7;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+.admin-request-detail {
+  @include paper-card;
+
+  padding: var(--space-base);
+}
+
+.admin-request-section {
+  margin-bottom: var(--space-base);
+
+  h3 {
+    margin-bottom: var(--space-xs);
+
+    color: var(--color-forest);
+  }
+
+  p {
+    color: var(--color-muted);
+  }
+}
+
+.admin-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+@include tablet {
+  .admin-request-detail {
+    padding: var(--space-lg);
+  }
+}

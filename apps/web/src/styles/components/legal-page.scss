@@ -1,0 +1,45 @@
+@use "../mixins.scss" as *;
+
+.legal-page {
+  @include container;
+  @include stack(var(--space-xl));
+
+  padding-block: var(--space-xl);
+}
+
+.legal-page__header {
+  @include stack(var(--space-sm));
+
+  max-width: 760px;
+
+  h1 {
+    color: var(--color-forest);
+  }
+
+  p {
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+}
+
+.legal-page__content {
+  @include stack(var(--space-lg));
+
+  max-width: 860px;
+}
+
+.legal-page__section {
+  @include paper-card;
+  @include stack(var(--space-sm));
+
+  h2 {
+    color: var(--color-forest);
+    font-size: 1.5rem;
+  }
+
+  p {
+    color: var(--color-ink);
+    line-height: 1.8;
+  }
+}

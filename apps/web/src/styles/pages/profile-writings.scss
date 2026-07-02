@@ -1,0 +1,60 @@
+@use "../mixins.scss" as *;
+
+.profile-writings-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-writings-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-base);
+
+  > * {
+    flex: 1 1 320px;
+  }
+}
+
+.profile-writing-choice {
+  min-height: 300px;
+
+  @include stack(var(--space-base));
+  @include card-hover;
+
+  color: inherit;
+  text-decoration: none;
+
+  h2 {
+    margin-top: 10px;
+    margin-bottom: var(--space-sm);
+
+    font-size: clamp(2.2rem, 8vw, 4rem);
+  }
+
+  p {
+    max-width: 420px;
+  }
+}
+
+.profile-writing-choice__icon {
+  font-size: 2rem;
+}
+
+.profile-writing-choice__link {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: var(--space-md);
+
+  color: var(--color-forest);
+
+  font-weight: 600;
+  text-decoration: none;
+  font-style: italic;
+}
+
+@include tablet {
+  .profile-writing-choice {
+    min-height: 360px;
+  }
+}

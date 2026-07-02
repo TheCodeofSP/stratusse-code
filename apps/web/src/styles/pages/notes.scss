@@ -1,0 +1,92 @@
+@use "../mixins.scss" as *;
+
+.notes-page {
+  @include stack(var(--space-md));
+}
+
+.notes-hero {
+  @include hero;
+}
+
+.notes-title {
+  font-size: clamp(3rem, 12vw, 6.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.notes-subtitle {
+  @include subtitle;
+}
+
+.notes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-base);
+
+  > * {
+    flex: 1 1 300px;
+  }
+}
+
+.note-list-card {
+  @include stack(0);
+  @include card-hover;
+
+  min-height: 320px;
+}
+
+.note-category {
+  align-self: flex-start;
+
+  @include eyebrow;
+
+  min-height: var(--card-note-line-height);
+  line-height: var(--card-note-line-height);
+
+  color: var(--color-forest);
+}
+
+.note-title {
+  max-width: 14ch;
+
+  margin: 0;
+
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  line-height: var(--card-note-line-height);
+
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.note-author {
+  margin: 0;
+
+  min-height: var(--card-note-line-height);
+  line-height: var(--card-note-line-height);
+
+  color: var(--color-grey);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.note-excerpt {
+  margin: 0 0 var(--space-md);
+
+  color: var(--color-muted);
+
+  line-height: var(--card-note-line-height);
+}
+
+.note-list-card .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.notes-count {
+  color: var(--color-forest);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}

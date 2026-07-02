@@ -1,0 +1,61 @@
+@use "../mixins.scss" as *;
+
+.btn {
+  @include button-base;
+}
+
+.btn-primary {
+  @include button-primary;
+
+  box-shadow: 0 10px 22px rgba(22, 56, 47, 0.12);
+
+  &:hover {
+    background: var(--color-forest-soft);
+    border-color: var(--color-forest-soft);
+  }
+}
+
+.btn-secondary {
+  @include button-secondary;
+
+  &:hover {
+    background: var(--color-forest-light);
+  }
+}
+
+.btn-ghost {
+  @include button-ghost;
+
+  &:hover {
+    background: var(--color-forest-light);
+    color: var(--color-forest);
+  }
+}
+
+.btn-danger {
+  @include button-danger;
+}
+
+.btn-accent {
+  @include button-accent;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+@include tablet {
+  .btn {
+    min-height: 50px;
+    padding: 13px 22px;
+  }
+
+  .btn-block {
+    width: auto;
+  }
+}
+
+.btn-one {
+  display: flex;
+  justify-content: flex-end;
+}

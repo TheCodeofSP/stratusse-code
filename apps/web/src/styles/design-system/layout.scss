@@ -1,0 +1,120 @@
+@use "../mixins.scss" as *;
+
+.page-container {
+  @include container;
+}
+
+.page-section {
+  @include section-spacing;
+}
+
+.stack-xs {
+  @include stack(var(--space-xs));
+}
+
+.stack-sm {
+  @include stack(var(--space-sm));
+}
+
+.stack-md {
+  @include stack(var(--space-md));
+}
+
+.stack-lg {
+  @include stack(var(--space-lg));
+}
+
+.stack-xl {
+  @include stack(var(--space-xl));
+}
+
+.flex-wrap-sm,
+.flex-wrap-md,
+.flex-wrap-lg,
+.admin-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-wrap-sm {
+  gap: var(--space-sm);
+
+  > * {
+    flex: 1 1 260px;
+  }
+}
+
+.flex-wrap-md {
+  gap: var(--space-md);
+
+  > * {
+    flex: 1 1 320px;
+  }
+}
+
+.flex-wrap-lg {
+  gap: var(--space-lg);
+
+  > * {
+    flex: 1 1 360px;
+  }
+}
+
+.split-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+
+  > * {
+    flex: 1 1 320px;
+  }
+}
+
+.admin-grid {
+  gap: var(--space-md);
+
+  > * {
+    flex: 1 1 300px;
+  }
+}
+
+.centered-block {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.quote-closing {
+  position: relative;
+
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0;
+
+  text-align: center;
+}
+
+.quote-closing p {
+  max-width: 720px;
+  margin: 0 auto;
+
+  color: rgba(22, 56, 47, 0.88);
+
+  font-family: var(--font-title);
+  font-size: clamp(1.6rem, 5vw, 2.8rem);
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+}
+
+.quote-closing::before {
+  content: "“";
+
+  display: block;
+
+  margin-bottom: var(--space-sm);
+
+  color: rgba(22, 56, 47, 0.18);
+
+  font-family: var(--font-title);
+  font-size: clamp(3.2rem, 10vw, 5.6rem);
+  line-height: 0.7;
+}

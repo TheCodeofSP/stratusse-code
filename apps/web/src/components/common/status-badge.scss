@@ -1,0 +1,30 @@
+@use "../../styles/mixins.scss" as *;
+
+.status-badge {
+  @include badge-base;
+}
+
+.status-badge--success {
+  background: var(--state-success-bg);
+  color: var(--state-success-color);
+}
+
+.status-badge--warning {
+  background: var(--state-warning-bg);
+  color: var(--state-warning-color);
+}
+
+.status-badge--danger {
+  background: var(--state-danger-bg);
+  color: var(--state-danger-color);
+}
+
+.status-badge--info {
+  background: var(--state-info-bg);
+  color: var(--state-info-color);
+}
+
+.status-badge--default {
+  background: var(--state-default-bg);
+  color: var(--state-default-color);
+}

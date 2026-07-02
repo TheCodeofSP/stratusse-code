@@ -1,0 +1,29 @@
+@use "../mixins.scss" as *;
+
+.admin-user-actions-page {
+  @include stack(var(--space-base));
+}
+
+.admin-user-actions-list {
+  @include stack(18px);
+}
+
+.admin-user-action-card {
+  @include stack(var(--space-sm));
+
+  blockquote {
+    padding: var(--space-sm);
+
+    border-left: 2px solid var(--card-note-margin);
+
+    background: rgba(156, 122, 61, 0.05);
+  }
+
+  pre {
+    padding: var(--space-sm);
+
+    overflow-x: auto;
+
+    background: rgba(255, 250, 241, 0.6);
+  }
+}

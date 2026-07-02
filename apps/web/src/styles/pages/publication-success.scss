@@ -1,0 +1,5 @@
+@use "../mixins.scss" as *;
+
+.publication-success-actions {
+  @include btn-dispo;
+}

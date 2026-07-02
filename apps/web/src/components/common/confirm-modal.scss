@@ -1,0 +1,40 @@
+@use "../../styles/mixins.scss" as *;
+
+.confirm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-md);
+
+  background: rgba(20, 20, 20, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+.confirm-modal {
+  width: 100%;
+  max-width: 480px;
+
+  @include stack(18px);
+  @include paper-card;
+
+  h2 {
+    color: var(--color-ink);
+  }
+}
+
+.confirm-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+
+  margin-top: var(--space-sm);
+}
+
+.confirm-modal__body {
+  margin-top: var(--space-md);
+}

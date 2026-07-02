@@ -1,0 +1,56 @@
+@use "../mixins.scss" as *;
+
+.ui-state {
+  @include stack(var(--space-md));
+
+  align-items: center;
+
+  padding: var(--space-xl) var(--space-base);
+
+  text-align: center;
+}
+
+.ui-state-card {
+  padding: var(--space-lg) var(--space-base);
+
+  text-align: center;
+}
+
+.ui-state__title {
+  margin-bottom: var(--space-sm);
+
+  color: var(--color-terracotta);
+
+  font-size: 1.25rem;
+}
+
+.ui-state__text {
+  color: var(--color-muted);
+
+  line-height: 1.8;
+}
+
+.ui-state__loader {
+  width: 42px;
+  height: 42px;
+
+  border-radius: var(--radius-pill);
+
+  border: 3px solid rgba(22, 56, 47, 0.14);
+
+  border-top-color: var(--color-forest);
+
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@include tablet {
+  .ui-state-card {
+    padding: var(--space-xl);
+  }
+}

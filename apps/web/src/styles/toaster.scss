@@ -1,0 +1,62 @@
+@use "./mixins.scss" as *;
+
+.stratusse-toast {
+  position: relative;
+
+  max-width: 360px;
+
+  border-radius: 8px !important;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 250, 241, 0.98),
+    rgba(247, 241, 231, 0.94)
+  ) !important;
+
+  color: var(--color-ink) !important;
+
+  box-shadow: 0 12px 28px rgba(22, 56, 47, 0.12) !important;
+
+  font-size: 0.94rem;
+  line-height: 1.55;
+
+  transform: rotate(-0.6deg);
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    top: 8px;
+    left: 8px;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: rgba(156, 122, 61, 0.32);
+  }
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    inset: 7px;
+
+    border-radius: 5px;
+
+    pointer-events: none;
+  }
+}
+
+.stratusse-toast-success {
+  border-left: 4px solid var(--color-brass) !important;
+}
+
+.stratusse-toast-error {
+  border-left: 4px solid var(--state-danger-color) !important;
+}
+
+.stratusse-toast-info {
+  border-left: 4px solid var(--color-forest) !important;
+}

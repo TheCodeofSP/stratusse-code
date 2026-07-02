@@ -1,0 +1,64 @@
+@use "../mixins.scss" as *;
+
+.auth-page {
+  min-height: calc(100vh - 180px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding-block: var(--space-xl);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 560px;
+
+  @include stack(18px);
+
+  padding: var(--space-lg) var(--space-base);
+}
+
+.auth-title {
+  max-width: 480px;
+
+  font-size: clamp(3rem, 11vw, 5rem);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+}
+
+.auth-subtitle {
+  max-width: 440px;
+
+  line-height: 1.85;
+}
+
+.auth-form {
+  @include stack(var(--space-md));
+
+  margin-top: 18px;
+}
+
+.auth-form .btn {
+  margin-top: var(--space-xs);
+}
+
+.auth-forgot-link {
+  align-self: flex-start;
+
+  color: var(--color-forest);
+
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+@include tablet {
+  .auth-page {
+    padding-block: var(--space-2xl);
+  }
+
+  .auth-card {
+    padding: var(--space-xl);
+  }
+}

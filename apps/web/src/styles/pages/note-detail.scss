@@ -1,0 +1,126 @@
+@use "../mixins.scss" as *;
+
+.note-detail-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.note-detail-card {
+  width: 100%;
+
+  padding: var(--space-lg) var(--space-base);
+
+  overflow: hidden;
+}
+
+.note-detail-hero {
+  @include stack(18px);
+
+  max-width: 780px;
+
+  margin-bottom: var(--space-lg);
+}
+
+.note-detail-category {
+  align-self: flex-start;
+}
+
+.note-detail-title {
+  color: var(--color-forest);
+
+  font-size: clamp(3rem, 13vw, 7.4rem);
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.note-detail-excerpt {
+  color: var(--color-ink);
+
+  font-size: clamp(1.1rem, 3vw, 1.45rem);
+  line-height: 1.65;
+}
+
+.note-like {
+  align-self: flex-start;
+
+  min-height: 44px;
+
+  margin-top: var(--space-xs);
+  padding: 10px 14px;
+
+  background: transparent;
+
+  border: none;
+  &:hover {
+    color: var(--color-forest);
+    border-color: rgba(22, 56, 47, 0.26);
+    transform: translateY(-1px);
+  }
+
+  &.active {
+    color: var(--color-forest);
+  }
+}
+
+.note-detail-content {
+  position: relative;
+
+  max-width: 720px;
+
+  color: var(--color-ink);
+
+  font-size: clamp(1.04rem, 2vw, 1.16rem);
+  line-height: var(--card-note-line-height);
+
+  white-space: pre-line;
+
+  p {
+    margin-bottom: 1.4em;
+  }
+}
+.note-detail-author {
+  text-align: right;
+}
+
+.note-detail-author-link {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-lg);
+  color: var(--color-grey);
+  font-style: italic;
+  font-size: smaller;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--color-forest);
+  }
+}
+
+@include tablet {
+  .note-detail-card {
+    margin: auto;
+    max-width: 980px;
+    padding: 64px 72px;
+  }
+
+  .note-detail-hero {
+    margin-bottom: 42px;
+  }
+}
+
+.note-detail-signature {
+  text-align: right;
+  font-family: var(--font-title);
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.note-detail-card {
+  --card-note-line-height: var(--notebook-line-height);
+  --card-note-first-line: var(--notebook-first-line);
+}

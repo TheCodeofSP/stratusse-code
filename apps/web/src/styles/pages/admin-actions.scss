@@ -1,0 +1,73 @@
+@use "../mixins.scss" as *;
+
+.admin-actions-page {
+  @include stack(var(--space-base));
+}
+
+.admin-actions-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.admin-actions-list {
+  @include stack(18px);
+}
+
+.admin-action-card {
+  @include stack(18px);
+}
+
+.admin-action-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: var(--space-sm);
+
+  time {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+}
+
+.admin-action-badge {
+  @include badge-base;
+
+  padding: 6px 10px;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-action-badge--roles {
+  background: var(--state-success-bg);
+  color: var(--state-success-color);
+}
+
+.admin-action-badge--creators {
+  background: var(--state-warning-bg);
+  color: var(--state-warning-color);
+}
+
+.admin-action-badge--moderation,
+.admin-action-badge--bans {
+  background: var(--state-danger-bg);
+  color: var(--state-danger-color);
+}
+
+.admin-action-card__body {
+  @include stack(var(--space-sm));
+
+  strong {
+    color: var(--color-forest);
+  }
+}
+
+.admin-action-comment {
+  padding: var(--space-sm);
+
+  color: var(--color-ink);
+  line-height: 1.7;
+}

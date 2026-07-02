@@ -1,0 +1,35 @@
+@use "../../styles/mixins.scss" as *;
+
+.role-change-modal {
+  @include stack(var(--space-md));
+}
+
+.role-change-modal__current {
+  @include stack(var(--space-xs));
+
+  padding: 14px var(--space-sm);
+
+  border-radius: var(--radius-soft);
+
+  background: var(--color-forest-light);
+
+  span {
+    @include eyebrow;
+
+    color: var(--color-muted);
+  }
+
+  strong {
+    color: var(--color-forest);
+
+    font-size: 1.05rem;
+  }
+}
+
+.role-change-modal .form-group {
+  gap: 10px;
+}
+
+.role-change-modal .form-textarea {
+  min-height: 120px;
+}

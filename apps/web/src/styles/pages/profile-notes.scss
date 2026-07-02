@@ -1,0 +1,32 @@
+@use "../mixins.scss" as *;
+
+.profile-note-card {
+  @include stack(var(--space-base));
+
+  padding: var(--space-base);
+}
+
+.profile-note-status {
+  color: var(--color-forest);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.profile-note-actions {
+  @include stack(var(--space-sm));
+}
+
+@include tablet {
+  .profile-note-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: var(--space-lg);
+  }
+
+  .profile-note-actions {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,34 @@
+@use "../mixins.scss" as *;
+
+.info-panel {
+  width: 100%;
+  padding: var(--space-sm);
+
+  border-left: 3px solid var(--color-border);
+
+  background: rgba(255, 250, 241, 0.6);
+
+  color: var(--color-muted);
+
+  line-height: 1.7;
+}
+
+.info-panel--warning {
+  border-left-color: var(--state-warning-color);
+  background: var(--state-warning-bg);
+}
+
+.info-panel--success {
+  border-left-color: var(--state-success-color);
+  background: var(--state-success-bg);
+}
+
+.info-panel--danger {
+  border-left-color: var(--state-danger-color);
+  background: var(--state-danger-bg);
+}
+
+.info-panel--info {
+  border-left-color: var(--state-info-color);
+  background: var(--state-info-bg);
+}

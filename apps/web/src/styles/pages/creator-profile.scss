@@ -1,0 +1,73 @@
+@use "../mixins.scss" as *;
+
+.creator-profile-page {
+  .creator-profile-stats {
+    display: grid;
+    gap: var(--space-sm);
+
+    margin-bottom: var(--space-xl);
+  }
+
+  .creator-profile-stat {
+    @include stack(var(--space-xs));
+
+    strong {
+      color: var(--color-forest);
+
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    span {
+      color: var(--color-muted);
+
+      font-size: 0.9rem;
+    }
+  }
+
+  .creator-profile-section {
+    margin-bottom: var(--space-xl);
+  }
+
+  .creator-profile-section__header {
+    margin-bottom: var(--space-md);
+
+    h2 {
+      margin-top: var(--space-xs);
+    }
+  }
+
+  .creator-profile-list {
+    @include stack(var(--space-sm));
+  }
+
+  .creator-profile-note {
+    @include stack(var(--space-md));
+
+    h3 {
+      margin-bottom: var(--space-xs);
+    }
+
+    p {
+      color: var(--color-muted);
+    }
+  }
+}
+
+@include tablet {
+  .creator-profile-page {
+    .creator-profile-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .creator-profile-note {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .btn {
+        flex-shrink: 0;
+      }
+    }
+  }
+}

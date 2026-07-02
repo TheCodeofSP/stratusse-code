@@ -1,0 +1,72 @@
+@use "../mixins.scss" as *;
+
+.book-card,
+.library-item-card {
+  @include stack(var(--space-base));
+
+  justify-content: space-between;
+
+  min-height: 340px;
+
+  @include card-hover;
+}
+
+.book-card__content,
+.library-item-card__content {
+  @include stack(var(--space-sm));
+}
+
+.book-card__status,
+.book-card__universe,
+.library-item-card__status,
+.library-item-card__universe {
+  align-self: flex-start;
+
+  @include eyebrow;
+}
+
+.book-card__status,
+.library-item-card__status {
+  color: var(--color-forest);
+}
+
+.book-card__universe,
+.library-item-card__universe {
+  color: var(--color-brass);
+}
+
+.book-card__title,
+.library-item-card__title {
+  max-width: 14ch;
+
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  line-height: 0.95;
+}
+
+.book-card__author,
+.library-item-card__author {
+  color: var(--color-brass);
+
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.book-card__subject,
+.library-item-card__subject {
+  color: var(--color-muted);
+
+  line-height: 1.85;
+}
+
+.book-card .btn,
+.library-item-card .btn {
+  align-self: flex-start;
+}
+
+.book-card--group {
+  border-color: rgba(156, 122, 61, 0.58);
+
+  .book-card__status {
+    color: var(--color-brass);
+  }
+}

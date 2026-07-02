@@ -1,0 +1,66 @@
+@use "./login.scss";
+@use "../mixins.scss" as *;
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: flex-start;
+  gap: var(--space-sm);
+
+  width: 100%;
+
+  padding: var(--space-sm);
+
+  color: var(--color-muted);
+  line-height: 1.7;
+
+  input {
+    flex-shrink: 0;
+
+    width: 18px;
+    height: 18px;
+
+    margin-top: 4px;
+
+    accent-color: var(--color-forest);
+    cursor: pointer;
+  }
+
+  span {
+    min-width: 0;
+  }
+
+  a {
+    color: var(--color-forest);
+
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: var(--color-brass);
+    }
+  }
+}
+
+.register-charter__checkbox {
+  appearance: auto !important;
+
+  display: inline-block !important;
+  flex: 0 0 18px !important;
+
+  width: 18px !important;
+  min-width: 18px !important;
+  max-width: 18px !important;
+
+  height: 18px !important;
+  min-height: 18px !important;
+  max-height: 18px !important;
+
+  margin: 5px 0 0 !important;
+  padding: 0 !important;
+
+  border-radius: 3px;
+
+  accent-color: var(--color-forest);
+}

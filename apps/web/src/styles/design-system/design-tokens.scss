@@ -1,0 +1,63 @@
+:root {
+  /* ======================
+     PAPER
+  ====================== */
+
+  --paper-bg: var(--color-paper-light);
+  --paper-bg-soft: rgba(255, 250, 241, 0.82);
+  --paper-border: rgba(22, 56, 47, 0.18);
+  --paper-radius: var(--radius-card);
+  --paper-shadow-soft: var(--shadow-soft);
+  --paper-shadow: var(--shadow-paper);
+
+  /* ======================
+     NOTEBOOK
+  ====================== */
+
+  --notebook-line-height: 36px;
+  --notebook-first-line: 18px;
+  --notebook-line-color: rgba(22, 56, 47, 0.14);
+  --notebook-margin-color: rgba(156, 122, 61, 0.35);
+
+  --notebook-margin-left: 28px;
+
+  --notebook-padding-top: 28px;
+  --notebook-padding-right: 28px;
+  --notebook-padding-bottom: 28px;
+  --notebook-padding-left: 44px;
+
+  --notebook-padding-left-tablet: 48px;
+  --notebook-margin-left-tablet: 30px;
+
+  /* ======================
+     LIBRARY
+  ====================== */
+
+  --library-bg: rgba(255, 250, 241, 0.82);
+  --library-border: rgba(156, 122, 61, 0.48);
+  --library-frame-primary: rgba(156, 122, 61, 0.36);
+  --library-frame-secondary: rgba(156, 122, 61, 0.2);
+
+  --library-frame-spacing-primary: 10px;
+  --library-frame-spacing-secondary: 17px;
+
+  --library-padding-mobile: 32px;
+  --library-padding-tablet: 38px;
+
+  /* ======================
+     TOASTS
+  ====================== */
+
+  --toast-radius: 6px;
+  --toast-shadow: 0 8px 20px rgba(22, 56, 47, 0.1);
+  --toast-rotation: -1deg;
+  --toast-padding: 18px;
+
+  /* ======================
+     TRANSITIONS
+  ====================== */
+
+  --transition-fast: 0.15s ease;
+  --transition-default: 0.2s ease;
+  --transition-slow: 0.35s ease;
+}
