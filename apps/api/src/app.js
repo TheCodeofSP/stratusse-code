@@ -15,7 +15,19 @@ const contactRoutes = require("./routes/contact.routes");
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://stratusse-web.vercel.app",
+  "https://stratusse.fr",
+  "https://www.stratusse.fr",
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  }),
+);
 app.use(express.json());
 
 app.get("/health", (req, res) => {
