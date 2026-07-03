@@ -62,10 +62,10 @@ import ObserverToCreator from "../pages/public/ObserverToCreator.jsx";
 
 import NotFound from "../pages/NotFound/NotFound.jsx";
 
-import LegalNotice from "../pages/legal/LegalNotice.jsx";
-import PrivacyPolicy from "../pages/legal/PrivacyPolicy.jsx";
-import TermsOfUse from "../pages/legal/TermsOfUse.jsx";
-import CookiePolicy from "../pages/legal/CookiePolicy.jsx";
+import LegalNotice from "../pages/Legal/LegalNotice.jsx";
+import PrivacyPolicy from "../pages/Legal/PrivacyPolicy.jsx";
+import TermsOfUse from "../pages/Legal/TermsOfUse.jsx";
+import CookiePolicy from "../pages/Legal/CookiePolicy.jsx";
 
 export const router = createBrowserRouter([
   {
