@@ -17,8 +17,6 @@
 .note-detail-hero {
   @include stack(18px);
 
-  max-width: 780px;
-
   margin-bottom: var(--space-lg);
 }
 
@@ -28,8 +26,8 @@
 
 .note-detail-title {
   color: var(--color-forest);
+  font-size: clamp(3rem, 8vw, 6rem);
 
-  font-size: clamp(3rem, 13vw, 7.4rem);
   line-height: 0.88;
   letter-spacing: -0.065em;
   white-space: normal;
@@ -44,32 +42,8 @@
   line-height: 1.65;
 }
 
-.note-like {
-  align-self: flex-start;
-
-  min-height: 44px;
-
-  margin-top: var(--space-xs);
-  padding: 10px 14px;
-
-  background: transparent;
-
-  border: none;
-  &:hover {
-    color: var(--color-forest);
-    border-color: rgba(22, 56, 47, 0.26);
-    transform: translateY(-1px);
-  }
-
-  &.active {
-    color: var(--color-forest);
-  }
-}
-
 .note-detail-content {
   position: relative;
-
-  max-width: 720px;
 
   color: var(--color-ink);
 
@@ -84,12 +58,16 @@
 }
 .note-detail-author {
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.2rem;
+  align-items: flex-end;
 }
 
 .note-detail-author-link {
   display: flex;
   justify-content: flex-end;
-  margin-top: var(--space-lg);
   color: var(--color-grey);
   font-style: italic;
   font-size: smaller;
@@ -123,4 +101,45 @@
 .note-detail-card {
   --card-note-line-height: var(--notebook-line-height);
   --card-note-first-line: var(--notebook-first-line);
+}
+
+.note-detail-author__name {
+  color: var(--color-terracotta);
+
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-style: italic;
+
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: var(--color-forest);
+  }
+}
+
+.note-detail-author__prename {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.note-detail-author__role {
+  color: var(--color-brass);
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+.note-detail-author__date {
+  color: var(--color-terracotta);
+
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-style: italic;
 }

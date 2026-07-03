@@ -1,11 +1,16 @@
-@use "../variables" as *;
+@use "../mixins.scss" as *;
 
 .note-like,
 .library-detail-like,
 .comment-card__like {
   color: var(--color-muted);
-
+  text-align: left;
   transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-forest);
+    font-weight: bold;
+  }
 }
 
 .note-like.active,
@@ -13,5 +18,90 @@
 .comment-card__like.active {
   color: var(--color-forest);
   font-weight: bold;
-  
+}
+
+.note-detail-page,
+.library-detail-page,
+.comment-card__like {
+  .note-like,
+  .library-detail-like,
+  .comment-card__like {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .note-like:hover:not(.disabled) {
+    color: var(--color-forest);
+    font-weight: 600;
+  }
+
+  .note-like:hover .note-like__icon {
+    transform: scale(1.15);
+    font-weight: 600;
+  }
+
+  .note-like__icon {
+    display: inline-block;
+
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .note-like:not(.active):not(.disabled) .note-like__icon {
+    animation: gentleHeartPulse 12s ease-in-out infinite;
+  }
+
+  .note-like.active .note-like__icon {
+    color: var(--color-terracotta);
+  }
+
+  .note-like {
+    align-self: flex-start;
+
+    min-height: 44px;
+
+    &:hover {
+      color: var(--color-forest);
+      font-weight: bold;
+    }
+
+    &.active {
+      color: var(--color-forest);
+      font-weight: 600;
+    }
+  }
+}
+
+@keyframes gentleHeartPulse {
+  0%,
+  92%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+    color: inherit;
+  }
+
+  94% {
+    transform: scale(1.12);
+    color: var(--color-brass);
+
+    text-shadow: 0 0 8px rgba(156, 122, 61, 0.22);
+  }
+
+  96% {
+    transform: scale(1.18);
+    color: var(--color-terracotta);
+
+    text-shadow: 0 0 12px rgba(156, 122, 61, 0.28);
+  }
+
+  98% {
+    transform: scale(1.06);
+  }
 }

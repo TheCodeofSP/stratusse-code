@@ -86,6 +86,7 @@ export default function LibraryCommentSection({ bookId }) {
 
   return (
     <section className="comment-section stack-md">
+      <div className="comment-section__header">
       <h2 className="comment-section__title">
         Échanges autour de cette lecture
       </h2>
@@ -93,6 +94,7 @@ export default function LibraryCommentSection({ bookId }) {
         Si cette lecture fait écho à quelque chose en toi, tu peux laisser une
         réponse.
       </p>
+      </div>
 
       <CommentList
         comments={comments}

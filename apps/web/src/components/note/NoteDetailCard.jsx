@@ -12,6 +12,11 @@ export default function NoteDetailCard({ note }) {
   const { user, isAuthenticated } = useAuth();
 
   const [likes, setLikes] = useState(note.likedBy?.length || 0);
+  const publishedDate = new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(note.firstPublishedAt || note.createdAt));
 
   const [hasLiked, setHasLiked] = useState(
     note.likedBy?.some((likedUser) => {
@@ -72,27 +77,46 @@ export default function NoteDetailCard({ note }) {
           <h1 className="note-detail-title">{note.title}</h1>
 
           {note.author?.pseudo && (
-            <p className="note-detail-author">
-              {notesContent.detail.authorPrefix}{" "}
-              <Link to={`/creator/${note.author.pseudo}`}>
-                {note.author.pseudo}
-              </Link>
-            </p>
+            <div className="note-detail-author">
+              <div className="note-detail-author__name">
+                <span className="note-detail-author__prename">Par </span>
+                <Link
+                  className="note-detail-author__name"
+                  to={`/creator/${note.author.pseudo}`}
+                >
+                  {note.author.pseudo}
+                </Link>
+              </div>
+
+              <span className="note-detail-author__date">
+                , le {publishedDate}
+              </span>
+            </div>
           )}
 
           <p className="note-detail-excerpt">{note.excerpt}</p>
         </header>
 
         <div className="note-detail-content">{note.content}</div>
-
         {note.author?.pseudo && (
-          <footer className="note-detail-footer">
-            <p className="detail-signature">
-              <Link to={`/creator/${note.author.pseudo}`}>
+          <div className="note-detail-author">
+            <div className="note-detail-author__name">
+              <Link
+                className="note-detail-author__name"
+                to={`/creator/${note.author.pseudo}`}
+              >
                 {note.author.pseudo}
               </Link>
-            </p>
-          </footer>
+            </div>
+            {note.author?.pseudo && (
+              <Link
+                className="note-detail-author-link"
+                to={`/creator/${note.author.pseudo}`}
+              >
+                {notesContent.detail.creatorLinkPrefix} {note.author.pseudo}
+              </Link>
+            )}
+          </div>
         )}
 
         <button
@@ -102,18 +126,13 @@ export default function NoteDetailCard({ note }) {
           type="button"
           onClick={handleLike}
         >
-          {hasLiked ? "♥" : "♡"} {notesContent.detail.likeLabel} ({likes})
+          <span className="note-like__icon">{hasLiked ? "♥" : "♡"}</span>
+
+          <span className="note-like__text">
+            {notesContent.detail.likeLabel} ({likes})
+          </span>
         </button>
       </div>
-
-      {note.author?.pseudo && (
-        <Link
-          className="detail-author-link"
-          to={`/creator/${note.author.pseudo}`}
-        >
-          {notesContent.detail.creatorLinkPrefix} {note.author.pseudo}
-        </Link>
-      )}
     </article>
   );
 }

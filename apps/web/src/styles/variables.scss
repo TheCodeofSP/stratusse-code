@@ -25,7 +25,7 @@ $breakpoint-wide: 1280px;
 
   --color-ink: #211c17;
   --color-grey: #6b7280;
-  --color-muted: #6f6258;
+  --color-muted: #874a11;
 
   --color-brass: #9c7a3d;
   --color-terracotta: #6b3a0d;
@@ -43,6 +43,14 @@ $breakpoint-wide: 1280px;
 
   --shadow-paper: 0 18px 40px rgba(22, 56, 47, 0.08);
   --shadow-soft: 0 10px 26px rgba(22, 56, 47, 0.06);
+
+  /* ======================
+   MOTION
+====================== */
+
+  --motion-soft-duration: 520ms;
+  --motion-soft-delay: 80ms;
+  --motion-soft-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* ======================
      LAYOUT

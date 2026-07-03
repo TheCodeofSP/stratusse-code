@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { profileContent } from "../../content/profile.content.js";
+import { creatorRequestContent } from "../../content/creatorRequest.content.js";
 import { creatorRequestService } from "../../api/creatorRequest.service";
 
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
@@ -8,8 +8,6 @@ import PageFooterNavigation from "../../components/navigation/PageFooterNavigati
 import "../../styles/pages/creatorRequest.scss";
 
 export default function CreatorRequest() {
-  const creatorRequestContent = profileContent.creatorRequest;
-
   const [request, setRequest] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -25,6 +23,10 @@ export default function CreatorRequest() {
 
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+
+  const requestStatusContent = request
+    ? creatorRequestContent.statuses?.[request.status]
+    : null;
 
   useEffect(() => {
     const fetchRequest = async () => {
@@ -79,14 +81,14 @@ export default function CreatorRequest() {
       };
 
       const response = await creatorRequestService.create(payload);
-      setRequest(response.request);
 
-      setSuccess("Ta demande a été envoyée 🌿");
+      setRequest(response?.request || null);
+      setSuccess(creatorRequestContent.form.successMessage);
     } catch (error) {
       console.error(error);
 
       setError(
-        error.response?.data?.message || "Impossible d’envoyer la demande.",
+        error.response?.data?.message || creatorRequestContent.form.errorMessage,
       );
     }
   };
@@ -98,9 +100,9 @@ export default function CreatorRequest() {
   return (
     <section className="page-section creator-request-page">
       <header className="page-header">
-        <h1>{profileContent.creatorRequest.hero.title}</h1>
+        <h1>{creatorRequestContent.hero.title}</h1>
 
-        {profileContent.creatorRequest.hero.introduction.map((paragraph) => (
+        {creatorRequestContent.hero.introduction.map((paragraph) => (
           <p className="text-muted" key={paragraph}>
             {paragraph}
           </p>
@@ -110,61 +112,46 @@ export default function CreatorRequest() {
       {!request && (
         <div className="creator-request-intro info-panel info-panel--warning">
           <section>
-            <h2>{profileContent.creatorRequest.observer.title}</h2>
+            <h2>{creatorRequestContent.observer.title}</h2>
             <p className="text-muted">
-              {profileContent.creatorRequest.observer.introduction}
+              {creatorRequestContent.observer.introduction}
             </p>
 
             <ul>
-              {profileContent.creatorRequest.observer.actions.map((action) => (
+              {creatorRequestContent.observer.actions.map((action) => (
                 <li key={action}>{action}</li>
               ))}
             </ul>
           </section>
 
           <section>
-            <h2>{profileContent.creatorRequest.creator.title}</h2>
+            <h2>{creatorRequestContent.creator.title}</h2>
             <p className="text-muted">
-              {profileContent.creatorRequest.creator.introduction}
+              {creatorRequestContent.creator.introduction}
             </p>
 
             <ul>
-              {profileContent.creatorRequest.creator.actions.map((action) => (
+              {creatorRequestContent.creator.actions.map((action) => (
                 <li key={action}>{action}</li>
               ))}
             </ul>
           </section>
 
           <section>
-            <h2>{profileContent.creatorRequest.philosophy.title}</h2>
+            <h2>{creatorRequestContent.philosophy.title}</h2>
             <p className="text-muted">
-              {profileContent.creatorRequest.philosophy.introduction}
+              {creatorRequestContent.philosophy.introduction}
             </p>
           </section>
         </div>
       )}
 
-      {request?.status === "pending" && (
-        <div className="paper-card creator-request-status creator-request-status--pending">
-          <h2>{creatorRequestContent.statuses.pending.title}</h2>
-
-          <p>{creatorRequestContent.statuses.pending.text}</p>
-        </div>
-      )}
-
-      {request?.status === "approved" && (
-        <div className="paper-card creator-request-status creator-request-status--approved">
-          {" "}
-          <h2>{creatorRequestContent.statuses.approved.title}</h2>
-          <p>{creatorRequestContent.statuses.approved.text}</p>{" "}
-        </div>
-      )}
-
-      {request?.status === "rejected" && (
-        <div className="paper-card creator-request-status creator-request-status--rejected">
-          {" "}
-          <h2>{creatorRequestContent.statuses.rejected.title}</h2>
-          <p>{creatorRequestContent.statuses.rejected.text}</p>
+      {request && requestStatusContent && (
+        <div
+          className={`paper-card creator-request-status creator-request-status--${request.status}`}
+        >
+          <h2>{requestStatusContent.title}</h2>
+          <p>{requestStatusContent.text}</p>
         </div>
       )}
 
@@ -173,10 +160,9 @@ export default function CreatorRequest() {
           className="editor-form paper-card creator-request-card"
           onSubmit={handleSubmit}
         >
-          {" "}
           <div className="form-group">
             <label className="form-label">
-              {profileContent.creatorRequest.form.motivationLabel}
+              {creatorRequestContent.form.motivationLabel}
             </label>
 
             <textarea
@@ -187,9 +173,10 @@ export default function CreatorRequest() {
               required
             />
           </div>
+
           <div className="form-group">
             <label className="form-label">
-              {profileContent.creatorRequest.form.contributionLabel}
+              {creatorRequestContent.form.contributionLabel}
             </label>
 
             <select
@@ -199,33 +186,35 @@ export default function CreatorRequest() {
               onChange={handleContributionChange}
             >
               <option value="note">Note</option>
-
               <option value="book">Lecture</option>
             </select>
           </div>
+
           <div className="form-group">
             <input
               className="form-select"
               type="text"
               name="title"
-              placeholder="Titre (optionnel)"
+              placeholder={creatorRequestContent.form.titlePlaceholder}
               value={formData.firstContribution.title}
               onChange={handleContributionChange}
             />
           </div>
+
           <div className="form-group">
             <textarea
               className="form-textarea"
               name="content"
-              placeholder="Partage une idée, un début de Note, une réflexion..."
+              placeholder={creatorRequestContent.form.contentPlaceholder}
               value={formData.firstContribution.content}
               onChange={handleContributionChange}
               required
             />
           </div>
+
           <div className="form-group">
             <label className="form-label">
-              {profileContent.creatorRequest.form.improvementIdeasLabel}
+              {creatorRequestContent.form.improvementIdeasLabel}
             </label>
 
             <textarea
@@ -235,19 +224,19 @@ export default function CreatorRequest() {
               onChange={handleChange}
             />
           </div>
+
           {success && <p className="editor-success">{success}</p>}
           {error && <p className="form-error">{error}</p>}
+
           <button className="btn btn-primary" type="submit">
-            {profileContent.creatorRequest.form.submitLabel}
+            {creatorRequestContent.form.submitLabel}
           </button>
         </form>
       )}
-      <section className="quote-closing">
-        <blockquote>
-          {profileContent.creatorRequest.closing.reflection}
-        </blockquote>
 
-        <footer>{profileContent.creatorRequest.closing.signature}</footer>
+      <section className="quote-closing">
+        <blockquote>{creatorRequestContent.closing.reflection}</blockquote>
+        <footer>{creatorRequestContent.closing.signature}</footer>
       </section>
 
       <PageFooterNavigation backTo="/profile" backLabel="Retour à mon profil" />

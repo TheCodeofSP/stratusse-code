@@ -45,7 +45,7 @@ export default function CommentForm({ onSubmit }) {
         <p className="text-muted">{commentContent.form.loginMessage}</p>
 
         <button
-          className="btn btn-secondary"
+          className="btn btn-primary"
           type="button"
           onClick={() => {
             toast(commentContent.form.loginMessage);

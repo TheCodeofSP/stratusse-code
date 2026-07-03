@@ -59,6 +59,7 @@ import Contact from "../pages/public/Contact.jsx";
 import Charter from "../pages/public/Charter.jsx";
 import CreatorProfile from "../pages/Profile/CreatorProfile.jsx";
 import ObserverToCreator from "../pages/public/ObserverToCreator.jsx";
+import Care from "../pages/public/Care.jsx";
 
 import NotFound from "../pages/NotFound/NotFound.jsx";
 
@@ -82,6 +83,7 @@ export const router = createBrowserRouter([
       { path: "/library/:id", element: <LibraryDetail /> },
       { path: "/about", element: <About /> },
       { path: "/observer-to-creator", element: <ObserverToCreator /> },
+      { path: "/care", element: <Care /> },
       { path: "/contact", element: <Contact /> },
       { path: "/charter", element: <Charter /> },
       { path: "/verify-email", element: <VerifyEmail /> },

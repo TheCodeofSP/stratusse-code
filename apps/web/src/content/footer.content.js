@@ -52,6 +52,10 @@ export const footerContent = {
         path: "/charter",
       },
       {
+        label: "Prendre soin de soi",
+        path: "/care",
+      },
+      {
         label: "Nous contacter",
         path: "/contact",
       },

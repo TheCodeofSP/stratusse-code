@@ -69,7 +69,10 @@ export default function NoteDetail() {
 
       <NoteCommentSection noteId={note._id} />
 
-      <PageFooterNavigation backTo="/notes" backLabel="Retour aux notes" />
+      <PageFooterNavigation
+        backTo="/notes"
+        backLabel="Découvrir une autre Note"
+      />
     </section>
   );
 }

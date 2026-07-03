@@ -12,8 +12,6 @@ export default function EmptyState({
 }) {
   return (
     <section className={`empty-state empty-state--${variant}`}>
-      {icon && <div className="empty-state__icon">{icon}</div>}
-
       <h2 className="empty-state__title">{title}</h2>
 
       <p className="empty-state__text">{text}</p>

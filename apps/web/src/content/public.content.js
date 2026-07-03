@@ -87,6 +87,86 @@ export const publicContent = {
     },
   },
 
+  care: {
+    hero: {
+      eyebrow: "Prendre soin de soi",
+
+      title: "Tu n'es pas seul(e) !",
+
+      subtitle:
+        "Certaines pensées ont besoin d'être écrites. D'autres méritent d'être accompagnées.",
+
+      introduction: [
+        "Stratusse est une Safe Place d'écriture, de lecture et de partage.",
+        "Mais il arrive que ce que l'on traverse dépasse ce que les mots peuvent porter seuls.",
+        "Si tu te sens isolé(e), en souffrance ou simplement perdu(e), sache qu'il existe des personnes formées pour t'écouter et t'accompagner.",
+      ],
+    },
+
+    sections: [
+      {
+        title: "Pourquoi cette page existe",
+
+        paragraphs: [
+          "Prendre soin de sa santé mentale est aussi important que prendre soin de sa santé physique.",
+          "Écrire peut aider à déposer une pensée, mettre des mots sur une émotion ou retrouver un peu de souffle.",
+          "Mais lorsqu'une souffrance devient trop lourde, demander de l'aide est une démarche de courage.",
+        ],
+      },
+
+      {
+        title: "Les limites de Stratusse",
+
+        paragraphs: [
+          "Stratusse est une Safe Place, pas un service de santé.",
+          "Les échanges qui existent ici ne remplacent jamais un accompagnement médical, psychologique ou psychiatrique.",
+          "Si tu ressens le besoin d'être accompagné(e), nous t'encourageons à te tourner vers des professionnels ou des associations spécialisées.",
+        ],
+      },
+    ],
+
+    resources: {
+      title: "Des ressources pour être accompagné(e)",
+
+      introduction:
+        "Voici quelques organismes vers lesquels tu peux te tourner si tu ressens le besoin de parler ou d'être accompagné(e).",
+
+      links: [
+        {
+          name: "3114 — Numéro national de prévention du suicide",
+          url: "https://3114.fr",
+          description:
+            "Disponible gratuitement 24h/24 et 7j/7 pour toute personne en détresse ou son entourage.",
+        },
+        {
+          name: "Psycom",
+          url: "https://www.psycom.org",
+          description:
+            "Informations fiables sur la santé mentale, les troubles psychiques et les solutions d'accompagnement.",
+        },
+        {
+          name: "SOS Amitié",
+          url: "https://www.sos-amitie.com",
+          description:
+            "Des bénévoles disponibles pour écouter anonymement, sans jugement.",
+        },
+        {
+          name: "Nightline France",
+          url: "https://www.nightline.fr",
+          description:
+            "Service d'écoute pensé pour les étudiants et étudiantes.",
+        },
+      ],
+    },
+
+    closing: {
+      reflection:
+        "Demander de l'aide n'est jamais un signe de faiblesse. C'est parfois le premier pas pour recommencer à respirer.",
+
+      signature: "— Stratusse",
+    },
+  },
+
   charter: {
     hero: {
       eyebrow: "Charte",

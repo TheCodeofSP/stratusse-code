@@ -11,3 +11,13 @@
 
   font-size: 1.5rem;
 }
+
+.comment-section__invitation {
+  display: flex;
+  font-style: italic;
+  font-size: smaller;
+}
+
+.comment-section__header {
+  @include stack(0);
+}

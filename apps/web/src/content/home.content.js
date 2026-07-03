@@ -20,7 +20,7 @@ export const homeContent = {
       "Elle n’a pas besoin d’apporter une réponse.",
       "Elle existe parce qu’une pensée avait besoin d’être déposée quelque part.",
     ],
-    buttonLabel: "Découvrir les Notes",
+    buttonLabel: "→ Découvrir les Notes",
     buttonTo: "/notes",
   },
 
@@ -33,7 +33,7 @@ export const homeContent = {
       "Ici, on ne classe pas les livres. On partage le regard qu’ils ont fait naître.",
       "Chaque Lecture est personnelle sur un livre.",
     ],
-    buttonLabel: "Explorer la Bibliothèque",
+    buttonLabel: "→ Explorer la Bibliothèque",
     buttonTo: "/library",
   },
 
@@ -100,12 +100,12 @@ export const homeContent = {
   },
 
   latestNotes: {
-    title: "Un regard récemment déposé",
+    title: "La dernière Note publiée",
     placeholder: "Les premiers regards apparaîtront bientôt ici.",
   },
 
   latestReadings: {
-    title: "Une lecture récemment partagée",
+    title: "La Lecture la plus récente",
     placeholder: "Les premières Lectures apparaîtront bientôt ici.",
   },
 

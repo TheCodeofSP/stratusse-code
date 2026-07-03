@@ -103,7 +103,7 @@ export const libraryContent = {
 
     authorPrefix: "de",
 
-    creatorLinkPrefix: "Découvrir les autres regards de",
+    creatorLinkPrefix: "Découvrir les autres lectures de",
 
     likeLoginMessage:
       "Connecte-toi pour dire que cette lecture résonne avec toi.",

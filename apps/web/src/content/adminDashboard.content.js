@@ -10,7 +10,7 @@ export const adminDashboardContent = {
   overview: {
     members: "Membres",
     creators: "Voix",
-    notes: "Notes partagées",
+    notes: "Notes publiées",
     library: "Lectures partagées",
   },
 

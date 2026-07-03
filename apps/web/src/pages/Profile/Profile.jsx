@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import { profileService } from "../../api/profile.service.js";
 import { profileContent } from "../../content/profile.content.js";
+
 import { creatorRequestService } from "../../api/creatorRequest.service";
 
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
@@ -96,6 +97,7 @@ export default function Profile() {
 
           <div>
             <span className="profile-label">{content.labels.role}</span>
+
             <p>
               {content.roleLabels[user?.role] || content.roleLabels.observer}
             </p>
@@ -151,7 +153,7 @@ export default function Profile() {
                     </p>
 
                     <Link
-                      className="btn btn-secondary"
+                      className="btn btn-primary btn-request-creator-profile"
                       to={content.creatorRequestStatus.observer.requestTo}
                     >
                       {content.creatorRequestStatus.observer.requestButton}
@@ -185,6 +187,10 @@ export default function Profile() {
             {user?.role === "admin" && (
               <p>{content.creatorRequestStatus.admin.title}</p>
             )}
+          </div>
+
+          <div className="home-interlude" aria-hidden="true">
+            <span />
           </div>
 
           {user?.role === "observer" && (
@@ -221,37 +227,6 @@ export default function Profile() {
             </div>
           )}
 
-          {user?.role === "observer" && (
-            <div className="profile-observer-info">
-              <div className="paper-card">
-                <h2>{profileContent.roles.observer.title}</h2>
-
-                <p>{profileContent.roles.observer.text}</p>
-              </div>
-
-              <div className="paper-card">
-                <h2>{profileContent.roles.observer.creatorTitle}</h2>
-
-                <p>{profileContent.roles.observer.creatorText}</p>
-              </div>
-
-              <div className="paper-card">
-                <h2>{profileContent.roles.observer.validationTitle}</h2>
-
-                <p>{profileContent.roles.observer.validationText}</p>
-
-                {!creatorRequest && (
-                  <Link
-                    className="btn btn-primary"
-                    to={profileContent.roles.observer.buttonTo}
-                  >
-                    {profileContent.roles.observer.buttonLabel}
-                  </Link>
-                )}
-              </div>
-            </div>
-          )}
-
           {(user?.role === "creator" || user?.role === "admin") && (
             <>
               <div className="profile-writing-summary note-card">
@@ -259,15 +234,15 @@ export default function Profile() {
                   {content.writingStats.notesTitle}
                 </h2>
 
-                <div className="profile-summary-list">
-                  <p>
+                <ul className="profile-summary-list">
+                  <li>
                     <strong>{stats.notes.draftsCount}</strong>{" "}
                     {content.writingStats.draftLabel}
                     {stats.notes.draftsCount > 1 ? "s" : ""}{" "}
                     {content.writingStats.pendingLabel}
-                  </p>
+                  </li>
 
-                  <p>
+                  <li>
                     <strong>{stats.notes.publishedCount}</strong>{" "}
                     {content.writingStats.noteLabel}
                     {stats.notes.publishedCount > 1 ? "s" : ""}{" "}
@@ -279,14 +254,14 @@ export default function Profile() {
                     <strong>{stats.notes.peopleReached}</strong>{" "}
                     {content.writingStats.personLabel}
                     {stats.notes.peopleReached > 1 ? "s" : ""}
-                  </p>
+                  </li>
 
-                  <p>
+                  <li>
                     {content.writingStats.commentsPrefix}{" "}
                     <strong>{stats.notes.commentsCount}</strong>{" "}
                     {content.writingStats.occurrencesSuffix}.
-                  </p>
-                </div>
+                  </li>
+                </ul>
               </div>
 
               <div className="profile-writing-summary library-card">
@@ -294,15 +269,15 @@ export default function Profile() {
                   {content.writingStats.libraryTitle}
                 </h2>
 
-                <div className="profile-summary-list">
-                  <p>
+                <ul className="profile-summary-list">
+                  <li>
                     <strong>{stats.books.draftsCount}</strong>{" "}
                     {content.writingStats.draftLabel}
                     {stats.books.draftsCount > 1 ? "s" : ""}{" "}
                     {content.writingStats.pendingLabel}
-                  </p>
+                  </li>
 
-                  <p>
+                  <li>
                     <strong>{stats.books.publishedCount}</strong>{" "}
                     {content.writingStats.readingLabel}
                     {stats.books.publishedCount > 1 ? "s" : ""}{" "}
@@ -314,17 +289,50 @@ export default function Profile() {
                     <strong>{stats.books.peopleInfluenced}</strong>{" "}
                     {content.writingStats.personLabel}
                     {stats.books.peopleInfluenced > 1 ? "s" : ""}
-                  </p>
+                  </li>
 
-                  <p>
+                  <li>
                     {content.writingStats.reactionsPrefix}{" "}
                     <strong>{stats.books.reactionsCount}</strong>{" "}
                     {content.writingStats.occurrencesSuffix}.
-                  </p>
-                </div>
+                  </li>
+                </ul>
               </div>
             </>
           )}
+
+          <div className="home-interlude" aria-hidden="true">
+            <span />
+          </div>
+
+          <div className="profile-observer-info">
+            <div className="paper-card profile-role-block">
+              <h2>{profileContent.roles[user?.role]?.title}</h2>
+
+              <p>{profileContent.roles[user?.role]?.text}</p>
+            </div>
+
+            <div className="paper-card profile-role-block">
+              <h2>{profileContent.roles[user?.role]?.creatorTitle}</h2>
+
+              <p>{profileContent.roles[user?.role]?.creatorText}</p>
+            </div>
+
+            <div className="paper-card profile-role-block">
+              <h2>{profileContent.roles[user?.role]?.validationTitle}</h2>
+
+              <p>{profileContent.roles[user?.role]?.validationText}</p>
+
+              {user?.role === "observer" && !creatorRequest && (
+                <Link
+                  className="btn btn-primary"
+                  to={profileContent.roles.observer.buttonTo}
+                >
+                  {profileContent.roles.observer.buttonLabel}
+                </Link>
+              )}
+            </div>
+          </div>
 
           {(user?.role === "creator" || user?.role === "admin") && (
             <div className="profile-actions">

@@ -82,6 +82,9 @@ export default function Home() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
+          <div className="home-interlude--writing" aria-hidden="true">
+            <span />
+          </div>
 
           <div className="home-world__preview">
             <span className="home-world__preview-label">
@@ -123,6 +126,9 @@ export default function Home() {
           </div>
 
           <div className="home-world__preview">
+            <div className="home-interlude--library" aria-hidden="true">
+              <span />
+            </div>
             <span className="home-world__preview-label">
               {homeContent.latestReadings.title}
             </span>
@@ -193,7 +199,7 @@ export default function Home() {
               <div className="home-participation__step" key={step.title}>
                 <span className="home-participation__step-dot" />
 
-                <div>
+                <div className="home-participation__step-content">
                   <h4>{step.title}</h4>
                   <p>{step.text}</p>
                 </div>

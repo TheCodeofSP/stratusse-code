@@ -102,6 +102,8 @@
 ====================== */
 
 @mixin paper-card {
+  @include soft-reveal(80ms);
+
   padding: var(--card-padding-mobile);
 
   border: 1px solid var(--card-border);
@@ -116,6 +118,8 @@
 }
 
 @mixin note-card {
+  @include soft-reveal(80ms);
+  
   position: relative;
 
   padding: var(--notebook-padding-top) var(--notebook-padding-right)
@@ -160,6 +164,8 @@
 }
 
 @mixin library-card {
+  @include soft-reveal(80ms);
+
   position: relative;
 
   padding: var(--library-padding-mobile);
@@ -485,17 +491,25 @@
 
   padding: var(--space-xl) 0 0;
 
+  .eyebrow {
+    @include soft-reveal(0ms);
+  }
+
   h1 {
+    @include soft-reveal(80ms);
+
     margin: 18px 0 var(--space-base);
 
     color: var(--color-forest);
 
-    font-size: clamp(3.4rem, 14vw, 8.4rem);
+    font-size: clamp(3.4rem, 10vw, 8.4rem);
     line-height: 0.88;
     letter-spacing: -0.065em;
   }
 
   p {
+    @include soft-reveal(160ms);
+
     margin-top: var(--space-base);
   }
 }
@@ -504,4 +518,20 @@
   margin-top: 18px;
 
   color: var(--color-muted);
+}
+
+@mixin soft-reveal($delay: 0ms) {
+  opacity: 0;
+  transform: translateY(12px);
+
+  animation: softReveal var(--motion-soft-duration) var(--motion-soft-ease)
+    forwards;
+
+  animation-delay: $delay;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }

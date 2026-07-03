@@ -46,7 +46,7 @@ export default function LibraryCard({ book }) {
         <p className="book-card__subject">{book.subject}</p>
       </div>
 
-      <Link className="btn btn-secondary" to={`/library/${book._id}`}>
+      <Link className="btn btn-primary" to={`/library/${book._id}`}>
         {libraryContent.card.actionLabel}
       </Link>
     </article>

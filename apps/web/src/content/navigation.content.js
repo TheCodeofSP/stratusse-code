@@ -35,7 +35,7 @@ export const navigationContent = {
   ],
 
   writeMenu: {
-    label: "Écrire",
+    label: "Publier",
 
     links: [
       {

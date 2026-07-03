@@ -18,24 +18,43 @@ export const profileContent = {
     observer: {
       title: "Tu participes aujourd’hui en tant que membre",
       text: "Tu peux découvrir les Notes, explorer la Bibliothèque, aimer les regards qui te parlent et répondre lorsque tu en ressens l’envie.",
+
       creatorTitle: "Et si une pensée cherchait maintenant sa place ?",
       creatorText:
         "Les Voix peuvent déposer leurs Notes et partager leurs Expériences de Lecture afin d’enrichir les regards présents sur Stratusse.",
+
       validationTitle: "Pourquoi une demande ?",
       validationText:
-        "Cette étape permet de comprendre ton intention et de préserver une Safe Place calme, sincère et humain.",
+        "Cette étape permet de comprendre ton intention et de préserver une Safe Place calme, sincère et humaine.",
+
       buttonLabel: "Pourquoi devenir une Voix ?",
-      buttonTo: "/profile/creator-request",
+      buttonTo: "/observer-to-creator",
     },
 
     creator: {
       title: "Tu participes aujourd’hui en tant que Voix",
-      text: "Tu peux déposer des Notes, partager tes lectures et contribuer à faire vivre les regards présents sur Stratusse.",
+      text: "Tu peux déposer tes Notes, partager tes Lectures et contribuer à faire vivre les regards présents sur Stratusse.",
+
+      creatorTitle: "Écrire à ton rythme",
+      creatorText:
+        "Tu n’as pas besoin d’écrire souvent, ni d’écrire parfaitement. Une Note peut simplement naître lorsqu’une pensée demande à respirer.",
+
+      validationTitle: "Prendre soin de ce que tu déposes",
+      validationText:
+        "Chaque publication participe à l’atmosphère de Stratusse. Écris avec sincérité, respect et attention pour les personnes qui te liront.",
     },
 
     admin: {
       title: "Tu accompagnes Stratusse en tant que Gardien de Stratusse",
       text: "Tu veilles au bon fonctionnement de la Safe Place, tu accompagnes les membres et tu prends soin de l’esprit de Stratusse.",
+
+      creatorTitle: "Protéger sans dominer",
+      creatorText:
+        "Être Gardien, ce n’est pas prendre le pouvoir sur les échanges. C’est intervenir avec discernement lorsque la sécurité émotionnelle du lieu en a besoin.",
+
+      validationTitle: "Garder l’humain au centre",
+      validationText:
+        "Chaque action de modération doit protéger les personnes, respecter la Charte et préserver la confiance nécessaire pour écrire et répondre ici.",
     },
   },
 
@@ -281,27 +300,27 @@ export const profileContent = {
     },
 
     writingStats: {
-      notesTitle: "Dans mes Notes :",
+      notesTitle: "Dans mes Notes, j'ai :",
 
-      libraryTitle: "Dans ma Bibliothèque :",
+      libraryTitle: "Dans ma Bibliothèque, j'ai :",
 
-      draftLabel: "brouillon",
+      draftLabel: "pensée(s)",
       pendingLabel: "en attente",
 
       noteLabel: "Note",
-      readingLabel: "lecture",
+      readingLabel: "Lecture",
 
-      sharedLabel: "partagée",
+      sharedLabel: "publiées",
 
       whichLabel: "qui",
-      reachedLabel: "touché",
+      reachedLabel: "résonné avec",
 
       personLabel: "personne",
 
-      commentsPrefix: "J’ai répondu",
-      reactionsPrefix: "J’ai réagi",
+      commentsPrefix: "Résonné ",
+      reactionsPrefix: "Partagé",
 
-      occurrencesSuffix: "fois",
+      occurrencesSuffix: "réponses",
     },
 
     actions: {

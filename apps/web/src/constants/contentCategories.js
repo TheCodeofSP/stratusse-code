@@ -1,35 +1,35 @@
 export const CONTENT_CATEGORIES = [
   {
     value: "self_understanding",
-    label: "🌱 Se comprendre",
+    label: "Se comprendre",
   },
   {
     value: "others",
-    label: "🤝 Les autres",
+    label: "Les autres",
   },
   {
     value: "world",
-    label: "🌍 Le monde",
+    label: "Le monde",
   },
   {
     value: "powers_influences",
-    label: "⚖️ Pouvoirs & influences",
+    label: "Pouvoirs & influences",
   },
   {
     value: "crossings",
-    label: "🌅 Traversées",
+    label: "Traversées",
   },
   {
     value: "imaginary",
-    label: "✨ Imaginaire",
+    label: "Imaginaire",
   },
   {
     value: "transmission",
-    label: "📚 Transmettre",
+    label: "Transmettre",
   },
   {
     value: "other",
-    label: "🍂 Autres",
+    label: "Autres",
   },
 ];
 

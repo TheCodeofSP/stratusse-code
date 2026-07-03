@@ -3,7 +3,7 @@
 .empty-state {
   position: relative;
   overflow: hidden;
-
+  width: 100%;
 
   @include stack(var(--space-base));
 
@@ -18,11 +18,7 @@
   border-radius: calc(var(--card-radius) + 14px);
 
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(156, 122, 61, 0.1),
-      transparent 34%
-    ),
+    radial-gradient(circle at 50% 0%, rgba(156, 122, 61, 0.1), transparent 34%),
     linear-gradient(
       180deg,
       rgba(255, 250, 241, 0.92),
@@ -74,8 +70,11 @@
   border-radius: 50%;
 
   color: var(--color-forest);
-  background:
-    radial-gradient(circle, rgba(255, 250, 241, 0.95), rgba(247, 241, 231, 0.78));
+  background: radial-gradient(
+    circle,
+    rgba(255, 250, 241, 0.95),
+    rgba(247, 241, 231, 0.78)
+  );
 
   font-size: 2rem;
 
@@ -118,11 +117,7 @@
 
 .empty-state--soft {
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(22, 56, 47, 0.08),
-      transparent 34%
-    ),
+    radial-gradient(circle at 50% 0%, rgba(22, 56, 47, 0.08), transparent 34%),
     rgba(255, 250, 241, 0.72);
 }
 

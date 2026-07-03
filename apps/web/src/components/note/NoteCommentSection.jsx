@@ -69,9 +69,13 @@ export default function NoteCommentSection({ noteId }) {
 
   return (
     <section className="comment-section">
-      <h2 className="comment-section__title">{notesContent.comments.title}</h2>
-      <div className="comment-section__invitation">
-        <p>{notesContent.comments.invitationText}</p>
+      <div className="comment-section__header">
+        <h2 className="comment-section__title">
+          {notesContent.comments.title}
+        </h2>
+        <div className="comment-section__invitation">
+          <p>{notesContent.comments.invitationText}</p>
+        </div>
       </div>
       {comments.length > 0 ? (
         <CommentList

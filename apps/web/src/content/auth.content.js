@@ -54,7 +54,7 @@ export const authContent = {
 
   registerSuccess: {
     eyebrow: "Bienvenue",
-    title: "Encore une étape 🌿",
+    title: "Encore une étape ",
     text: [
       "Ton compte a bien été créé. Un email de confirmation vient d’être envoyé.",
       "Vérifie ta boîte mail puis clique sur le lien de confirmation pour ouvrir ton espace sur Stratusse.",
@@ -126,7 +126,7 @@ export const authContent = {
     text: [
       "Stratusse est une Safe Place pensé pour lire, réfléchir et découvrir le regard des autres dans un cadre respectueux.",
       "Ici, les Notes comptent davantage que les algorithmes. Les échanges comptent davantage que les réactions instantanées.",
-      "Tu peux commencer doucement : lire une Note, explorer la Bibliothèque, puis revenir quand tu en ressens l’envie.",
+      "Commence simplement par te laisser guider. Lis une Note, découvre une Lecture, puis reviens quand tu en ressens l'envie.",
     ],
 
     primaryAction: "Découvrir les Notes",

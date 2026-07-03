@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
+
 import { libraryContent } from "../../content/library.content.js";
 import { libraryService } from "../../api/library.service.js";
-
 import { useAuth } from "../../contexts/AuthContext.jsx";
 
 import "../../styles/components/library-detail-card.scss";
@@ -29,6 +28,12 @@ export default function LibraryDetailCard({ book }) {
     }) || false,
   );
 
+  const publishedDate = new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(book.createdAt));
+
   const statusPrefix =
     libraryContent.detail.statusLabels[book.readingStatus] ||
     getReadingStatusLabel(book.readingStatus);
@@ -42,6 +47,7 @@ export default function LibraryDetailCard({ book }) {
       navigate("/login");
       return;
     }
+
     if (isOwnReading) {
       toast(libraryContent.detail.ownReadingMessage);
       return;
@@ -84,11 +90,22 @@ export default function LibraryDetailCard({ book }) {
           </p>
 
           {creatorPseudo && (
-            <p className="book-detail-reader">
-              {libraryContent.detail.introPrefix}{" "}
-              <Link to={`/creator/${creatorPseudo}`}>{creatorPseudo}</Link>{" "}
-              {libraryContent.detail.introSuffix}
-            </p>
+            <div className="library-detail-reader">
+              <div className="library-detail-reader__name">
+                <span className="library-detail-reader__prefix">Par </span>
+
+                <Link
+                  className="library-detail-reader__link"
+                  to={`/creator/${creatorPseudo}`}
+                >
+                  {creatorPseudo}
+                </Link>
+              </div>
+
+              <span className="library-detail-reader__date">
+                Lecture déposée le {publishedDate}
+              </span>
+            </div>
           )}
         </header>
 
@@ -166,26 +183,40 @@ export default function LibraryDetailCard({ book }) {
 
         {creatorPseudo && (
           <footer className="book-detail-footer">
-            <p className="detail-signature">
-              <Link to={`/creator/${creatorPseudo}`}>{creatorPseudo}</Link>
-            </p>
+            <div className="library-detail-signature">
+              <Link
+                className="library-detail-signature__name"
+                to={`/creator/${creatorPseudo}`}
+              >
+                {creatorPseudo}
+              </Link>
+
+              <Link
+                className="library-detail"
+                to={`/creator/${creatorPseudo}`}
+              >
+                {libraryContent.detail.creatorLinkPrefix} {creatorPseudo}
+              </Link>
+            </div>
           </footer>
         )}
 
         <button
-          className={`library-detail-like ${hasLiked ? "active" : ""}`}
+          className={`library-detail-like ${hasLiked ? "active" : ""} ${
+            isOwnReading ? "disabled" : ""
+          }`}
           type="button"
           onClick={handleLike}
         >
-          {hasLiked ? "♥" : "♡"} {libraryContent.detail.likeLabel} ({likes})
+          <span className="library-detail-like__icon">
+            {hasLiked ? "♥" : "♡"}
+          </span>
+
+          <span className="library-detail-like__text">
+            {libraryContent.detail.likeLabel} ({likes})
+          </span>
         </button>
       </div>
-
-      {creatorPseudo && (
-        <Link className="detail-author-link" to={`/creator/${creatorPseudo}`}>
-          {libraryContent.detail.creatorLinkPrefix} {creatorPseudo}
-        </Link>
-      )}
     </article>
   );
 }
