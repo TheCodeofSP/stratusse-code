@@ -121,6 +121,28 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+
+    hasAcceptedTerms: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+
+    termsAcceptedAt: {
+      type: Date,
+      default: null,
+    },
+
+    hasAcceptedPrivacy: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+
+    privacyAcceptedAt: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,

@@ -70,7 +70,7 @@ export default function DeleteAccountSection() {
 
       <ConfirmModal
         isOpen={isModalOpen}
-        title="Supprimer ton compte ?"
+        title="Est-tu sûr de vouloir supprimer ton compte ?"
         text="Cette action est irréversible. Ton profil sera anonymisé et ton compte désactivé."
         confirmLabel={isSubmitting ? "Suppression..." : "Supprimer mon compte"}
         onClose={() => setIsModalOpen(false)}

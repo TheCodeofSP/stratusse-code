@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import api from "../../api/api.js";
 import { publicContent } from "../../content/public.content.js";
 
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
@@ -33,8 +34,7 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      // L'appel API sera ajouté à l'étape suivante
-      console.log("Message contact :", formData);
+      await api.post("/contact", formData);
 
       setFeedback(content.form.successMessage);
       setFormData({

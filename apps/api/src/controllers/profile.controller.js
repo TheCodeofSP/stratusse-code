@@ -10,6 +10,11 @@ const {
   deleteAccountSchema,
 } = require("../validations/profile.validation");
 
+const {
+  sendPasswordChangedEmail,
+  sendAccountDeletedEmail,
+} = require("../services/email/email.service");
+
 const getMe = async (req, res) => {
   try {
     const profile = await getMyProfile(req.user._id);
@@ -53,6 +58,10 @@ const updatePassword = async (req, res) => {
       newPassword: parsedBody.data.newPassword,
     });
 
+    await sendPasswordChangedEmail({
+      to: req.user.email,
+    });
+
     return res.status(200).json({
       message: "Mot de passe modifié.",
     });
@@ -88,6 +97,10 @@ const deleteAccount = async (req, res) => {
     await deleteMyAccount({
       userId: req.user._id,
       deletionComment: parsedBody.data.deletionComment,
+    });
+
+    await sendAccountDeletedEmail({
+      to: req.user.email,
     });
 
     return res.status(200).json({

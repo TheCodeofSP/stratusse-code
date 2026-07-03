@@ -120,7 +120,7 @@ export default function ChangePasswordForm() {
                 key={rule.label}
                 className={isValid ? "password-rule valid" : "password-rule"}
               >
-                {isValid ? "✓" : "•"} {rule.label}
+                {isValid ? "✓" : " "} {rule.label}
               </li>
             );
           })}

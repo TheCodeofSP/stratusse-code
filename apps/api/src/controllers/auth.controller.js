@@ -15,6 +15,12 @@ const {
   resetPasswordSchema,
 } = require("../validations/auth.validation");
 
+const {
+  sendVerificationEmail,
+  sendForgotPasswordEmail,
+  sendPasswordChangedEmail,
+} = require("../services/email/email.service");
+
 const register = async (req, res) => {
   try {
     const parsedBody = registerSchema.safeParse(req.body);
@@ -25,23 +31,37 @@ const register = async (req, res) => {
       });
     }
 
-    const { email, password, pseudo, hasAcceptedCharter } = parsedBody.data;
+    const {
+      email,
+      password,
+      pseudo,
+      hasAcceptedCharter,
+      hasAcceptedTerms,
+      hasAcceptedPrivacy,
+    } = parsedBody.data;
 
     const result = await registerUser({
       email,
       password,
       pseudo,
       hasAcceptedCharter,
+      hasAcceptedTerms,
+      hasAcceptedPrivacy,
     });
 
     const verificationUrl = `${process.env.FRONTEND_URL}/verify-email?token=${result.emailVerificationToken}`;
 
-    console.log("EMAIL VERIFICATION URL:", verificationUrl);
+    await sendVerificationEmail({
+      to: email,
+      verificationUrl,
+    });
 
     return res.status(201).json({
       message: "Compte créé. Un email de confirmation a été envoyé.",
     });
   } catch (error) {
+    console.error("Erreur register :", error);
+
     if (error.message === "EMAIL_ALREADY_EXISTS") {
       return res.status(409).json({
         message: "Cette adresse email est déjà utilisée.",
@@ -159,7 +179,10 @@ const resendVerificationEmailController = async (req, res) => {
     if (rawToken) {
       const verificationUrl = `${process.env.FRONTEND_URL}/verify-email?token=${rawToken}`;
 
-      console.log("EMAIL VERIFICATION URL:", verificationUrl);
+      await sendVerificationEmail({
+        to: parsedBody.data.email,
+        verificationUrl,
+      });
     }
 
     return res.status(200).json({
@@ -187,11 +210,15 @@ const forgotPasswordController = async (req, res) => {
     if (rawToken) {
       const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${rawToken}`;
 
-      console.log("PASSWORD RESET URL:", resetUrl);
+      await sendForgotPasswordEmail({
+        to: parsedBody.data.email,
+        resetUrl,
+      });
     }
 
     return res.status(200).json({
-      message: "Si un compte existe, un email de réinitialisation a été envoyé.",
+      message:
+        "Si un compte existe, un email de réinitialisation a été envoyé.",
     });
   } catch (error) {
     return res.status(500).json({
@@ -210,9 +237,13 @@ const resetPasswordController = async (req, res) => {
       });
     }
 
-    await resetPassword({
+    const result = await resetPassword({
       token: parsedBody.data.token,
       password: parsedBody.data.password,
+    });
+
+    await sendPasswordChangedEmail({
+      to: result.email,
     });
 
     return res.status(200).json({
@@ -238,5 +269,5 @@ module.exports = {
   verifyEmailController,
   resendVerificationEmailController,
   forgotPasswordController,
-  resetPasswordController
+  resetPasswordController,
 };

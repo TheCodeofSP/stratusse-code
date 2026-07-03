@@ -3,6 +3,12 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const User = require("../models/User");
 
+const {
+  sendVerificationEmail,
+  sendForgotPasswordEmail,
+  sendPasswordChangedEmail,
+} = require("../services/email/email.service");
+
 const createEmailVerificationToken = () => {
   const rawToken = crypto.randomBytes(32).toString("hex");
 
@@ -23,6 +29,8 @@ const registerUser = async ({
   password,
   pseudo,
   hasAcceptedCharter,
+  hasAcceptedTerms,
+  hasAcceptedPrivacy,
 }) => {
   const existingEmail = await User.findOne({ email });
 
@@ -56,6 +64,11 @@ const registerUser = async ({
     emailVerifiedAt: null,
     emailVerificationToken: hashedToken,
     emailVerificationExpiresAt: getEmailVerificationExpiration(),
+    hasAcceptedTerms,
+    termsAcceptedAt: new Date(),
+
+    hasAcceptedPrivacy,
+    privacyAcceptedAt: new Date(),
   });
 
   return {
@@ -227,7 +240,9 @@ const resetPassword = async ({ token, password }) => {
 
   await user.save();
 
-  return true;
+  return {
+    email: user.email,
+  };
 };
 
 module.exports = {

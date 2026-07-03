@@ -121,7 +121,7 @@ export const authContent = {
   welcome: {
     eyebrow: "Bienvenue sur Stratusse",
 
-    title: "Heureux de t’accueillir 🌿",
+    title: "Heureux de t’accueillir !",
 
     text: [
       "Stratusse est une Safe Place pensé pour lire, réfléchir et découvrir le regard des autres dans un cadre respectueux.",
