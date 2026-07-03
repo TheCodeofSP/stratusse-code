@@ -1,29 +1,24 @@
+const {
+  stratusseEmailLayout,
+} = require("../layout/stratusseEmailLayout");
+
 function verifyEmailTemplate({ verificationUrl }) {
+  const { html, text } = stratusseEmailLayout({
+    title: "Encore une étape avant d’ouvrir ton espace",
+    paragraphs: [
+      "Bienvenue sur Stratusse.",
+      "Pour confirmer ton adresse email et accéder à ton espace, clique sur le bouton ci-dessous.",
+    ],
+    buttonLabel: "Confirmer mon adresse email",
+    buttonUrl: verificationUrl,
+    secondaryText:
+      "Si tu n’es pas à l’origine de cette inscription, tu peux ignorer cet email.",
+  });
+
   return {
     subject: "Confirme ton adresse email — Stratusse",
-
-    text: `Bienvenue sur Stratusse.
-
-Pour confirmer ton adresse email, ouvre ce lien :
-${verificationUrl}
-
-Si tu n'es pas à l'origine de cette inscription, tu peux ignorer cet email.`,
-
-    html: `
-      <div>
-        <h1>Bienvenue sur Stratusse</h1>
-
-        <p>Encore une étape avant d’ouvrir ton espace.</p>
-
-        <p>
-          <a href="${verificationUrl}">
-            Confirmer mon adresse email
-          </a>
-        </p>
-
-        <p>Si tu n'es pas à l'origine de cette inscription, tu peux ignorer cet email.</p>
-      </div>
-    `,
+    html,
+    text,
   };
 }
 

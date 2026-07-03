@@ -1,25 +1,23 @@
+const {
+  stratusseEmailLayout,
+} = require("../layout/stratusseEmailLayout");
+
 function contactTemplate({ email, message }) {
+  const { html, text } = stratusseEmailLayout({
+    title: "Nouveau message reçu depuis Stratusse",
+    paragraphs: [
+      `Adresse de réponse : ${email}`,
+      "Message reçu :",
+      message,
+    ],
+    secondaryText:
+      "Ce message a été envoyé depuis le formulaire de contact de Stratusse.",
+  });
+
   return {
-    subject: "Nouveau message depuis Stratusse",
-
-    text: `Nouveau message reçu depuis Stratusse.
-
-Adresse email :
-${email}
-
-Message :
-${message}`,
-
-    html: `
-      <div>
-        <h1>Nouveau message depuis Stratusse</h1>
-
-        <p><strong>Adresse email :</strong> ${email}</p>
-
-        <p><strong>Message :</strong></p>
-        <p>${message.replace(/\n/g, "<br />")}</p>
-      </div>
-    `,
+    subject: "Nouveau message — Stratusse",
+    html,
+    text,
   };
 }
 

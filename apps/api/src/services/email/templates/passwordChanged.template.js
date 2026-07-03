@@ -1,24 +1,22 @@
+const {
+  stratusseEmailLayout,
+} = require("../layout/stratusseEmailLayout");
+
 function passwordChangedTemplate() {
+  const { html, text } = stratusseEmailLayout({
+    title: "Ton mot de passe a bien été modifié",
+    paragraphs: [
+      "Nous te confirmons que le mot de passe de ton compte Stratusse vient d’être modifié.",
+      "Si cette action vient de toi, tout est en ordre.",
+    ],
+    secondaryText:
+      "Si tu n’es pas à l’origine de cette modification, contacte Stratusse dès que possible.",
+  });
+
   return {
-    subject: "Ton mot de passe a été modifié — Stratusse",
-
-    text: `Ton mot de passe Stratusse vient d'être modifié.
-
-Si tu es à l'origine de cette action, tu n'as rien à faire.
-
-Si tu n'es pas à l'origine de cette action, contacte l'équipe Stratusse dès que possible à contact@stratusse.fr.`,
-
-    html: `
-      <div>
-        <h1>Mot de passe modifié</h1>
-
-        <p>Ton mot de passe Stratusse vient d'être modifié.</p>
-
-        <p>Si tu es à l'origine de cette action, tu n'as rien à faire.</p>
-
-        <p>Si tu n'es pas à l'origine de cette action, contacte l'équipe Stratusse dès que possible à contact@stratusse.fr.</p>
-      </div>
-    `,
+    subject: "Mot de passe modifié — Stratusse",
+    html,
+    text,
   };
 }
 
