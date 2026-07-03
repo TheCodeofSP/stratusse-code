@@ -205,7 +205,10 @@ const forgotPasswordController = async (req, res) => {
       });
     }
 
-    const rawToken = await forgotPassword(parsedBody.data.email);
+    const rawToken = await forgotPassword({
+      email: parsedBody.data.email,
+      pseudo: parsedBody.data.pseudo,
+    });
 
     if (rawToken) {
       const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${rawToken}`;
@@ -218,7 +221,7 @@ const forgotPasswordController = async (req, res) => {
 
     return res.status(200).json({
       message:
-        "Si un compte existe, un email de réinitialisation a été envoyé.",
+        "Si les informations correspondent à un compte, un email de réinitialisation a été envoyé.",
     });
   } catch (error) {
     return res.status(500).json({

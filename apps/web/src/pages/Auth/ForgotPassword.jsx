@@ -9,6 +9,7 @@ export default function ForgotPassword() {
   const content = authContent.forgotPassword;
 
   const [email, setEmail] = useState("");
+  const [pseudo, setPseudo] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -22,7 +23,10 @@ export default function ForgotPassword() {
     try {
       setIsSubmitting(true);
 
-      const response = await authService.forgotPassword(email);
+      const response = await authService.forgotPassword({
+        email,
+        pseudo,
+      });
 
       setMessage(response.message);
     } catch (error) {
@@ -54,6 +58,19 @@ export default function ForgotPassword() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               autoComplete="email"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">{content.pseudoLabel}</label>
+
+            <input
+              className="form-select"
+              type="text"
+              name="pseudo"
+              value={pseudo}
+              onChange={(event) => setPseudo(event.target.value)}
+              autoComplete="username"
               required
             />
           </div>

@@ -41,6 +41,11 @@ const resendVerificationEmailSchema = z.object({
 
 const forgotPasswordSchema = z.object({
   email: z.string().email("Adresse email invalide."),
+  pseudo: z
+    .string()
+    .trim()
+    .min(3, "Le pseudo doit contenir au moins 3 caractères.")
+    .max(30, "Le pseudo ne peut pas dépasser 30 caractères."),
 });
 
 const resetPasswordSchema = z.object({

@@ -72,9 +72,10 @@ export const authContent = {
     eyebrow: "Accès au compte",
     title: "Retrouver l’accès à ton espace",
     subtitle:
-      "Indique ton adresse email. Si un compte existe, nous t’enverrons un lien pour définir un nouveau mot de passe.",
+      "Indique ton adresse email et ton pseudo. Si un compte existe, nous t’enverrons un lien pour définir un nouveau mot de passe.",
 
     emailLabel: "Adresse email",
+    pseudoLabel: "Ton pseudo",
 
     submitLabel: "Recevoir un lien",
     submittingLabel: "Envoi...",

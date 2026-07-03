@@ -205,10 +205,17 @@ const getPasswordResetExpiration = () => {
   return new Date(Date.now() + 1000 * 60 * 30); // 30 minutes
 };
 
-const forgotPassword = async (email) => {
+const forgotPassword = async ({ email, pseudo }) => {
   const user = await User.findOne({ email });
 
   if (!user || user.isDeleted || user.isBanned) {
+    return null;
+  }
+
+  const isPseudoValid =
+    user.pseudo.trim().toLowerCase() === pseudo.trim().toLowerCase();
+
+  if (!isPseudoValid) {
     return null;
   }
 

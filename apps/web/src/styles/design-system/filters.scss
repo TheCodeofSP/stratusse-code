@@ -26,7 +26,8 @@
   @include button-secondary;
 
   &:hover {
-    background: var(--color-forest-light);
+    background: var(--color-forest);
+    color: var(--color-paper-light);
   }
 
   &.active {
