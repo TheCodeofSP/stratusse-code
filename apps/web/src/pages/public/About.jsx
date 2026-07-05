@@ -1,4 +1,6 @@
 import { publicContent } from "../../content/public.content.js";
+import SEO from "../../components/seo/SEO.jsx";
+import { seoContent } from "../../content/seo.content.js";
 
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
 
@@ -8,6 +10,14 @@ export default function About() {
   const content = publicContent.about;
 
   return (
+    <>
+    <SEO
+  title={seoContent.pages.about.title}
+  description={seoContent.pages.about.description}
+  image={seoContent.pages.about.image}
+  url={`${seoContent.site.url}/about`}
+/>
+
     <section className="about-page">
       <header className="about-hero">
         <span className="about-hero__badge">{content.hero.eyebrow}</span>
@@ -48,5 +58,6 @@ export default function About() {
 
       <PageFooterNavigation />
     </section>
+    </>
   );
 }

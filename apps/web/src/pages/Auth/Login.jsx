@@ -2,12 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { authContent } from "../../content/auth.content.js";
+import { seoContent } from "../../content/seo.content.js";
+
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import { Link } from "react-router-dom";
 
 import toast from "react-hot-toast";
 
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
+import SEO from "../../components/seo/SEO.jsx";
 
 import "../../styles/pages/login.scss";
 
@@ -52,71 +55,84 @@ export default function Login() {
   };
 
   return (
-    <section className="auth-page">
-      <div className="paper-card auth-card">
-        <span className="eyebrow">{authContent.login.eyebrow}</span>
-        <h1 className="auth-title">{authContent.login.title}</h1>
+    <>
+      <SEO
+        title={seoContent.pages.login.title}
+        description={seoContent.pages.login.description}
+        robots={seoContent.pages.login.robots}
+        url={`${seoContent.site.url}/login`}
+      />
 
-        <p className="auth-subtitle text-muted">{authContent.login.subtitle}</p>
+      <section className="auth-page">
+        <div className="paper-card auth-card">
+          <span className="eyebrow">{authContent.login.eyebrow}</span>
+          <h1 className="auth-title">{authContent.login.title}</h1>
 
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label className="form-label">{authContent.login.emailLabel}</label>
+          <p className="auth-subtitle text-muted">
+            {authContent.login.subtitle}
+          </p>
 
-            <input
-              className="form-select"
-              type="email"
-              name="email"
-              autoComplete="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label className="form-label">
+                {authContent.login.emailLabel}
+              </label>
 
-          <div className="form-group">
-            <label className="form-label">
-              {authContent.login.passwordLabel}
-            </label>
+              <input
+                className="form-select"
+                type="email"
+                name="email"
+                autoComplete="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-            <input
-              className="form-select"
-              type="password"
-              name="password"
-              autoComplete="current-password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
+            <div className="form-group">
+              <label className="form-label">
+                {authContent.login.passwordLabel}
+              </label>
 
-          <Link
-            className="auth-forgot-link"
-            to={authContent.login.forgotPasswordTo}
-          >
-            {authContent.login.forgotPasswordLabel}
-          </Link>
+              <input
+                className="form-select"
+                type="password"
+                name="password"
+                autoComplete="current-password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          {error && <p className="form-error">{error}</p>}
+            <Link
+              className="auth-forgot-link"
+              to={authContent.login.forgotPasswordTo}
+            >
+              {authContent.login.forgotPasswordLabel}
+            </Link>
 
-          <button
-            className="btn btn-primary"
-            type="submit"
-            disabled={isSubmitting}
-          >
-            {isSubmitting
-              ? authContent.login.submittingLabel
-              : authContent.login.submitLabel}
-          </button>
-        </form>
-        <p className="auth-switch">
-          {authContent.login.noAccountText}{" "}
-          <Link to={authContent.login.registerTo}>
-            {authContent.login.registerLink}
-          </Link>
-        </p>
-      </div>
-      <PageFooterNavigation />
-    </section>
+            {error && <p className="form-error">{error}</p>}
+
+            <button
+              className="btn btn-primary"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting
+                ? authContent.login.submittingLabel
+                : authContent.login.submitLabel}
+            </button>
+          </form>
+          <p className="auth-switch">
+            {authContent.login.noAccountText}{" "}
+            <Link to={authContent.login.registerTo}>
+              {authContent.login.registerLink}
+            </Link>
+          </p>
+        </div>
+        <PageFooterNavigation />
+      </section>
+    </>
   );
 }

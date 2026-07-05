@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 
 import { noteService } from "../../api/note.service.js";
 import { notesContent } from "../../content/notes.content.js";
+import { seoContent } from "../../content/seo.content.js";
 
 import LoadingState from "../../components/ui/LoadingState.jsx";
 import ErrorState from "../../components/ui/ErrorState.jsx";
 import EmptyState from "../../components/common/EmptyState.jsx";
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
 import NoteGrid from "../../components/note/NoteGrid.jsx";
+import SEO from "../../components/seo/SEO.jsx";
 
 import "../../styles/pages/notes.scss";
 
@@ -71,6 +73,13 @@ export default function Notes() {
     categoryValue;
 
   return (
+      <>
+    <SEO
+      title={seoContent.pages.notes.title}
+      description={seoContent.pages.notes.description}
+      image={seoContent.pages.notes.image}
+      url={`${seoContent.site.url}/notes`}
+    />
     <section className="page-section notes-page">
       <header className="notes-hero">
         <span className="eyebrow">{notesContent.hero.eyebrow}</span>
@@ -134,5 +143,6 @@ export default function Notes() {
 
       <PageFooterNavigation />
     </section>
+    </>
   );
 }

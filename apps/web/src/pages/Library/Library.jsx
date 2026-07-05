@@ -2,12 +2,14 @@ import { useEffect, useMemo, useState } from "react";
 
 import { libraryService } from "../../api/library.service.js";
 import { libraryContent } from "../../content/library.content.js";
+import { seoContent } from "../../content/seo.content.js";
 
 import LibraryGrid from "../../components/library/LibraryGrid.jsx";
 import LoadingState from "../../components/ui/LoadingState.jsx";
 import ErrorState from "../../components/ui/ErrorState.jsx";
 import EmptyState from "../../components/common/EmptyState.jsx";
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
+import SEO from "../../components/seo/SEO.jsx";
 
 import "../../styles/pages/library.scss";
 
@@ -109,132 +111,140 @@ export default function Library() {
   }
 
   return (
-    <section className="page-section library-page">
-      <header className="library-hero">
-        <span className="eyebrow">{libraryContent.hero.eyebrow}</span>
+    <>
+      <SEO
+        title={seoContent.pages.library.title}
+        description={seoContent.pages.library.description}
+        image={seoContent.pages.library.image}
+        url={`${seoContent.site.url}/library`}
+      />
+      <section className="page-section library-page">
+        <header className="library-hero">
+          <span className="eyebrow">{libraryContent.hero.eyebrow}</span>
 
-        <h1 className="library-title">{libraryContent.hero.title}</h1>
+          <h1 className="library-title">{libraryContent.hero.title}</h1>
 
-        <div className="library-subtitle text-muted">
-          {libraryContent.hero.introduction.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+          <div className="library-subtitle text-muted">
+            {libraryContent.hero.introduction.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+
+          <p className="library-count">
+            {filteredBooks.length}{" "}
+            {filteredBooks.length > 1
+              ? libraryContent.count.plural
+              : libraryContent.count.singular}
+          </p>
+        </header>
+
+        <div className="home-interlude--library" aria-hidden="true">
+          <span />
         </div>
 
-        <p className="library-count">
-          {filteredBooks.length}{" "}
-          {filteredBooks.length > 1
-            ? libraryContent.count.plural
-            : libraryContent.count.singular}
-        </p>
-      </header>
+        <section className="section-filter">
+          <h2 className="filter-title">{libraryContent.filters.title}</h2>
 
-      <div className="home-interlude--library" aria-hidden="true">
-        <span />
-      </div>
+          <div className="filter-group">
+            <div className="filter-cattegory-bar">
+              <span className="filter-title">
+                {libraryContent.filters.viewTitle}
+              </span>
+              <div className="filter-bar">
+                <button
+                  type="button"
+                  className={`filter-pill ${viewMode === "feelings" ? "active" : ""}`}
+                  onClick={() => setViewMode("feelings")}
+                >
+                  {libraryContent.filters.views.feelings}
+                </button>
 
-      <section className="section-filter">
-        <h2 className="filter-title">{libraryContent.filters.title}</h2>
+                <button
+                  type="button"
+                  className={`filter-pill ${viewMode === "books" ? "active" : ""}`}
+                  onClick={() => setViewMode("books")}
+                >
+                  {libraryContent.filters.views.books}
+                </button>
+              </div>
+            </div>
 
-        <div className="filter-group">
-          <div className="filter-cattegory-bar">
-            <span className="filter-title">
-              {libraryContent.filters.viewTitle}
-            </span>
+            <div className="library-search">
+              <label className="form-label" htmlFor="library-search">
+                {libraryContent.search.label}
+              </label>
+
+              <input
+                id="library-search"
+                className="form-input"
+                type="search"
+                placeholder={libraryContent.search.placeholder}
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+              />
+            </div>
+
             <div className="filter-bar">
-              <button
-                type="button"
-                className={`filter-pill ${viewMode === "feelings" ? "active" : ""}`}
-                onClick={() => setViewMode("feelings")}
-              >
-                {libraryContent.filters.views.feelings}
-              </button>
+              <span className="filter-title">Statut</span>
 
-              <button
-                type="button"
-                className={`filter-pill ${viewMode === "books" ? "active" : ""}`}
-                onClick={() => setViewMode("books")}
-              >
-                {libraryContent.filters.views.books}
-              </button>
+              {readingStatuses.map((status) => (
+                <button
+                  key={status.value}
+                  type="button"
+                  className={`filter-pill ${
+                    selectedStatus === status.value ? "active" : ""
+                  }`}
+                  onClick={() => setSelectedStatus(status.value)}
+                >
+                  {status.value === "all"
+                    ? status.label
+                    : `${status.label} (${
+                        books.filter(
+                          (book) => book.readingStatus === status.value,
+                        ).length
+                      })`}
+                </button>
+              ))}
+            </div>
+
+            <div className="filter-bar">
+              <span className="filter-title">Univers</span>
+
+              {universes.map((universe) => (
+                <button
+                  key={universe.value}
+                  type="button"
+                  className={`filter-pill ${
+                    selectedUniverse === universe.value ? "active" : ""
+                  }`}
+                  onClick={() => setSelectedUniverse(universe.value)}
+                >
+                  {universe.value === "all"
+                    ? universe.label
+                    : `${universe.label} (${
+                        books.filter((book) => book.universe === universe.value)
+                          .length
+                      })`}
+                </button>
+              ))}
             </div>
           </div>
+        </section>
 
-          <div className="library-search">
-            <label className="form-label" htmlFor="library-search">
-              {libraryContent.search.label}
-            </label>
+        <LibraryGrid
+          books={filteredBooks}
+          groupedBooks={groupedBooks}
+          viewMode={viewMode}
+        />
 
-            <input
-              id="library-search"
-              className="form-input"
-              type="search"
-              placeholder={libraryContent.search.placeholder}
-              value={searchQuery}
-              onChange={(event) => setSearchQuery(event.target.value)}
-            />
-          </div>
+        <section className="quote-closing">
+          <blockquote>{libraryContent.closing.reflection}</blockquote>
 
-          <div className="filter-bar">
-            <span className="filter-title">Statut</span>
+          <footer>{libraryContent.closing.signature}</footer>
+        </section>
 
-            {readingStatuses.map((status) => (
-              <button
-                key={status.value}
-                type="button"
-                className={`filter-pill ${
-                  selectedStatus === status.value ? "active" : ""
-                }`}
-                onClick={() => setSelectedStatus(status.value)}
-              >
-                {status.value === "all"
-                  ? status.label
-                  : `${status.label} (${
-                      books.filter(
-                        (book) => book.readingStatus === status.value,
-                      ).length
-                    })`}
-              </button>
-            ))}
-          </div>
-
-          <div className="filter-bar">
-            <span className="filter-title">Univers</span>
-
-            {universes.map((universe) => (
-              <button
-                key={universe.value}
-                type="button"
-                className={`filter-pill ${
-                  selectedUniverse === universe.value ? "active" : ""
-                }`}
-                onClick={() => setSelectedUniverse(universe.value)}
-              >
-                {universe.value === "all"
-                  ? universe.label
-                  : `${universe.label} (${
-                      books.filter((book) => book.universe === universe.value)
-                        .length
-                    })`}
-              </button>
-            ))}
-          </div>
-        </div>
+        <PageFooterNavigation />
       </section>
-
-      <LibraryGrid
-        books={filteredBooks}
-        groupedBooks={groupedBooks}
-        viewMode={viewMode}
-      />
-
-      <section className="quote-closing">
-        <blockquote>{libraryContent.closing.reflection}</blockquote>
-
-        <footer>{libraryContent.closing.signature}</footer>
-      </section>
-
-      <PageFooterNavigation />
-    </section>
+    </>
   );
 }

@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { libraryService } from "../../api/library.service.js";
 import { libraryContent } from "../../content/library.content.js";
+import { seoContent } from "../../content/seo.content.js";
 
 import LoadingState from "../../components/ui/LoadingState.jsx";
 import ErrorState from "../../components/ui/ErrorState.jsx";
 import EmptyState from "../../components/common/EmptyState.jsx";
+import SEO from "../../components/seo/SEO.jsx";
 
 import LibraryDetailCard from "../../components/library/LibraryDetailCard.jsx";
 import LibraryCommentSection from "../../components/library/LibraryCommentSection.jsx";
@@ -60,17 +62,25 @@ export default function LibraryDetail() {
   }
 
   return (
-    <section className="page-section">
-      <LibraryDetailCard book={book} />
-      <div className="home-interlude--library" aria-hidden="true">
-        <span />
-      </div>
-
-      <LibraryCommentSection bookId={book._id} />
-      <PageFooterNavigation
-        backTo="/library"
-        backLabel="Retour à la Bibliothèque"
+    <>
+      <SEO
+        title={`${book.title}${seoContent.pages.libraryDetail.titleSuffix}`}
+        description={book.subject || seoContent.pages.libraryDetail.description}
+        image={seoContent.pages.libraryDetail.image}
+        url={`${seoContent.site.url}/library/${book._id}`}
       />
-    </section>
+      <section className="page-section">
+        <LibraryDetailCard book={book} />
+        <div className="home-interlude--library" aria-hidden="true">
+          <span />
+        </div>
+
+        <LibraryCommentSection bookId={book._id} />
+        <PageFooterNavigation
+          backTo="/library"
+          backLabel="Retour à la Bibliothèque"
+        />
+      </section>
+    </>
   );
 }

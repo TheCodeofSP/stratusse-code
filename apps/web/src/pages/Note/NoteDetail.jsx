@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { noteService } from "../../api/note.service.js";
 import { notesContent } from "../../content/notes.content.js";
+import { seoContent } from "../../content/seo.content.js";
 
 import NoteDetailCard from "../../components/note/NoteDetailCard.jsx";
 import NoteCommentSection from "../../components/note/NoteCommentSection.jsx";
@@ -10,6 +11,7 @@ import PageFooterNavigation from "../../components/navigation/PageFooterNavigati
 import LoadingState from "../../components/ui/LoadingState.jsx";
 import ErrorState from "../../components/ui/ErrorState.jsx";
 import EmptyState from "../../components/common/EmptyState.jsx";
+import SEO from "../../components/seo/SEO.jsx";
 
 import "../../styles/pages/note-detail.scss";
 
@@ -60,19 +62,27 @@ export default function NoteDetail() {
   }
 
   return (
-    <section className="page-section">
-      <NoteDetailCard note={note} />
-
-      <div className="home-interlude--writing" aria-hidden="true">
-        <span />
-      </div>
-
-      <NoteCommentSection noteId={note._id} />
-
-      <PageFooterNavigation
-        backTo="/notes"
-        backLabel="Découvrir une autre Note"
+    <>
+      <SEO
+        title={`${note.title}${seoContent.pages.note.titleSuffix}`}
+        description={note.excerpt || seoContent.pages.note.description}
+        image={seoContent.pages.note.image}
+        url={`${seoContent.site.url}/notes/${note.slug}`}
       />
-    </section>
+      <section className="page-section">
+        <NoteDetailCard note={note} />
+
+        <div className="home-interlude--writing" aria-hidden="true">
+          <span />
+        </div>
+
+        <NoteCommentSection noteId={note._id} />
+
+        <PageFooterNavigation
+          backTo="/notes"
+          backLabel="Découvrir une autre Note"
+        />
+      </section>
+    </>
   );
 }

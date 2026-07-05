@@ -40,7 +40,7 @@ function stratusseEmailLayout({
             padding: 0;
             background: #f7f1e7;
             color: #211c17;
-            font-family: Arial, sans-serif;
+            font-family: Inter, sans-serif;
           }
 
           .wrapper {
@@ -70,14 +70,16 @@ function stratusseEmailLayout({
             font-size: 34px;
             line-height: 1;
             letter-spacing: -0.04em;
-            font-family: Georgia, serif;
+            font-family: Cormorant Garamond, serif;
+            color: #ffffff;
           }
 
           .tagline {
             margin: 12px 0 0;
-            color: rgba(255, 250, 241, 0.82);
+            color: white;
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.35;
+            font-style: italic;
           }
 
           .content {
@@ -87,8 +89,8 @@ function stratusseEmailLayout({
           h1 {
             margin: 0 0 22px;
             color: #16382f;
-            font-family: Georgia, serif;
-            font-size: 32px;
+            font-family: Cormorant Garamond, serif;
+            font-size: clamp(3rem, 8vw, 6rem);
             line-height: 1.05;
             letter-spacing: -0.03em;
           }
