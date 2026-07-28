@@ -66,7 +66,11 @@ export default function Navigation() {
         <div className="navigation__top">
           <div className="navigation__left">
             <NavLink to="/" className="navigation__brand" onClick={closeMenu}>
-              <img src="/LogoStratusse.svg" alt="Stratusse" />
+              <img
+                src="/LogoStratusse.svg"
+                className="navigation__logo"
+                alt="Stratusse"
+              />
             </NavLink>
             <p className="navigation__slogan">{navigationContent.slogan}</p>
           </div>
