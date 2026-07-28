@@ -13,6 +13,7 @@ const creatorRequestRoutes = require("./routes/creatorRequest.routes");
 const adminContentRoutes = require("./routes/adminContent.routes");
 const creatorRoutes = require("./routes/creator.routes");
 const contactRoutes = require("./routes/contact.routes");
+const sitemapRoutes = require("./routes/sitemap.routes");
 const {
   notFoundMiddleware,
   errorMiddleware,
@@ -54,6 +55,7 @@ app.get("/health", (req, res) => {
   });
 });
 
+app.use("/sitemap.xml", sitemapRoutes);
 app.use("/auth", authRoutes);
 app.use("/notes", noteRoutes);
 app.use("/", commentRoutes);
