@@ -6,9 +6,7 @@ import toast from "react-hot-toast";
 import { navigationContent } from "../../content/navigation.content.js";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 
-import logo from "../../assets/LogoStratusse.svg";
 import "../../styles/layouts/navigation.scss";
-
 
 export default function Navigation() {
   const navigate = useNavigate();
@@ -68,7 +66,7 @@ export default function Navigation() {
         <div className="navigation__top">
           <div className="navigation__left">
             <NavLink to="/" className="navigation__brand" onClick={closeMenu}>
-              <img src={logo} alt="Stratusse" className="navigation__logo" />
+              <img src="/LogoStratusse.svg" alt="Stratusse" />
             </NavLink>
             <p className="navigation__slogan">{navigationContent.slogan}</p>
           </div>
