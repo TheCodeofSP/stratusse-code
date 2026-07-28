@@ -2,6 +2,9 @@ const express = require("express");
 
 const authMiddleware = require("../middlewares/auth.middleware");
 const { requireAdmin } = require("../middlewares/role.middleware");
+const {
+  creatorRequestRateLimiter,
+} = require("../middlewares/rateLimit.middleware");
 
 const {
   create,
@@ -16,7 +19,7 @@ const {
 const router = express.Router();
 
 // utilisateur connecté
-router.post("/", authMiddleware, create);
+router.post("/", authMiddleware, creatorRequestRateLimiter, create);
 
 // admin
 router.get("/admin", authMiddleware, requireAdmin, getPending);

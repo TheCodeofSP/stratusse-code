@@ -3,6 +3,12 @@ const { contactSchema } = require("../validations/contact.validation");
 
 const sendContact = async (req, res) => {
   try {
+    if (typeof req.body?.website === "string" && req.body.website.length > 0) {
+      return res.status(200).json({
+        message: "Message envoyé avec succès.",
+      });
+    }
+
     const parsedBody = contactSchema.safeParse(req.body);
 
     if (!parsedBody.success) {
@@ -11,7 +17,14 @@ const sendContact = async (req, res) => {
       });
     }
 
-    const { email, message } = parsedBody.data;
+    const { email, message, formStartedAt } = parsedBody.data;
+
+    if (Date.now() - formStartedAt < 1500) {
+      return res.status(400).json({
+        message:
+          "Le formulaire a été envoyé trop rapidement. Merci de réessayer.",
+      });
+    }
 
     await sendContactEmail({
       email,

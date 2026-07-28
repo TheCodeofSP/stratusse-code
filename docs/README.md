@@ -21,6 +21,8 @@ L'objectif de Stratusse n'est pas de rechercher la viralité ou la performance d
 - Connexion sécurisée
 - Mot de passe oublié
 - Réinitialisation du mot de passe
+- Session sécurisée dans un cookie HttpOnly
+- Protection antirobots Cloudflare Turnstile
 
 ## Notes
 
@@ -63,6 +65,8 @@ L'objectif de Stratusse n'est pas de rechercher la viralité ou la performance d
 - Politique de confidentialité
 - Conditions d'utilisation
 - Politique de cookies
+- Limitation persistante des requêtes sensibles
+- Protection de l’origine des actions authentifiées
 
 ---
 
@@ -84,6 +88,7 @@ L'objectif de Stratusse n'est pas de rechercher la viralité ou la performance d
 - Mongoose
 - JWT
 - Zod
+- Cloudflare Turnstile
 
 ---
 
@@ -112,14 +117,19 @@ Stratusse_V1
 PORT
 MONGO_URI
 JWT_SECRET
-CLIENT_URL
+FRONTEND_URL
+TURNSTILE_SECRET_KEY
+COOKIE_DOMAIN
 ```
 
 ## Web
 
 ```
 VITE_API_URL
+VITE_TURNSTILE_SITE_KEY
 ```
+
+Consulter `docs/SECURITY_SETUP.md` avant la première mise en production.
 
 ---
 

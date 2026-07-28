@@ -3,6 +3,10 @@ const authMiddleware = require("../middlewares/auth.middleware");
 const {
   requireCreatorOrAdmin,
 } = require("../middlewares/role.middleware");
+const {
+  contentRateLimiter,
+  interactionRateLimiter,
+} = require("../middlewares/rateLimit.middleware");
 
 const {
   create,
@@ -18,13 +22,25 @@ const {
 
 const router = express.Router();
 
-router.post("/", authMiddleware, requireCreatorOrAdmin, create);
+router.post(
+  "/",
+  authMiddleware,
+  requireCreatorOrAdmin,
+  contentRateLimiter,
+  create,
+);
 router.get("/", getAll);
 
-router.post("/:id/like", authMiddleware, like);
-router.delete("/:id/like", authMiddleware, unlike);
+router.post("/:id/like", authMiddleware, interactionRateLimiter, like);
+router.delete("/:id/like", authMiddleware, interactionRateLimiter, unlike);
 
-router.patch("/:id", authMiddleware, requireCreatorOrAdmin, update);
+router.patch(
+  "/:id",
+  authMiddleware,
+  requireCreatorOrAdmin,
+  contentRateLimiter,
+  update,
+);
 router.delete("/:id", authMiddleware, requireCreatorOrAdmin, remove);
 
 router.get("/me", authMiddleware, getMine);

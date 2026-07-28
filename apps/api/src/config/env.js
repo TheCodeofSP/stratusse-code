@@ -1,21 +1,33 @@
 const { z } = require("zod");
 
-const envSchema = z.object({
-  NODE_ENV: z
-    .enum(["development", "test", "production"])
-    .default("development"),
-  PORT: z.coerce.number().int().positive().default(5050),
-  MONGO_URI: z.string().min(1, "MONGO_URI est obligatoire."),
-  JWT_SECRET: z
-    .string()
-    .min(64, "JWT_SECRET doit contenir au moins 64 caractères."),
-  FRONTEND_URL: z.string().url("FRONTEND_URL doit être une URL valide."),
-  RESEND_API_KEY: z.string().min(1, "RESEND_API_KEY est obligatoire."),
-  EMAIL_FROM: z.string().min(1, "EMAIL_FROM est obligatoire."),
-  CONTACT_RECEIVER_EMAIL: z
-    .string()
-    .email("CONTACT_RECEIVER_EMAIL doit être une adresse valide."),
-});
+const envSchema = z
+  .object({
+    NODE_ENV: z
+      .enum(["development", "test", "production"])
+      .default("development"),
+    PORT: z.coerce.number().int().positive().default(5050),
+    MONGO_URI: z.string().min(1, "MONGO_URI est obligatoire."),
+    JWT_SECRET: z
+      .string()
+      .min(64, "JWT_SECRET doit contenir au moins 64 caractères."),
+    FRONTEND_URL: z.string().url("FRONTEND_URL doit être une URL valide."),
+    RESEND_API_KEY: z.string().min(1, "RESEND_API_KEY est obligatoire."),
+    EMAIL_FROM: z.string().min(1, "EMAIL_FROM est obligatoire."),
+    CONTACT_RECEIVER_EMAIL: z
+      .string()
+      .email("CONTACT_RECEIVER_EMAIL doit être une adresse valide."),
+    TURNSTILE_SECRET_KEY: z.string().min(1).optional(),
+    COOKIE_DOMAIN: z.string().optional(),
+  })
+  .superRefine((env, context) => {
+    if (env.NODE_ENV === "production" && !env.TURNSTILE_SECRET_KEY) {
+      context.addIssue({
+        code: "custom",
+        path: ["TURNSTILE_SECRET_KEY"],
+        message: "TURNSTILE_SECRET_KEY est obligatoire en production.",
+      });
+    }
+  });
 
 const parsedEnv = envSchema.safeParse(process.env);
 

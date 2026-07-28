@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const cookieParser = require("cookie-parser");
 
 const authRoutes = require("./routes/auth.routes");
 const noteRoutes = require("./routes/note.routes");
@@ -18,8 +19,13 @@ const {
   notFoundMiddleware,
   errorMiddleware,
 } = require("./middlewares/error.middleware");
+const {
+  csrfOriginProtection,
+} = require("./middlewares/csrfOrigin.middleware");
 
 const app = express();
+
+app.set("trust proxy", 1);
 
 const allowedOrigins = [
   "http://localhost:5173",
@@ -47,6 +53,8 @@ app.use(cors(corsOptions));
 app.options(/.*/, cors(corsOptions));
 
 app.use(express.json({ limit: "100kb" }));
+app.use(cookieParser());
+app.use(csrfOriginProtection);
 
 app.get("/health", (req, res) => {
   res.status(200).json({

@@ -36,6 +36,9 @@ describe("validation du contact", () => {
     const result = contactSchema.safeParse({
       email: "lectrice@example.com",
       message: "Bonjour, voici mon message pour Stratusse.",
+      captchaToken: "test-token",
+      website: "",
+      formStartedAt: Date.now() - 3000,
     });
 
     assert.equal(result.success, true);
@@ -45,6 +48,20 @@ describe("validation du contact", () => {
     const result = contactSchema.safeParse({
       email: "adresse-invalide",
       message: "Bonjour, voici mon message pour Stratusse.",
+      captchaToken: "test-token",
+      website: "",
+      formStartedAt: Date.now() - 3000,
+    });
+
+    assert.equal(result.success, false);
+  });
+
+  it("refuse une soumission sans vérification de sécurité", () => {
+    const result = contactSchema.safeParse({
+      email: "lectrice@example.com",
+      message: "Bonjour, voici mon message pour Stratusse.",
+      website: "",
+      formStartedAt: Date.now() - 3000,
     });
 
     assert.equal(result.success, false);

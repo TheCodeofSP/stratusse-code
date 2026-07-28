@@ -33,6 +33,7 @@ const registerSchema = z.object({
 const loginSchema = z.object({
   email: z.string().email("Email invalide."),
   password: z.string().min(1, "Mot de passe obligatoire."),
+  captchaToken: z.string().min(1).optional(),
 });
 
 const resendVerificationEmailSchema = z.object({
