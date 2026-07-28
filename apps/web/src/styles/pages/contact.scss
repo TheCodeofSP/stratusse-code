@@ -36,7 +36,7 @@
 
   padding: 30px 28px;
 
-  border: 1px solid rgba(22, 56, 47, 0.16);
+  border: 1px solid rgba(var(--color-forest-rgb), 0.16);
   border-radius: calc(var(--card-radius) + 8px);
 
   background: rgba(255, 250, 241, 0.76);

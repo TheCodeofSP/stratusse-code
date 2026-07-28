@@ -61,12 +61,24 @@ const getLibraryById = async (bookId) => {
   return book;
 };
 
-const updateBook = async (bookId, updates) => {
+const assertCanManageBook = (book, currentUser) => {
+  const isAdmin = currentUser.role === "admin";
+  const isOwner =
+    book.recommendedBy.toString() === currentUser._id.toString();
+
+  if (!isAdmin && !isOwner) {
+    throw new Error("FORBIDDEN");
+  }
+};
+
+const updateBook = async (bookId, updates, currentUser) => {
   const book = await LibraryRecommendation.findById(bookId);
 
   if (!book || book.isDeleted) {
     throw new Error("BOOK_NOT_FOUND");
   }
+
+  assertCanManageBook(book, currentUser);
 
   const wasPublished = book.status === "published";
   const willBePublished = updates.status === "published";
@@ -149,12 +161,7 @@ const deleteLibrary = async (bookId, currentUser) => {
     throw new Error("BOOK_NOT_FOUND");
   }
 
-  const isAdmin = currentUser.role === "admin";
-  const isOwner = book.recommendedBy.toString() === currentUser._id.toString();
-
-  if (!isAdmin && !isOwner) {
-    throw new Error("FORBIDDEN");
-  }
+  assertCanManageBook(book, currentUser);
 
   book.isDeleted = true;
 
@@ -168,6 +175,7 @@ const likeBook = async (bookId, userId) => {
     {
       _id: bookId,
       isDeleted: false,
+      status: "published",
     },
     {
       $addToSet: { likedBy: userId },
@@ -189,6 +197,7 @@ const unlikeBook = async (bookId, userId) => {
     {
       _id: bookId,
       isDeleted: false,
+      status: "published",
     },
     {
       $pull: { likedBy: userId },

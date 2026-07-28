@@ -5,7 +5,7 @@
 
   padding: 28px;
 
-  border: 1px solid rgba(22, 56, 47, 0.12);
+  border: 1px solid rgba(var(--color-forest-rgb), 0.12);
   border-radius: calc(var(--card-radius) + 6px);
 
   background: rgba(255, 250, 241, 0.82);
@@ -21,7 +21,7 @@
 }
 
 .comment-card__quote-mark {
-  color: rgba(156, 122, 61, 0.72);
+  color: rgba(var(--color-brass-rgb), 0.72);
 
   font-family: var(--font-title);
   font-size: clamp(3rem, 10vw, 4.8rem);
@@ -52,7 +52,7 @@
     background: linear-gradient(
       to right,
       transparent,
-      rgba(156, 122, 61, 0.46)
+      rgba(var(--color-brass-rgb), 0.46)
     );
   }
 

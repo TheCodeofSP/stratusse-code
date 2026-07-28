@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 
 const authRoutes = require("./routes/auth.routes");
 const noteRoutes = require("./routes/note.routes");
@@ -12,6 +13,10 @@ const creatorRequestRoutes = require("./routes/creatorRequest.routes");
 const adminContentRoutes = require("./routes/adminContent.routes");
 const creatorRoutes = require("./routes/creator.routes");
 const contactRoutes = require("./routes/contact.routes");
+const {
+  notFoundMiddleware,
+  errorMiddleware,
+} = require("./middlewares/error.middleware");
 
 const app = express();
 
@@ -35,10 +40,12 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
+app.disable("x-powered-by");
+app.use(helmet());
 app.use(cors(corsOptions));
 app.options(/.*/, cors(corsOptions));
 
-app.use(express.json());
+app.use(express.json({ limit: "100kb" }));
 
 app.get("/health", (req, res) => {
   res.status(200).json({
@@ -58,5 +65,8 @@ app.use("/creator-requests", creatorRequestRoutes);
 app.use("/admin/content", adminContentRoutes);
 app.use("/creators", creatorRoutes);
 app.use("/contact", contactRoutes);
+
+app.use(notFoundMiddleware);
+app.use(errorMiddleware);
 
 module.exports = app;

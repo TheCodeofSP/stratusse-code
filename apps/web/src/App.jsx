@@ -1,14 +1,18 @@
+import { Suspense } from "react";
 import { RouterProvider } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import { router } from "./router/router.jsx";
+import LoadingState from "./components/ui/LoadingState.jsx";
 
 import "./styles/toaster.scss";
 
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <Suspense fallback={<LoadingState />}>
+        <RouterProvider router={router} />
+      </Suspense>
 
       <Toaster
         position="top-right"

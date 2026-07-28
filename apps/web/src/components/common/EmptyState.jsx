@@ -12,6 +12,12 @@ export default function EmptyState({
 }) {
   return (
     <section className={`empty-state empty-state--${variant}`}>
+      {icon && (
+        <span className="empty-state__icon" aria-hidden="true">
+          {icon}
+        </span>
+      )}
+
       <h2 className="empty-state__title">{title}</h2>
 
       <p className="empty-state__text">{text}</p>

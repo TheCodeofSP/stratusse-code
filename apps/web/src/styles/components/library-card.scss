@@ -64,7 +64,7 @@
 }
 
 .book-card--group {
-  border-color: rgba(156, 122, 61, 0.58);
+  border-color: rgba(var(--color-brass-rgb), 0.58);
 
   .book-card__status {
     color: var(--color-brass);

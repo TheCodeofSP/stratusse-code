@@ -87,7 +87,11 @@ const update = async (req, res) => {
       });
     }
 
-    const book = await updateBook(req.params.id, parsedBody.data);
+    const book = await updateBook(
+      req.params.id,
+      parsedBody.data,
+      req.user,
+    );
 
     return res.status(200).json({
       message: "Recommandation modifiée.",
@@ -103,6 +107,12 @@ const update = async (req, res) => {
     if (error.message === "BOOK_ALREADY_EXISTS") {
       return res.status(409).json({
         message: "Ce livre existe déjà dans la bibliothèque.",
+      });
+    }
+
+    if (error.message === "FORBIDDEN") {
+      return res.status(403).json({
+        message: "Vous ne pouvez modifier que vos propres recommandations.",
       });
     }
 

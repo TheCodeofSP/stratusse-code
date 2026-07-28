@@ -1,4 +1,5 @@
 import api from "./api";
+import { authStorage } from "../utils/authStorage.utils.js";
 
 export const authService = {
   async register(data) {
@@ -27,14 +28,14 @@ export const authService = {
     return response.data;
   },
 
-async forgotPassword(data) {
-  const response = await api.post("/auth/forgot-password", {
-    email: data.email,
-    pseudo: data.pseudo,
-  });
+  async forgotPassword(data) {
+    const response = await api.post("/auth/forgot-password", {
+      email: data.email,
+      pseudo: data.pseudo,
+    });
 
-  return response.data;
-},
+    return response.data;
+  },
 
   async resetPassword(token, password) {
     const response = await api.post("/auth/reset-password", {
@@ -52,7 +53,6 @@ async forgotPassword(data) {
   },
 
   logout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    authStorage.clear();
   },
 };

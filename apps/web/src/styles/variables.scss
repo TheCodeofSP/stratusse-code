@@ -15,9 +15,10 @@ $breakpoint-wide: 1280px;
      COLORS
   ====================== */
 
-  --color-forest: #16382f;
-  --color-forest-soft: #1f3d34;
-  --color-forest-light: rgba(22, 56, 47, 0.08);
+  --color-forest: #285047;
+  --color-forest-soft: #1f4038;
+  --color-forest-rgb: 40, 80, 71;
+  --color-forest-light: rgba(var(--color-forest-rgb), 0.08);
 
   --color-paper: #f7f1e7;
   --color-paper-light: #fffaf1;
@@ -28,10 +29,11 @@ $breakpoint-wide: 1280px;
   --color-muted: #874a11;
 
   --color-brass: #9c7a3d;
+  --color-brass-rgb: 156, 122, 61;
   --color-terracotta: #6b3a0d;
 
-  --color-border: rgba(22, 56, 47, 0.14);
-  --color-border-soft: rgba(22, 56, 47, 0.08);
+  --color-border: rgba(var(--color-forest-rgb), 0.14);
+  --color-border-soft: rgba(var(--color-forest-rgb), 0.08);
 
   /* ======================
      RADIUS / SHADOWS
@@ -41,8 +43,8 @@ $breakpoint-wide: 1280px;
   --radius-card: 10px;
   --radius-pill: 999px;
 
-  --shadow-paper: 0 18px 40px rgba(22, 56, 47, 0.08);
-  --shadow-soft: 0 10px 26px rgba(22, 56, 47, 0.06);
+  --shadow-paper: 0 18px 40px rgba(var(--color-forest-rgb), 0.08);
+  --shadow-soft: 0 10px 26px rgba(var(--color-forest-rgb), 0.06);
 
   /* ======================
    MOTION
@@ -133,7 +135,7 @@ $breakpoint-wide: 1280px;
   ====================== */
 
   --input-bg: rgba(255, 250, 241, 0.88);
-  --input-border: rgba(22, 56, 47, 0.16);
+  --input-border: rgba(var(--color-forest-rgb), 0.16);
   --input-color: var(--color-ink);
   --input-placeholder: rgba(111, 98, 88, 0.72);
   --input-radius: var(--radius-soft);

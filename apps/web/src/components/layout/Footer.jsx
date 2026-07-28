@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="footer__brand">
             <p className="footer__signature">{footerContent.signature}</p>
 
-            <p className="footer__text text-muted">{footerContent.text}</p>
+            <p className="footer__text ">{footerContent.text}</p>
           </div>
 
           <div className="footer__columns">

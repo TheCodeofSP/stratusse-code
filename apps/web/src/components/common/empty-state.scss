@@ -14,11 +14,11 @@
 
   text-align: center;
 
-  border: 1px solid rgba(22, 56, 47, 0.16);
+  border: 1px solid rgba(var(--color-forest-rgb), 0.16);
   border-radius: calc(var(--card-radius) + 14px);
 
   background:
-    radial-gradient(circle at 50% 0%, rgba(156, 122, 61, 0.1), transparent 34%),
+    radial-gradient(circle at 50% 0%, rgba(var(--color-brass-rgb), 0.1), transparent 34%),
     linear-gradient(
       180deg,
       rgba(255, 250, 241, 0.92),
@@ -26,7 +26,7 @@
     );
 
   box-shadow:
-    0 22px 55px rgba(22, 56, 47, 0.08),
+    0 22px 55px rgba(var(--color-forest-rgb), 0.08),
     inset 0 1px 0 rgba(255, 250, 241, 0.9);
 
   &::before {
@@ -35,7 +35,7 @@
     position: absolute;
     inset: 18px;
 
-    border: 1px solid rgba(156, 122, 61, 0.12);
+    border: 1px solid rgba(var(--color-brass-rgb), 0.12);
 
     pointer-events: none;
   }
@@ -47,7 +47,7 @@
     left: 28px;
     bottom: 22px;
 
-    color: rgba(156, 122, 61, 0.16);
+    color: rgba(var(--color-brass-rgb), 0.16);
 
     font-family: var(--font-title);
     font-size: clamp(2rem, 8vw, 4rem);
@@ -66,7 +66,7 @@
   width: 76px;
   height: 76px;
 
-  border: 1px solid rgba(156, 122, 61, 0.28);
+  border: 1px solid rgba(var(--color-brass-rgb), 0.28);
   border-radius: 50%;
 
   color: var(--color-forest);
@@ -79,7 +79,7 @@
   font-size: 2rem;
 
   box-shadow:
-    0 14px 30px rgba(22, 56, 47, 0.08),
+    0 14px 30px rgba(var(--color-forest-rgb), 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
@@ -117,7 +117,7 @@
 
 .empty-state--soft {
   background:
-    radial-gradient(circle at 50% 0%, rgba(22, 56, 47, 0.08), transparent 34%),
+    radial-gradient(circle at 50% 0%, rgba(var(--color-forest-rgb), 0.08), transparent 34%),
     rgba(255, 250, 241, 0.72);
 }
 

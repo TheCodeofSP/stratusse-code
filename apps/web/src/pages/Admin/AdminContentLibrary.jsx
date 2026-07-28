@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -25,11 +25,7 @@ export default function AdminContentLibrary() {
 
   const content = adminDashboardContent.adminContent.library;
 
-  useEffect(() => {
-    fetchLibraryBooks();
-  }, []);
-
-  const fetchLibraryBooks = async () => {
+  const fetchLibraryBooks = useCallback(async () => {
     try {
       const data = await adminContentService.getLibrary();
       setLibraryBooks(data);
@@ -39,7 +35,11 @@ export default function AdminContentLibrary() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [content.messages.loadError]);
+
+  useEffect(() => {
+    fetchLibraryBooks();
+  }, [fetchLibraryBooks]);
 
   const creators = useMemo(() => {
     return [

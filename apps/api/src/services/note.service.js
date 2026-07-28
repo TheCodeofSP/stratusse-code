@@ -62,12 +62,23 @@ const getPublishedNoteBySlug = async (slug) => {
   return note;
 };
 
-const updateNote = async (noteId, updates) => {
+const assertCanManageNote = (note, currentUser) => {
+  const isAdmin = currentUser.role === "admin";
+  const isOwner = note.author.toString() === currentUser._id.toString();
+
+  if (!isAdmin && !isOwner) {
+    throw new Error("FORBIDDEN");
+  }
+};
+
+const updateNote = async (noteId, updates, currentUser) => {
   const note = await Note.findById(noteId);
 
-  if (!note) {
+  if (!note || note.isDeleted) {
     throw new Error("ARTICLE_NOT_FOUND");
   }
+
+  assertCanManageNote(note, currentUser);
 
   const wasPublished = note.status === "published";
   const willBePublished = updates.status === "published";
@@ -118,12 +129,14 @@ const updateNote = async (noteId, updates) => {
   return note;
 };
 
-const deleteNote = async (noteId) => {
+const deleteNote = async (noteId, currentUser) => {
   const note = await Note.findById(noteId);
 
   if (!note || note.isDeleted) {
     throw new Error("ARTICLE_NOT_FOUND");
   }
+
+  assertCanManageNote(note, currentUser);
 
   note.isDeleted = true;
 
@@ -140,7 +153,11 @@ const getAllNotesForAdmin = async () => {
 };
 
 const likeNote = async (noteId, userId) => {
-  const note = await Note.findById(noteId);
+  const note = await Note.findOne({
+    _id: noteId,
+    status: "published",
+    isDeleted: false,
+  });
 
   if (!note) {
     throw new Error("ARTICLE_NOT_FOUND");
@@ -159,7 +176,11 @@ const likeNote = async (noteId, userId) => {
 };
 
 const unlikeNote = async (noteId, userId) => {
-  const note = await Note.findById(noteId);
+  const note = await Note.findOne({
+    _id: noteId,
+    status: "published",
+    isDeleted: false,
+  });
 
   if (!note) {
     throw new Error("ARTICLE_NOT_FOUND");

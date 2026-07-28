@@ -97,7 +97,7 @@
   max-width: 720px;
   margin: 0 auto;
 
-  color: rgba(22, 56, 47, 0.88);
+  color: rgba(var(--color-forest-rgb), 0.88);
 
   font-family: var(--font-title);
   font-size: clamp(1.6rem, 5vw, 2.8rem);
@@ -112,7 +112,7 @@
 
   margin-bottom: var(--space-sm);
 
-  color: rgba(22, 56, 47, 0.18);
+  color: rgba(var(--color-forest-rgb), 0.18);
 
   font-family: var(--font-title);
   font-size: clamp(3.2rem, 10vw, 5.6rem);

@@ -4,7 +4,7 @@ const LibraryComment = require("../models/LibraryComment");
 const createLibraryComment = async ({ bookId, authorId, content }) => {
   const book = await LibraryRecommendation.findById(bookId);
 
-  if (!book || book.isDeleted) {
+  if (!book || book.isDeleted || book.status !== "published") {
     throw new Error("BOOK_NOT_FOUND");
   }
 

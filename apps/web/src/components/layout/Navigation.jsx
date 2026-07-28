@@ -6,7 +6,9 @@ import toast from "react-hot-toast";
 import { navigationContent } from "../../content/navigation.content.js";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 
-import logo from "../../assets/logoStratusse.svg";
+import logo from "../../assets/LogoStratusse.svg";
+import "../../styles/layouts/navigation.scss";
+
 
 export default function Navigation() {
   const navigate = useNavigate();

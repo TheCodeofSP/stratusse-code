@@ -63,7 +63,7 @@
 .editor-title-input:disabled {
   cursor: not-allowed;
 
-  background: rgba(22, 56, 47, 0.05);
+  background: rgba(var(--color-forest-rgb), 0.05);
 
   color: var(--color-muted);
 

@@ -129,7 +129,7 @@
     border-left: 3px solid var(--card-note-margin);
     border-radius: 0 var(--radius-soft) var(--radius-soft) 0;
 
-    background: rgba(156, 122, 61, 0.08);
+    background: rgba(var(--color-brass-rgb), 0.08);
 
     color: var(--color-muted);
     line-height: 1.6;
@@ -145,7 +145,7 @@
   border-radius: 50%;
 
   background: var(--color-forest);
-  box-shadow: 0 0 0 5px rgba(22, 56, 47, 0.08);
+  box-shadow: 0 0 0 5px rgba(var(--color-forest-rgb), 0.08);
 }
 
 @include tablet {

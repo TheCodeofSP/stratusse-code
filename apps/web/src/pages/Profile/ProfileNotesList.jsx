@@ -35,7 +35,7 @@ export default function ProfileNotesList() {
     };
 
     fetchNotes();
-  }, []);
+  }, [profileNotesContent.errors.load]);
 
   const drafts = notes.filter((note) => note.status === "draft");
   const published = notes.filter((note) => note.status === "published");

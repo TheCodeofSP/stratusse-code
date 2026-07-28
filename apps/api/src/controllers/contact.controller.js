@@ -1,14 +1,17 @@
 const { sendContactEmail } = require("../services/email/email.service");
+const { contactSchema } = require("../validations/contact.validation");
 
 const sendContact = async (req, res) => {
   try {
-    const { email, message } = req.body;
+    const parsedBody = contactSchema.safeParse(req.body);
 
-    if (!email || !message) {
+    if (!parsedBody.success) {
       return res.status(400).json({
-        message: "Adresse email et message obligatoires.",
+        message: parsedBody.error.issues[0].message,
       });
     }
+
+    const { email, message } = parsedBody.data;
 
     await sendContactEmail({
       email,

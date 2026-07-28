@@ -1,15 +1,9 @@
-import { Navigate } from "react-router-dom";
+import RouteGuard from "./RouteGuard.jsx";
 
 export default function AdminRoute({ children }) {
-  const user = JSON.parse(localStorage.getItem("user"));
-
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-
-  if (user.role !== "admin") {
-    return <Navigate to="/" replace />;
-  }
-
-  return children;
+  return (
+    <RouteGuard canAccess={(user) => user.role === "admin"}>
+      {children}
+    </RouteGuard>
+  );
 }

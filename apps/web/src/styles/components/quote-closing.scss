@@ -23,7 +23,7 @@
   background: linear-gradient(
     to right,
     transparent,
-    rgba(156, 122, 61, 0.45),
+    rgba(var(--color-brass-rgb), 0.45),
     transparent
   );
 }
@@ -47,7 +47,7 @@
 .quote-closing blockquote::after {
   position: absolute;
 
-  color: rgba(156, 122, 61, 0.3);
+  color: rgba(var(--color-brass-rgb), 0.3);
 
   font-family: var(--font-title);
   font-size: clamp(2.4rem, 6vw, 3.8rem);

@@ -5,22 +5,25 @@ const {
   likeLibraryComment,
   unlikeLibraryComment,
 } = require("../services/libraryComment.service");
+const {
+  createCommentSchema,
+} = require("../validations/comment.validation");
 
 const create = async (req, res) => {
   try {
-    const { content } = req.body;
+    const parsedBody = createCommentSchema.safeParse(req.body);
     const { bookId } = req.params;
 
-    if (!content) {
+    if (!parsedBody.success) {
       return res.status(400).json({
-        message: "Le commentaire ne peut pas être vide.",
+        message: parsedBody.error.issues[0].message,
       });
     }
 
     const comment = await createLibraryComment({
       bookId,
       authorId: req.user._id,
-      content,
+      content: parsedBody.data.content,
     });
 
     return res.status(201).json({

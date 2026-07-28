@@ -17,7 +17,7 @@ export const seoContent = {
 
     language: "fr",
 
-    themeColor: "#16382f",
+    themeColor: "#285047",
 
     author: "Stratusse",
 

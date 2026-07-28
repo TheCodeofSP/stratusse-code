@@ -8,15 +8,11 @@ import CommentForm from "../comment/CommentForm.jsx";
 
 import LoadingState from "../ui/LoadingState.jsx";
 import ErrorState from "../ui/ErrorState.jsx";
-import ConfirmModal from "../common/ConfirmModal.jsx";
 
 export default function LibraryCommentSection({ bookId }) {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [commentToDelete, setCommentToDelete] = useState(null);
-
   useEffect(() => {
     const fetchComments = async () => {
       try {

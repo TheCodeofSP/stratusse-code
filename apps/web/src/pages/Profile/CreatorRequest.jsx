@@ -5,7 +5,7 @@ import { creatorRequestService } from "../../api/creatorRequest.service";
 
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
 
-import "../../styles/pages/creatorRequest.scss";
+import "../../styles/pages/creator-request.scss";
 
 export default function CreatorRequest() {
   const [request, setRequest] = useState(null);

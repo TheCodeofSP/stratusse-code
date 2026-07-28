@@ -38,7 +38,7 @@ export default function AdminContentLibraryDetail() {
     };
 
     fetchBook();
-  }, [id]);
+  }, [content.messages.loadError, id]);
 
   const handleDelete = async () => {
     try {

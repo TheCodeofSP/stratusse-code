@@ -90,7 +90,7 @@ const update = async (req, res) => {
       });
     }
 
-    const note = await updateNote(req.params.id, parsedBody.data);
+    const note = await updateNote(req.params.id, parsedBody.data, req.user);
 
     return res.status(200).json({
       message: "Note modifié avec succès.",
@@ -109,6 +109,12 @@ const update = async (req, res) => {
       });
     }
 
+    if (error.message === "FORBIDDEN") {
+      return res.status(403).json({
+        message: "Vous ne pouvez modifier que vos propres notes.",
+      });
+    }
+
     if (error.message === "TITLE_LOCKED_AFTER_PUBLICATION") {
       return res.status(403).json({
         message:
@@ -124,7 +130,7 @@ const update = async (req, res) => {
 
 const remove = async (req, res) => {
   try {
-    await deleteNote(req.params.id);
+    await deleteNote(req.params.id, req.user);
 
     return res.status(200).json({
       message: "Note supprimé avec succès.",
@@ -133,6 +139,12 @@ const remove = async (req, res) => {
     if (error.message === "ARTICLE_NOT_FOUND") {
       return res.status(404).json({
         message: "Note introuvable.",
+      });
+    }
+
+    if (error.message === "FORBIDDEN") {
+      return res.status(403).json({
+        message: "Vous ne pouvez supprimer que vos propres notes.",
       });
     }
 

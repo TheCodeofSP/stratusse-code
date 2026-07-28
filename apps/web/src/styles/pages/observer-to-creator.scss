@@ -38,7 +38,7 @@
 
   border-radius: calc(var(--card-radius) + 10px);
 
-  box-shadow: 0 20px 44px rgba(22, 56, 47, 0.08);
+  box-shadow: 0 20px 44px rgba(var(--color-forest-rgb), 0.08);
 
   h2 {
     margin-top: var(--space-sm);
@@ -105,7 +105,7 @@
   background:
     radial-gradient(
       circle at 82% 78%,
-      rgba(156, 122, 61, 0.08),
+      rgba(var(--color-brass-rgb), 0.08),
       transparent 28%
     ),
     var(--card-library-bg);
@@ -120,7 +120,7 @@
 
   margin-inline: auto;
 
-  border: 1px solid rgba(156, 122, 61, 0.34);
+  border: 1px solid rgba(var(--color-brass-rgb), 0.34);
   border-radius: 50%;
 
   color: var(--color-forest);
@@ -162,7 +162,7 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(156, 122, 61, 0.5),
+    rgba(var(--color-brass-rgb), 0.5),
     transparent
   );
 }
@@ -199,11 +199,11 @@
   width: 44px;
   height: 44px;
 
-  border: 1px solid rgba(156, 122, 61, 0.36);
+  border: 1px solid rgba(var(--color-brass-rgb), 0.36);
   border-radius: 50%;
 
   background:
-    radial-gradient(circle, rgba(22, 56, 47, 0.16) 0 4px, transparent 5px),
+    radial-gradient(circle, rgba(var(--color-forest-rgb), 0.16) 0 4px, transparent 5px),
     var(--color-paper-light);
 
   box-shadow: var(--shadow-soft);
@@ -218,7 +218,7 @@
   margin-inline: auto;
   padding: 32px 28px;
 
-  border: 1px solid rgba(22, 56, 47, 0.18);
+  border: 1px solid rgba(var(--color-forest-rgb), 0.18);
   border-radius: calc(var(--card-radius) + 8px);
 
   background: rgba(255, 250, 241, 0.72);
@@ -253,7 +253,7 @@
   right: 22px;
   bottom: 18px;
 
-  color: rgba(156, 122, 61, 0.12);
+  color: rgba(var(--color-brass-rgb), 0.12);
 
   font-family: var(--font-title);
   font-size: clamp(2.4rem, 8vw, 5rem);
@@ -299,7 +299,7 @@
 .observer-to-creator__intention-card {
   padding: 28px;
 
-  border: 1px solid rgba(22, 56, 47, 0.16);
+  border: 1px solid rgba(var(--color-forest-rgb), 0.16);
   border-radius: var(--card-radius);
 
   background: rgba(255, 250, 241, 0.68);
@@ -332,7 +332,7 @@
   width: 52px;
   height: 52px;
 
-  border: 1px solid rgba(156, 122, 61, 0.34);
+  border: 1px solid rgba(var(--color-brass-rgb), 0.34);
   border-radius: 50%;
 
   color: var(--color-forest);
@@ -349,7 +349,7 @@
   article {
     padding: 30px 28px;
 
-    border: 1px solid rgba(22, 56, 47, 0.18);
+    border: 1px solid rgba(var(--color-forest-rgb), 0.18);
     border-radius: calc(var(--card-radius) + 6px);
 
     background: rgba(255, 250, 241, 0.72);

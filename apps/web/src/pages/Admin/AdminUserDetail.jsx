@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -29,7 +29,7 @@ export default function AdminUserDetail() {
 
   const content = adminDashboardContent.userDetail;
 
-  const fetchUserDetail = async () => {
+  const fetchUserDetail = useCallback(async () => {
     try {
       const [userData, activityData, actionsData] = await Promise.all([
         adminUserService.getById(id),
@@ -46,11 +46,11 @@ export default function AdminUserDetail() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [content.messages.loadError, id]);
 
   useEffect(() => {
     fetchUserDetail();
-  }, [id]);
+  }, [fetchUserDetail]);
 
   const handleRoleChange = async (role, comment = "") => {
     if (!role) return;

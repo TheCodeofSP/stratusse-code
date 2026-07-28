@@ -53,7 +53,7 @@ function stratusseEmailLayout({
             max-width: 620px;
             margin: 0 auto;
             background: #fffaf1;
-            border: 1px solid rgba(22, 56, 47, 0.14);
+            border: 1px solid rgba(40, 80, 71, 0.14);
             border-radius: 12px;
             overflow: hidden;
           }
@@ -61,7 +61,7 @@ function stratusseEmailLayout({
           .header {
             padding: 32px 28px;
             text-align: center;
-            background: #16382f;
+            background: #285047;
             color: #fffaf1;
           }
 
@@ -88,7 +88,7 @@ function stratusseEmailLayout({
 
           h1 {
             margin: 0 0 22px;
-            color: #16382f;
+            color: #285047;
             font-family: Cormorant Garamond, serif;
             font-size: clamp(3rem, 8vw, 6rem);
             line-height: 1.05;
@@ -111,7 +111,7 @@ function stratusseEmailLayout({
             display: inline-block;
             padding: 14px 22px;
             border-radius: 8px;
-            background: #16382f;
+            background: #285047;
             color: #fffaf1 !important;
             font-weight: 700;
             text-decoration: none;
@@ -136,7 +136,7 @@ function stratusseEmailLayout({
 
           .footer {
             padding: 26px 28px;
-            border-top: 1px solid rgba(22, 56, 47, 0.1);
+            border-top: 1px solid rgba(40, 80, 71, 0.1);
             text-align: center;
           }
 

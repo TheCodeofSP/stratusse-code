@@ -7,7 +7,7 @@
 .btn-primary {
   @include button-primary;
 
-  box-shadow: 0 10px 22px rgba(22, 56, 47, 0.12);
+  box-shadow: 0 10px 22px rgba(var(--color-forest-rgb), 0.12);
 
   &:hover {
     background: var(--color-forest-soft);

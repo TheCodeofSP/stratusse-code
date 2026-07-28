@@ -61,7 +61,7 @@
 }
 
 .profile-book-badge--universe {
-  background: rgba(156, 122, 61, 0.14);
+  background: rgba(var(--color-brass-rgb), 0.14);
 
   color: var(--color-brass);
 }

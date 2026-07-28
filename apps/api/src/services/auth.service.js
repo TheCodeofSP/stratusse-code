@@ -3,12 +3,6 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const User = require("../models/User");
 
-const {
-  sendVerificationEmail,
-  sendForgotPasswordEmail,
-  sendPasswordChangedEmail,
-} = require("../services/email/email.service");
-
 const createEmailVerificationToken = () => {
   const rawToken = crypto.randomBytes(32).toString("hex");
 

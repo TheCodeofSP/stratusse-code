@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 import { noteService } from "../../api/note.service.js";
 import { notesContent } from "../../content/notes.content.js";

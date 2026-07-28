@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 import { adminDashboardService } from "../../api/adminDashboard.service.js";
 import { adminDashboardContent } from "../../content/adminDashboard.content.js";
@@ -12,7 +11,6 @@ import AdminStatCard from "../../components/admin/AdminStatCard.jsx";
 import "../../styles/pages/admin-dashboard.scss";
 
 export default function AdminDashboard() {
-  const navigate = useNavigate();
   const [stats, setStats] = useState({
     notesCount: 0,
     booksCount: 0,

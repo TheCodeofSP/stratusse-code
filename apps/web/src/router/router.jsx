@@ -1,72 +1,87 @@
+import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 import PublicLayout from "../layouts/PublicLayout.jsx";
 import AppLayout from "../layouts/AppLayout.jsx";
 import AdminLayout from "../layouts/AdminLayout.jsx";
 
-import Home from "../pages/Home/Home.jsx";
-import Login from "../pages/Auth/Login.jsx";
-import Notes from "../pages/Note/Notes.jsx";
-import NoteDetail from "../pages/Note/NoteDetail.jsx";
-import Library from "../pages/Library/Library.jsx";
-import LibraryDetail from "../pages/Library/LibraryDetail.jsx";
-import LibraryBookGroup from "../pages/Library/LibraryBookGroup.jsx";
-
-import Register from "../pages/Auth/Register.jsx";
-import RegisterSuccess from "../pages/Auth/RegisterSuccess.jsx";
-import VerifyEmail from "../pages/Auth/VerifyEmail.jsx";
-import Welcome from "../pages/Auth/Welcome.jsx";
-import ForgotPassword from "../pages/Auth/ForgotPassword.jsx";
-import ResetPassword from "../pages/Auth/ResetPassword.jsx";
-
-import Profile from "../pages/Profile/Profile.jsx";
-import ProfileWritings from "../pages/Profile/ProfileWritings.jsx";
-import ProfileNotesList from "../pages/Profile/ProfileNotesList.jsx";
-import ProfileLibraryList from "../pages/Profile/ProfileLibraryList.jsx";
-import CreatorRequest from "../pages/Profile/CreatorRequest.jsx";
-import ProfileSettings from "../pages/Profile/ProfileSettings.jsx";
-
-import Editor from "../pages/Editor/Editor.jsx";
-import NoteEditor from "../pages/Editor/NoteEditor.jsx";
-import LibraryEditor from "../pages/Editor/LibraryEditor.jsx";
-import PublicationSuccess from "../pages/Editor/PublicationSuccess.jsx";
-
-import AdminDashboard from "../pages/Admin/AdminDashboard.jsx";
-import AdminUsers from "../pages/Admin/AdminUsers.jsx";
-import AdminContent from "../pages/Admin/AdminContent.jsx";
-import AdminContentNotes from "../pages/Admin/AdminContentNotes.jsx";
-import AdminContentLibrary from "../pages/Admin/AdminContentLibrary.jsx";
-import AdminContentComments from "../pages/Admin/AdminContentComments.jsx";
-import AdminContentLibraryComments from "../pages/Admin/AdminContentLibraryComments.jsx";
-import AdminCreatorRequests from "../pages/Admin/AdminCreatorRequests.jsx";
-import AdminActions from "../pages/Admin/AdminActions.jsx";
-import AdminUserActions from "../pages/Admin/AdminUserActions.jsx";
-import AdminUserDetail from "../pages/Admin/AdminUserDetail.jsx";
-import AdminUserNotes from "../pages/Admin/AdminUserNotes.jsx";
-import AdminUserLibrary from "../pages/Admin/AdminUserLibrary.jsx";
-import AdminUserComments from "../pages/Admin/AdminUserComments.jsx";
-import AdminUserLibraryComments from "../pages/Admin/AdminUserLibraryComments.jsx";
-import AdminContentNoteDetail from "../pages/Admin/AdminContentNoteDetail.jsx";
-import AdminContentLibraryDetail from "../pages/Admin/AdminContentLibraryDetail.jsx";
-import AdminCreatorRequestDetail from "../pages/Admin/AdminCreatorRequestDetail.jsx";
-
 import ProtectedRoute from "../guards/ProtectedRoute.jsx";
 import CreatorRoute from "../guards/CreatorRoute.jsx";
 import AdminRoute from "../guards/AdminRoute.jsx";
 
-import About from "../pages/public/About.jsx";
-import Contact from "../pages/public/Contact.jsx";
-import Charter from "../pages/public/Charter.jsx";
-import CreatorProfile from "../pages/Profile/CreatorProfile.jsx";
-import ObserverToCreator from "../pages/public/ObserverToCreator.jsx";
-import Care from "../pages/public/Care.jsx";
+const pageModules = import.meta.glob("../pages/**/*.jsx");
+const lazyPage = (path) => lazy(pageModules[path]);
 
-import NotFound from "../pages/NotFound/NotFound.jsx";
-
-import LegalNotice from "../pages/Legal/LegalNotice.jsx";
-import PrivacyPolicy from "../pages/Legal/PrivacyPolicy.jsx";
-import TermsOfUse from "../pages/Legal/TermsOfUse.jsx";
-import CookiePolicy from "../pages/Legal/CookiePolicy.jsx";
+const Home = lazyPage("../pages/Home/Home.jsx");
+const Login = lazyPage("../pages/Auth/Login.jsx");
+const Notes = lazyPage("../pages/Note/Notes.jsx");
+const NoteDetail = lazyPage("../pages/Note/NoteDetail.jsx");
+const Library = lazyPage("../pages/Library/Library.jsx");
+const LibraryDetail = lazyPage("../pages/Library/LibraryDetail.jsx");
+const LibraryBookGroup = lazyPage("../pages/Library/LibraryBookGroup.jsx");
+const Register = lazyPage("../pages/Auth/Register.jsx");
+const RegisterSuccess = lazyPage("../pages/Auth/RegisterSuccess.jsx");
+const VerifyEmail = lazyPage("../pages/Auth/VerifyEmail.jsx");
+const Welcome = lazyPage("../pages/Auth/Welcome.jsx");
+const ForgotPassword = lazyPage("../pages/Auth/ForgotPassword.jsx");
+const ResetPassword = lazyPage("../pages/Auth/ResetPassword.jsx");
+const Profile = lazyPage("../pages/Profile/Profile.jsx");
+const ProfileWritings = lazyPage("../pages/Profile/ProfileWritings.jsx");
+const ProfileNotesList = lazyPage("../pages/Profile/ProfileNotesList.jsx");
+const ProfileLibraryList = lazyPage("../pages/Profile/ProfileLibraryList.jsx");
+const CreatorRequest = lazyPage("../pages/Profile/CreatorRequest.jsx");
+const ProfileSettings = lazyPage("../pages/Profile/ProfileSettings.jsx");
+const CreatorProfile = lazyPage("../pages/Profile/CreatorProfile.jsx");
+const Editor = lazyPage("../pages/Editor/Editor.jsx");
+const NoteEditor = lazyPage("../pages/Editor/NoteEditor.jsx");
+const LibraryEditor = lazyPage("../pages/Editor/LibraryEditor.jsx");
+const PublicationSuccess = lazyPage(
+  "../pages/Editor/PublicationSuccess.jsx",
+);
+const AdminDashboard = lazyPage("../pages/Admin/AdminDashboard.jsx");
+const AdminUsers = lazyPage("../pages/Admin/AdminUsers.jsx");
+const AdminContent = lazyPage("../pages/Admin/AdminContent.jsx");
+const AdminContentNotes = lazyPage("../pages/Admin/AdminContentNotes.jsx");
+const AdminContentLibrary = lazyPage(
+  "../pages/Admin/AdminContentLibrary.jsx",
+);
+const AdminContentComments = lazyPage(
+  "../pages/Admin/AdminContentComments.jsx",
+);
+const AdminContentLibraryComments = lazyPage(
+  "../pages/Admin/AdminContentLibraryComments.jsx",
+);
+const AdminCreatorRequests = lazyPage(
+  "../pages/Admin/AdminCreatorRequests.jsx",
+);
+const AdminActions = lazyPage("../pages/Admin/AdminActions.jsx");
+const AdminUserActions = lazyPage("../pages/Admin/AdminUserActions.jsx");
+const AdminUserDetail = lazyPage("../pages/Admin/AdminUserDetail.jsx");
+const AdminUserNotes = lazyPage("../pages/Admin/AdminUserNotes.jsx");
+const AdminUserLibrary = lazyPage("../pages/Admin/AdminUserLibrary.jsx");
+const AdminUserComments = lazyPage("../pages/Admin/AdminUserComments.jsx");
+const AdminUserLibraryComments = lazyPage(
+  "../pages/Admin/AdminUserLibraryComments.jsx",
+);
+const AdminContentNoteDetail = lazyPage(
+  "../pages/Admin/AdminContentNoteDetail.jsx",
+);
+const AdminContentLibraryDetail = lazyPage(
+  "../pages/Admin/AdminContentLibraryDetail.jsx",
+);
+const AdminCreatorRequestDetail = lazyPage(
+  "../pages/Admin/AdminCreatorRequestDetail.jsx",
+);
+const About = lazyPage("../pages/public/About.jsx");
+const Contact = lazyPage("../pages/public/Contact.jsx");
+const Charter = lazyPage("../pages/public/Charter.jsx");
+const ObserverToCreator = lazyPage("../pages/public/ObserverToCreator.jsx");
+const Care = lazyPage("../pages/public/Care.jsx");
+const NotFound = lazyPage("../pages/NotFound/NotFound.jsx");
+const LegalNotice = lazyPage("../pages/Legal/LegalNotice.jsx");
+const PrivacyPolicy = lazyPage("../pages/Legal/PrivacyPolicy.jsx");
+const TermsOfUse = lazyPage("../pages/Legal/TermsOfUse.jsx");
+const CookiePolicy = lazyPage("../pages/Legal/CookiePolicy.jsx");
 
 export const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -28,11 +28,7 @@ export default function ProfileLibraryList() {
   const [isUnpublishModalOpen, setIsUnpublishModalOpen] = useState(false);
   const [bookToUnpublish, setBookToUnpublish] = useState(null);
 
-  useEffect(() => {
-    fetchBooks();
-  }, []);
-
-  const fetchBooks = async () => {
+  const fetchBooks = useCallback(async () => {
     try {
       setError("");
 
@@ -46,7 +42,11 @@ export default function ProfileLibraryList() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [profileLibraryContent.errors.load]);
+
+  useEffect(() => {
+    fetchBooks();
+  }, [fetchBooks]);
 
   const handleDelete = async () => {
     if (!bookToDelete) return;

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
-
 import { adminCreatorRequestService } from "../../api/adminCreatorRequest.service.js";
 import { adminDashboardContent } from "../../content/adminDashboard.content.js";
 

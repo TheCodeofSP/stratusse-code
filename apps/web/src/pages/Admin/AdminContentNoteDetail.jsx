@@ -37,7 +37,7 @@ export default function AdminContentNoteDetail() {
     };
 
     fetchNote();
-  }, [id]);
+  }, [content.messages.loadError, id]);
 
   const handleDelete = async () => {
     try {

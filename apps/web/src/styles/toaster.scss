@@ -15,7 +15,7 @@
 
   color: var(--color-ink) !important;
 
-  box-shadow: 0 12px 28px rgba(22, 56, 47, 0.12) !important;
+  box-shadow: 0 12px 28px rgba(var(--color-forest-rgb), 0.12) !important;
 
   font-size: 0.94rem;
   line-height: 1.55;
@@ -34,7 +34,7 @@
 
     border-radius: 50%;
 
-    background: rgba(156, 122, 61, 0.32);
+    background: rgba(var(--color-brass-rgb), 0.32);
   }
 
   &::after {

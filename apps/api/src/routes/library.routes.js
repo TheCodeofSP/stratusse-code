@@ -1,5 +1,8 @@
 const express = require("express");
 const authMiddleware = require("../middlewares/auth.middleware");
+const {
+  requireCreatorOrAdmin,
+} = require("../middlewares/role.middleware");
 
 const {
   create,
@@ -15,14 +18,14 @@ const {
 
 const router = express.Router();
 
-router.post("/", authMiddleware, create);
+router.post("/", authMiddleware, requireCreatorOrAdmin, create);
 router.get("/", getAll);
 
 router.post("/:id/like", authMiddleware, like);
 router.delete("/:id/like", authMiddleware, unlike);
 
-router.patch("/:id", authMiddleware, update);
-router.delete("/:id", authMiddleware, remove);
+router.patch("/:id", authMiddleware, requireCreatorOrAdmin, update);
+router.delete("/:id", authMiddleware, requireCreatorOrAdmin, remove);
 
 router.get("/me", authMiddleware, getMine);
 

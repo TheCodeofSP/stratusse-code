@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 import { authService } from "../api/auth.service.js";
+import { authStorage } from "../utils/authStorage.utils.js";
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -11,10 +12,9 @@ export function AuthProvider({ children }) {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  // Charger utilisateur au refresh
   useEffect(() => {
     const loadUser = async () => {
-      const token = localStorage.getItem("token");
+      const token = authStorage.getToken();
 
       if (!token) {
         setIsLoading(false);
@@ -27,10 +27,7 @@ export function AuthProvider({ children }) {
         setUser(data.user || data);
         setIsAuthenticated(true);
 
-        localStorage.setItem("user", JSON.stringify(data.user || data));
-      } catch (error) {
-        console.error(error);
-
+      } catch {
         authService.logout();
       } finally {
         setIsLoading(false);
@@ -41,8 +38,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const authenticateWithToken = (token, userData) => {
-    localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(userData));
+    authStorage.setToken(token);
 
     setUser(userData);
     setIsAuthenticated(true);
@@ -51,29 +47,22 @@ export function AuthProvider({ children }) {
   const login = async (credentials) => {
     const data = await authService.login(credentials);
 
-    localStorage.setItem("token", data.token);
+    authStorage.setToken(data.token);
 
     const me = await authService.me();
 
     setUser(me.user || me);
     setIsAuthenticated(true);
 
-    localStorage.setItem("user", JSON.stringify(me.user || me));
-
     return data;
   };
 
-const register = async (payload) => {
-  const data = await authService.register(payload);
-
-  return data;
-};
+  const register = async (payload) => {
+    return authService.register(payload);
+  };
 
   const logout = () => {
     authService.logout();
-
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
 
     setUser(null);
     setIsAuthenticated(false);
@@ -97,5 +86,11 @@ const register = async (payload) => {
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error("useAuth doit être utilisé dans AuthProvider.");
+  }
+
+  return context;
 }
