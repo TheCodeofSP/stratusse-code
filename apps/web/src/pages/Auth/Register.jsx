@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
 import SEO from "../../components/seo/SEO.jsx";
+import TurnstileField from "../../components/security/TurnstileField.jsx";
 
 import "../../styles/pages/register.scss";
 
@@ -25,11 +26,13 @@ export default function Register() {
     hasAcceptedCharter: false,
     hasAcceptedTerms: false,
     hasAcceptedPrivacy: false,
+    captchaToken: "",
   });
 
   const [error, setError] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaResetKey, setCaptchaResetKey] = useState(0);
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -63,6 +66,8 @@ export default function Register() {
 
       setError(apiMessage);
       toast.error(apiMessage);
+      setFormData((prev) => ({ ...prev, captchaToken: "" }));
+      setCaptchaResetKey((value) => value + 1);
     } finally {
       setIsSubmitting(false);
     }
@@ -192,12 +197,19 @@ export default function Register() {
               </span>
             </label>
 
+            <TurnstileField
+              resetKey={captchaResetKey}
+              onTokenChange={(captchaToken) =>
+                setFormData((prev) => ({ ...prev, captchaToken }))
+              }
+            />
+
             {error && <p className="form-error">{error}</p>}
 
             <button
               className="btn btn-primary"
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !formData.captchaToken}
             >
               {isSubmitting
                 ? authContent.register.submittingLabel

@@ -1,15 +1,47 @@
 export const homeContent = {
   hero: {
-    badge: "Safe Place • Notes • Lectures",
+    badge: "Un espace pour ce qui reste en tête",
     userWelcomeSuffix: "bienvenue sur Stratusse !",
-    title: "Bienvenue sur Stratusse !",
+    title:
+      "Il y a des pensées qui ont simplement besoin d’un endroit où exister.",
     subtitle:
-      "Une Safe Place où les pensées respirent à travers l'écriture et la lecture.",
+      "Stratusse leur fait une place.",
     introduction: [
-      "Stratusse est une Safe Place d’écriture, de lecture et de partage.",
-      "On y découvre des Notes, des Expériences de Lecture et des pensées déposées avec sincérité.",
-      "Chacun peut y avancer à son rythme : lire librement, devenir membre pour échanger, puis peut-être devenir une Voix.",
+      "Ici, tu peux lire ce que d’autres ont traversé, laisser résonner leurs mots ou, lorsque tu te sens prêt·e, déposer les tiens.",
+      "Tu n’as pas besoin d’avoir une réponse. Seulement quelque chose de sincère à partager.",
     ],
+    primaryAction: {
+      label: "Lire une pensée",
+      to: "/notes",
+    },
+    secondaryAction: {
+      label: "J’aimerais écrire ici",
+      to: "/observer-to-creator",
+    },
+  },
+
+  spotlight: {
+    eyebrow: "Une pensée déposée récemment",
+    emptyTitle: "Les premiers mots prendront bientôt leur place ici.",
+    emptyText:
+      "Stratusse s’ouvre doucement. Peut-être que l’une de ses premières pensées sera la tienne.",
+    buttonLabel: "Découvrir toutes les Notes",
+    buttonTo: "/notes",
+  },
+
+  invitation: {
+    eyebrow: "Et toi ?",
+    title: "Qu’est-ce qui reste dans tes pensées aujourd’hui ?",
+    prompts: [
+      "Une chose que tu n’arrives pas à dire…",
+      "Une question qui revient souvent…",
+      "Une expérience qui a changé ton regard…",
+      "Un livre qui a laissé une trace…",
+    ],
+    text:
+      "Tu n’as pas besoin d’écrire parfaitement. Tes mots ont seulement besoin d’être vrais.",
+    buttonLabel: "Découvrir comment écrire sur Stratusse",
+    buttonTo: "/observer-to-creator",
   },
 
   writing: {
@@ -31,7 +63,7 @@ export const homeContent = {
     text: [
       "La Bibliothèque rassemble des Expériences de Lecture.",
       "Ici, on ne classe pas les livres. On partage le regard qu’ils ont fait naître.",
-      "Chaque Lecture est personnelle sur un livre.",
+      "Chaque Lecture partage le regard personnel qu’un livre a fait naître.",
     ],
     buttonLabel: "→ Explorer la Bibliothèque",
     buttonTo: "/library",
@@ -92,7 +124,7 @@ export const homeContent = {
       text: [
         "Les Notes et les Lectures sont visibles par tous. Elles participent à l’atmosphère de Stratusse.",
         "La demande pour devenir une Voix n’est pas un jugement sur ton écriture.",
-        "Elle permet simplement de comprendre ton intention et de préserver une Safe Place sincère, calme et humain.",
+        "Elle permet simplement de comprendre ton intention et de préserver une Safe Place sincère, calme et humaine.",
       ],
       buttonLabel: "Comprendre le parcours",
       buttonTo: "/observer-to-creator",
@@ -111,8 +143,11 @@ export const homeContent = {
 
   closing: {
     quote:
-      "Les pensées respirent grâce aux regards que nous choisissons de partager.",
+      "Et si les mots que tu gardes en toi permettaient à quelqu’un de se sentir moins seul ?",
     signature: "— Stratusse",
-    reflection: "Une Safe Place où chacun peut déposer son regard.",
+    reflection:
+      "Il n’est pas nécessaire d’avoir toutes les réponses pour commencer à écrire.",
+    buttonLabel: "Trouver ma place sur Stratusse",
+    buttonTo: "/observer-to-creator",
   },
 };

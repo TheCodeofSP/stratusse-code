@@ -1,5 +1,4 @@
 import api from "./api";
-import { authStorage } from "../utils/authStorage.utils.js";
 
 export const authService = {
   async register(data) {
@@ -20,9 +19,10 @@ export const authService = {
     return response.data;
   },
 
-  async resendVerificationEmail(email) {
+  async resendVerificationEmail(email, captchaToken) {
     const response = await api.post("/auth/resend-verification-email", {
       email,
+      captchaToken,
     });
 
     return response.data;
@@ -32,6 +32,7 @@ export const authService = {
     const response = await api.post("/auth/forgot-password", {
       email: data.email,
       pseudo: data.pseudo,
+      captchaToken: data.captchaToken,
     });
 
     return response.data;
@@ -47,12 +48,16 @@ export const authService = {
   },
 
   async me() {
-    const response = await api.get("/auth/me");
+    const response = await api.get("/auth/me", {
+      skipAuthRedirect: true,
+    });
 
     return response.data;
   },
 
-  logout() {
-    authStorage.clear();
+  async logout() {
+    const response = await api.post("/auth/logout");
+
+    return response.data;
   },
 };

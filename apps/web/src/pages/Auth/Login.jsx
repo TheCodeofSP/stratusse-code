@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
 import SEO from "../../components/seo/SEO.jsx";
+import TurnstileField from "../../components/security/TurnstileField.jsx";
 
 import "../../styles/pages/login.scss";
 
@@ -27,6 +28,9 @@ export default function Login() {
   const [error, setError] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaRequired, setCaptchaRequired] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaResetKey, setCaptchaResetKey] = useState(0);
 
   const handleChange = (event) => {
     setFormData((prev) => ({
@@ -41,14 +45,26 @@ export default function Login() {
     try {
       setIsSubmitting(true);
 
-      await login(formData);
+      await login({
+        ...formData,
+        ...(captchaRequired ? { captchaToken } : {}),
+      });
       setError("");
       toast.success(authContent.login.successMessage);
       navigate(authContent.login.redirectTo);
     } catch (error) {
       console.error(error);
 
-      setError(authContent.login.errorMessage);
+      const mustShowCaptcha =
+        error.response?.data?.captchaRequired === true ||
+        error.response?.data?.code === "CAPTCHA_REQUIRED";
+
+      setCaptchaRequired((current) => current || mustShowCaptcha);
+      setCaptchaToken("");
+      setCaptchaResetKey((value) => value + 1);
+      setError(
+        error.response?.data?.message || authContent.login.errorMessage,
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -112,12 +128,21 @@ export default function Login() {
               {authContent.login.forgotPasswordLabel}
             </Link>
 
+            {captchaRequired && (
+              <TurnstileField
+                resetKey={captchaResetKey}
+                onTokenChange={setCaptchaToken}
+              />
+            )}
+
             {error && <p className="form-error">{error}</p>}
 
             <button
               className="btn btn-primary"
               type="submit"
-              disabled={isSubmitting}
+              disabled={
+                isSubmitting || (captchaRequired && !captchaToken)
+              }
             >
               {isSubmitting
                 ? authContent.login.submittingLabel

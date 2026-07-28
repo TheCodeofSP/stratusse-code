@@ -227,7 +227,7 @@ export const publicContent = {
           "Une réponse n’est pas là pour dominer une discussion.",
           "Elle peut servir à dire qu’une Note a résonné, à partager une réflexion ou à prolonger une pensée avec respect.",
           "Avant de répondre, chaque membre est invité à se demander :",
-          "Est-ce que mes mots prennent soin de la Safe Place dans lequel ils arrivent ?",
+          "Est-ce que mes mots prennent soin de la Safe Place dans laquelle ils arrivent ?",
         ],
       },
 

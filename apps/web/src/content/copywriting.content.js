@@ -54,7 +54,7 @@ export const copywritingContent = {
     signature:
       "Les pensées respirent grâce aux regards que nous choisissons de partager.",
 
-    safePlace: "Préserver une Safe Place calme, sincère et humain.",
+    safePlace: "Préserver une Safe Place calme, sincère et humaine.",
 
     human: "Derrière chaque regard, il y a une personne.",
 

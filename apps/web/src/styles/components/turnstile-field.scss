@@ -1,0 +1,11 @@
+.turnstile-field {
+  display: grid;
+  gap: 8px;
+
+  width: 100%;
+}
+
+.turnstile-field__label {
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}

@@ -40,7 +40,7 @@ export const observerToCreatorContent = {
       },
       {
         title: "Devenir une Voix",
-        text: "Une demande permet de déposer des Notes ou des experiences de Lecture tout en préservant l'esprit de la Safe Place.",
+        text: "Une demande permet de déposer des Notes ou des expériences de Lecture tout en préservant l'esprit de la Safe Place.",
       },
     ],
 

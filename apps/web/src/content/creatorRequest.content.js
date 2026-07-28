@@ -4,7 +4,7 @@ export const creatorRequestContent = {
     introduction: [
       "Sur Stratusse, chacun peut lire, aimer et répondre en tant que membre.",
       "Devenir une Voix permet de participer autrement : déposer ses propres Notes et partager ses Expériences de Lecture.",
-      "Cette demande existe pour préserver une Safe Place sincère, calme et humain.",
+      "Cette demande existe pour préserver une Safe Place sincère, calme et humaine.",
     ],
   },
 

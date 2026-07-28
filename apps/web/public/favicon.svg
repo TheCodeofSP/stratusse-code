@@ -1,0 +1,39 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="64"
+  height="64"
+  viewBox="0 0 64 64"
+  role="img"
+  aria-label="Stratusse"
+>
+  <rect width="64" height="64" rx="10" fill="#285047" />
+  <g
+    fill="none"
+    stroke="#F8F5EE"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      stroke-width="2.6"
+      d="M9 39
+         C5 33 9 26 16 26
+         C16 19 23 15 29 18
+         C33 10 44 12 47 20
+         C54 19 59 24 57 31
+         C63 34 60 42 54 43
+         C49 48 41 47 37 44
+         C31 48 23 47 20 43
+         C15 46 10 44 9 39Z"
+    />
+    <path
+      stroke-width="1.2"
+      opacity=".42"
+      d="M13 34 C20 28 26 39 33 33 C39 28 45 39 53 33"
+    />
+    <path
+      stroke-width="1"
+      opacity=".28"
+      d="M15 38 C22 43 27 31 34 38 C40 44 45 32 52 38"
+    />
+  </g>
+</svg>

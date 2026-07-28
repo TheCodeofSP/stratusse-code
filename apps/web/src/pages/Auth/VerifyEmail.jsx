@@ -11,7 +11,7 @@ export default function VerifyEmail() {
 
   const navigate = useNavigate();
 
-  const { authenticateWithToken } = useAuth();
+  const { authenticateWithSession } = useAuth();
 
   const [error, setError] = useState("");
 
@@ -27,7 +27,7 @@ export default function VerifyEmail() {
       try {
         const data = await authService.verifyEmail(token);
 
-        authenticateWithToken(data.token, data.user);
+        authenticateWithSession(data.user);
 
         toast.success(authContent.verifyEmail.successMessage);
 
@@ -43,7 +43,7 @@ export default function VerifyEmail() {
     };
 
     verifyEmail();
-  }, [token, authenticateWithToken, navigate]);
+  }, [token, authenticateWithSession, navigate]);
 
   if (error) {
     return (

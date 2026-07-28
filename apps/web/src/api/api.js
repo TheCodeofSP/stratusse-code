@@ -1,37 +1,107 @@
-import axios from "axios";
-import { authStorage } from "../utils/authStorage.utils.js";
+const baseUrl = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
 
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+const parseResponseBody = async (response) => {
+  const contentType = response.headers.get("content-type") || "";
 
-api.interceptors.request.use((config) => {
-  const token = authStorage.getToken();
-
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  if (response.status === 204) {
+    return null;
   }
 
-  return config;
-});
+  if (contentType.includes("application/json")) {
+    return response.json();
+  }
 
-api.interceptors.response.use(
-  (response) => response,
+  return response.text();
+};
 
-  (error) => {
-    if (error.response?.status === 401) {
-      authStorage.clear();
+const request = async (path, options = {}) => {
+  const {
+    data,
+    headers,
+    method = "GET",
+    skipAuthRedirect = false,
+    ...fetchOptions
+  } = options;
 
+  const response = await fetch(`${baseUrl}${path}`, {
+    ...fetchOptions,
+    method,
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      ...(data !== undefined ? { "Content-Type": "application/json" } : {}),
+      ...headers,
+    },
+    ...(data !== undefined ? { body: JSON.stringify(data) } : {}),
+  });
+
+  const responseData = await parseResponseBody(response);
+
+  if (!response.ok) {
+    const error = new Error(
+      responseData?.message || `La requête a échoué (${response.status}).`,
+    );
+
+    error.config = { skipAuthRedirect };
+    error.response = {
+      data: responseData,
+      status: response.status,
+    };
+
+    if (response.status === 401 && !skipAuthRedirect) {
       if (window.location.pathname !== "/login") {
         window.location.assign("/login");
       }
     }
 
-    return Promise.reject(error);
+    throw error;
+  }
+
+  return {
+    data: responseData,
+    headers: response.headers,
+    status: response.status,
+  };
+};
+
+const api = {
+  get(path, config = {}) {
+    return request(path, {
+      ...config,
+      method: "GET",
+    });
   },
-);
+
+  post(path, data, config = {}) {
+    return request(path, {
+      ...config,
+      data,
+      method: "POST",
+    });
+  },
+
+  patch(path, data, config = {}) {
+    return request(path, {
+      ...config,
+      data,
+      method: "PATCH",
+    });
+  },
+
+  put(path, data, config = {}) {
+    return request(path, {
+      ...config,
+      data,
+      method: "PUT",
+    });
+  },
+
+  delete(path, config = {}) {
+    return request(path, {
+      ...config,
+      method: "DELETE",
+    });
+  },
+};
 
 export default api;

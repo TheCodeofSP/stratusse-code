@@ -6,6 +6,7 @@ import { authService } from "../../api/auth.service.js";
 import { authContent } from "../../content/auth.content.js";
 
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
+import TurnstileField from "../../components/security/TurnstileField.jsx";
 
 export default function RegisterSuccess() {
   const location = useLocation();
@@ -14,6 +15,8 @@ export default function RegisterSuccess() {
   const content = authContent.registerSuccess;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaResetKey, setCaptchaResetKey] = useState(0);
 
   const handleResend = async () => {
     if (!email) return;
@@ -21,13 +24,17 @@ export default function RegisterSuccess() {
     try {
       setIsSubmitting(true);
 
-      await authService.resendVerificationEmail(email);
+      await authService.resendVerificationEmail(email, captchaToken);
 
       toast.success(content.resendSuccess);
+      setCaptchaToken("");
+      setCaptchaResetKey((value) => value + 1);
     } catch (error) {
       console.error(error);
 
       toast.error(content.resendError);
+      setCaptchaToken("");
+      setCaptchaResetKey((value) => value + 1);
     } finally {
       setIsSubmitting(false);
     }
@@ -48,14 +55,20 @@ export default function RegisterSuccess() {
       </header>
 
       {email && (
-        <button
-          className="btn btn-secondary"
-          type="button"
-          onClick={handleResend}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? content.resendingLabel : content.resendLabel}
-        </button>
+        <>
+          <TurnstileField
+            resetKey={captchaResetKey}
+            onTokenChange={setCaptchaToken}
+          />
+          <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={handleResend}
+            disabled={isSubmitting || !captchaToken}
+          >
+            {isSubmitting ? content.resendingLabel : content.resendLabel}
+          </button>
+        </>
       )}
 
       <PageFooterNavigation />

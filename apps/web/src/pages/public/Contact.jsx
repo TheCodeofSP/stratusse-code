@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import api from "../../api/api.js";
 import { publicContent } from "../../content/public.content.js";
@@ -6,6 +6,7 @@ import { seoContent } from "../../content/seo.content.js";
 
 import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
 import SEO from "../../components/seo/SEO.jsx";
+import TurnstileField from "../../components/security/TurnstileField.jsx";
 
 import "../../styles/pages/contact.scss";
 
@@ -15,10 +16,21 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     email: "",
     message: "",
+    website: "",
+    captchaToken: "",
+    formStartedAt: 0,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState("");
+  const [captchaResetKey, setCaptchaResetKey] = useState(0);
+
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      formStartedAt: Date.now(),
+    }));
+  }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -42,10 +54,16 @@ export default function Contact() {
       setFormData({
         email: "",
         message: "",
+        website: "",
+        captchaToken: "",
+        formStartedAt: Date.now(),
       });
+      setCaptchaResetKey((value) => value + 1);
     } catch (error) {
       console.error(error);
       setFeedback(content.form.errorMessage);
+      setFormData((prev) => ({ ...prev, captchaToken: "" }));
+      setCaptchaResetKey((value) => value + 1);
     } finally {
       setIsSubmitting(false);
     }
@@ -139,12 +157,34 @@ export default function Contact() {
                 />
               </div>
 
+              <div className="contact-honeypot" aria-hidden="true">
+                <label htmlFor="contact-website">
+                  Ne pas remplir ce champ
+                </label>
+                <input
+                  id="contact-website"
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
+              <TurnstileField
+                resetKey={captchaResetKey}
+                onTokenChange={(captchaToken) =>
+                  setFormData((prev) => ({ ...prev, captchaToken }))
+                }
+              />
+
               {feedback && <p className="form-help">{feedback}</p>}
 
               <button
                 className="btn btn-primary"
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !formData.captchaToken}
               >
                 {isSubmitting
                   ? content.form.submittingLabel

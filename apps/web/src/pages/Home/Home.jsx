@@ -7,10 +7,8 @@ import { notesContent } from "../../content/notes.content.js";
 import { seoContent } from "../../content/seo.content.js";
 
 import { noteService } from "../../api/note.service.js";
-import { libraryService } from "../../api/library.service.js";
 
 import NoteCard from "../../components/note/NoteCard.jsx";
-import LibraryCard from "../../components/library/LibraryCard.jsx";
 import EmptyState from "../../components/common/EmptyState.jsx";
 import SEO from "../../components/seo/SEO.jsx";
 
@@ -20,18 +18,12 @@ export default function Home() {
   const { user } = useAuth();
 
   const [latestNote, setLatestNote] = useState(null);
-  const [latestReading, setLatestReading] = useState(null);
-
   useEffect(() => {
     const fetchLatestContent = async () => {
       try {
-        const [notes, readings] = await Promise.all([
-          noteService.getAll(),
-          libraryService.getAll(),
-        ]);
+        const notes = await noteService.getAll();
 
         setLatestNote(notes?.[0] || null);
-        setLatestReading(readings?.[0] || null);
       } catch (error) {
         console.error(error);
       }
@@ -74,10 +66,80 @@ export default function Home() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
+
+          <div className="home-hero__actions">
+            <Link
+              to={homeContent.hero.primaryAction.to}
+              className="btn btn-primary"
+            >
+              {homeContent.hero.primaryAction.label}
+            </Link>
+            <Link
+              to={homeContent.hero.secondaryAction.to}
+              className="btn btn-secondary"
+            >
+              {homeContent.hero.secondaryAction.label}
+            </Link>
+          </div>
         </header>
+
         <div className="home-interlude" aria-hidden="true">
           <span />
         </div>
+
+        <section className="home-spotlight">
+          <header className="home-spotlight__header">
+            <span className="home-spotlight__eyebrow">
+              {homeContent.spotlight.eyebrow}
+            </span>
+          </header>
+
+          {latestNote ? (
+            <NoteCard
+              note={latestNote}
+              categoryLabel={
+                noteCategoryLabels[latestNote.category] || latestNote.category
+              }
+            />
+          ) : (
+            <EmptyState
+              variant="compact"
+              icon="✦"
+              title={homeContent.spotlight.emptyTitle}
+              text={homeContent.spotlight.emptyText}
+            />
+          )}
+
+          <Link
+            to={homeContent.spotlight.buttonTo}
+            className="home-spotlight__link"
+          >
+            {homeContent.spotlight.buttonLabel}
+          </Link>
+        </section>
+
+        <section className="home-invitation">
+          <span className="home-invitation__eyebrow">
+            {homeContent.invitation.eyebrow}
+          </span>
+          <h2>{homeContent.invitation.title}</h2>
+
+          <ul className="home-invitation__prompts">
+            {homeContent.invitation.prompts.map((prompt) => (
+              <li key={prompt}>{prompt}</li>
+            ))}
+          </ul>
+
+          <p>{homeContent.invitation.text}</p>
+
+          <Link
+            to={homeContent.invitation.buttonTo}
+            className="btn btn-primary"
+          >
+            {homeContent.invitation.buttonLabel}
+          </Link>
+        </section>
+
         <section className="home-worlds">
           <article className="home-world home-world--notes">
             <div className="home-world__content">
@@ -95,28 +157,6 @@ export default function Home() {
               <span />
             </div>
 
-            <div className="home-world__preview">
-              <span className="home-world__preview-label">
-                {homeContent.latestNotes.title}
-              </span>
-
-              {latestNote ? (
-                <NoteCard
-                  note={latestNote}
-                  categoryLabel={
-                    noteCategoryLabels[latestNote.category] ||
-                    latestNote.category
-                  }
-                />
-              ) : (
-                <EmptyState
-                  variant="compact"
-                  icon="🌿"
-                  title="Aucune Note déposée pour le moment"
-                  text={homeContent.latestNotes.placeholder}
-                />
-              )}
-            </div>
             <Link
               to={homeContent.writing.buttonTo}
               className="home-world__link"
@@ -138,25 +178,6 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="home-world__preview">
-              <div className="home-interlude--library" aria-hidden="true">
-                <span />
-              </div>
-              <span className="home-world__preview-label">
-                {homeContent.latestReadings.title}
-              </span>
-
-              {latestReading ? (
-                <LibraryCard book={latestReading} />
-              ) : (
-                <EmptyState
-                  variant="compact"
-                  icon="📚"
-                  title="Aucune Lecture partagée pour le moment"
-                  text={homeContent.latestReadings.placeholder}
-                />
-              )}
-            </div>
             <Link
               to={homeContent.reading.buttonTo}
               className="home-world__link"
@@ -261,7 +282,13 @@ export default function Home() {
         <section className="quote-closing">
           <blockquote>{homeContent.closing.quote}</blockquote>
 
+          <p>{homeContent.closing.reflection}</p>
+
           <footer>{homeContent.closing.signature}</footer>
+
+          <Link to={homeContent.closing.buttonTo} className="btn btn-primary">
+            {homeContent.closing.buttonLabel}
+          </Link>
         </section>
       </section>
     </>

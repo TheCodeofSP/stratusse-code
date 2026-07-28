@@ -67,7 +67,7 @@ export default function Navigation() {
           <div className="navigation__left">
             <NavLink to="/" className="navigation__brand" onClick={closeMenu}>
               <img
-                src="/LogoStratusse.svg"
+                src="/images/brand/LogoStratusse-header.webp"
                 className="navigation__logo"
                 alt="Stratusse"
               />
@@ -209,8 +209,8 @@ export default function Navigation() {
               <button
                 className="navigation__link"
                 type="button"
-                onClick={() => {
-                  logout();
+                onClick={async () => {
+                  await logout();
 
                   toast.success(navigationContent.logout.successMessage);
 

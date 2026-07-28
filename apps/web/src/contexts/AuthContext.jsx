@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 import { authService } from "../api/auth.service.js";
-import { authStorage } from "../utils/authStorage.utils.js";
 
 const AuthContext = createContext(null);
 
@@ -14,13 +13,6 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const loadUser = async () => {
-      const token = authStorage.getToken();
-
-      if (!token) {
-        setIsLoading(false);
-        return;
-      }
-
       try {
         const data = await authService.me();
 
@@ -28,7 +20,8 @@ export function AuthProvider({ children }) {
         setIsAuthenticated(true);
 
       } catch {
-        authService.logout();
+        setUser(null);
+        setIsAuthenticated(false);
       } finally {
         setIsLoading(false);
       }
@@ -37,9 +30,7 @@ export function AuthProvider({ children }) {
     loadUser();
   }, []);
 
-  const authenticateWithToken = (token, userData) => {
-    authStorage.setToken(token);
-
+  const authenticateWithSession = (userData) => {
     setUser(userData);
     setIsAuthenticated(true);
   };
@@ -47,11 +38,7 @@ export function AuthProvider({ children }) {
   const login = async (credentials) => {
     const data = await authService.login(credentials);
 
-    authStorage.setToken(data.token);
-
-    const me = await authService.me();
-
-    setUser(me.user || me);
+    setUser(data.user);
     setIsAuthenticated(true);
 
     return data;
@@ -61,11 +48,13 @@ export function AuthProvider({ children }) {
     return authService.register(payload);
   };
 
-  const logout = () => {
-    authService.logout();
-
-    setUser(null);
-    setIsAuthenticated(false);
+  const logout = async () => {
+    try {
+      await authService.logout();
+    } finally {
+      setUser(null);
+      setIsAuthenticated(false);
+    }
   };
 
   return (
@@ -77,7 +66,7 @@ export function AuthProvider({ children }) {
         login,
         register,
         logout,
-        authenticateWithToken,
+        authenticateWithSession,
       }}
     >
       {children}
