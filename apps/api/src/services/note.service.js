@@ -163,6 +163,10 @@ const likeNote = async (noteId, userId) => {
     throw new Error("ARTICLE_NOT_FOUND");
   }
 
+  if (note.author.toString() === userId.toString()) {
+    throw new Error("SELF_REACTION_NOT_ALLOWED");
+  }
+
   const alreadyLiked = note.likedBy.some(
     (id) => id.toString() === userId.toString(),
   );

@@ -56,6 +56,10 @@ const likeLibraryComment = async (commentId, userId) => {
     throw new Error("COMMENT_NOT_FOUND");
   }
 
+  if (comment.author.toString() === userId.toString()) {
+    throw new Error("SELF_REACTION_NOT_ALLOWED");
+  }
+
   const alreadyLiked = comment.likedBy.some(
     (id) => id.toString() === userId.toString(),
   );

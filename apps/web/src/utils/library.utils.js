@@ -1,7 +1,6 @@
 import { getContentCategoryLabel } from "../constants/contentCategories.js";
 
 export const bookReadingStatusLabels = {
-  to_read: "À lire",
   reading: "En cours",
   finished: "Terminé",
   abandoned: "Abandonné",

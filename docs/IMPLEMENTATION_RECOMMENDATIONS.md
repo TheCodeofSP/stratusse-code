@@ -31,7 +31,7 @@
 ## Dépendances et déploiement
 
 - remplacement d’Axios par `fetch` ;
-- suppression du verrouillage pnpm inutilisé ;
+- utilisation de `package-lock.json` comme verrouillage npm de référence ;
 - Sass déplacé dans les dépendances de développement ;
 - en-têtes de sécurité Vercel et CSP ;
 - fichiers `.env.example` sans secret réel ;

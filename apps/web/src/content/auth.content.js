@@ -125,7 +125,7 @@ export const authContent = {
     title: "Heureux de t’accueillir !",
 
     text: [
-      "Stratusse est une Safe Place pensé pour lire, réfléchir et découvrir le regard des autres dans un cadre respectueux.",
+      "Stratusse est une Safe Place pensée pour lire, réfléchir et découvrir le regard des autres dans un cadre respectueux.",
       "Ici, les Notes comptent davantage que les algorithmes. Les échanges comptent davantage que les réactions instantanées.",
       "Commence simplement par te laisser guider. Lis une Note, découvre une Lecture, puis reviens quand tu en ressens l'envie.",
     ],
