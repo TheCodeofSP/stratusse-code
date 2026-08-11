@@ -10,7 +10,6 @@ const csrfOriginProtection = (req, res, next) => {
   const origin = req.get("origin");
   const allowedOrigins = new Set([
     "http://localhost:5173",
-    "https://stratusse-web.vercel.app",
     "https://stratusse.fr",
     "https://www.stratusse.fr",
     process.env.FRONTEND_URL,
