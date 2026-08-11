@@ -29,7 +29,6 @@ app.set("trust proxy", 1);
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://stratusse-web.vercel.app",
   "https://stratusse.fr",
   "https://www.stratusse.fr",
 ];
