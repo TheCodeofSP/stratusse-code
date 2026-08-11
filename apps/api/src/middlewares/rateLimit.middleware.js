@@ -1,17 +1,13 @@
 const RequestLimit = require("../models/RequestLimit");
-const {
-  getClientIp,
-  hashRequestKey,
-} = require("../utils/requestKey.utils");
+const { getClientIp, hashRequestKey } = require("../utils/requestKey.utils");
 
 const createRateLimiter = ({ name, windowMs, limit, message, includeUser }) => {
   return async (req, res, next) => {
     try {
       const now = new Date();
       const resetAt = new Date(now.getTime() + windowMs);
-      const identity = includeUser && req.user?._id
-        ? String(req.user._id)
-        : getClientIp(req);
+      const identity =
+        includeUser && req.user?._id ? String(req.user._id) : getClientIp(req);
       const key = hashRequestKey(name, identity);
 
       const counter = await RequestLimit.findOneAndUpdate(
@@ -61,6 +57,7 @@ const createRateLimiter = ({ name, windowMs, limit, message, includeUser }) => {
         {
           upsert: true,
           new: true,
+          updatePipeline: true,
         },
       );
 
@@ -121,7 +118,8 @@ const interactionRateLimiter = createRateLimiter({
   name: "interaction",
   windowMs: 60 * 1000,
   limit: 30,
-  message: "Trop d’interactions rapprochées. Prenez un instant avant de continuer.",
+  message:
+    "Trop d’interactions rapprochées. Prenez un instant avant de continuer.",
   includeUser: true,
 });
 
@@ -129,7 +127,8 @@ const commentRateLimiter = createRateLimiter({
   name: "comment",
   windowMs: 10 * 60 * 1000,
   limit: 5,
-  message: "Trop de réponses rapprochées. Prenez un instant avant de continuer.",
+  message:
+    "Trop de réponses rapprochées. Prenez un instant avant de continuer.",
   includeUser: true,
 });
 
