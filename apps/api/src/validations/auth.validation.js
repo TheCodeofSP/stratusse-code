@@ -55,6 +55,7 @@ const resetPasswordSchema = z.object({
 });
 
 module.exports = {
+  passwordSchema,
   registerSchema,
   loginSchema,
   resendVerificationEmailSchema,

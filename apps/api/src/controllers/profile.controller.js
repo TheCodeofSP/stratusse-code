@@ -113,6 +113,13 @@ const deleteAccount = async (req, res) => {
       });
     }
 
+    if (error.message === "ADMIN_ACCOUNT_DELETION_FORBIDDEN") {
+      return res.status(403).json({
+        message:
+          "Un compte Gardien ne peut pas être supprimé depuis le profil. Transférez d’abord son rôle.",
+      });
+    }
+
     return res.status(500).json({
       message: "Erreur serveur.",
     });

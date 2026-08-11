@@ -65,6 +65,12 @@ const updateRole = async (req, res) => {
       });
     }
 
+    if (error.message === "LAST_ADMIN_PROTECTED") {
+      return res.status(409).json({
+        message: "Le dernier Gardien actif ne peut pas perdre son rôle.",
+      });
+    }
+
     return res.status(500).json({
       message: "Erreur serveur.",
     });
@@ -90,6 +96,19 @@ const updateBan = async (req, res) => {
     if (error.message === "USER_NOT_FOUND") {
       return res.status(404).json({
         message: "Utilisateur introuvable.",
+      });
+    }
+
+
+    if (error.message === "CANNOT_UPDATE_OWN_BAN") {
+      return res.status(403).json({
+        message: "Vous ne pouvez pas bannir votre propre compte.",
+      });
+    }
+
+    if (error.message === "LAST_ADMIN_PROTECTED") {
+      return res.status(409).json({
+        message: "Le dernier Gardien actif ne peut pas être banni.",
       });
     }
 

@@ -214,6 +214,10 @@ const deleteMyAccount = async ({ userId, deletionComment = "" }) => {
     throw new Error("USER_NOT_FOUND");
   }
 
+  if (user.role === "admin") {
+    throw new Error("ADMIN_ACCOUNT_DELETION_FORBIDDEN");
+  }
+
   user.isDeleted = true;
   user.deletedAt = new Date();
   user.deletionComment = deletionComment;

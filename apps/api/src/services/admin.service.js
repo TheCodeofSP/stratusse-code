@@ -34,6 +34,18 @@ const updateUserRole = async ({ userId, role, adminId, comment = "" }) => {
     throw new Error("USER_NOT_FOUND");
   }
 
+  if (user.role === "admin" && role !== "admin") {
+    const activeAdminsCount = await User.countDocuments({
+      role: "admin",
+      isBanned: false,
+      isDeleted: false,
+    });
+
+    if (activeAdminsCount <= 1) {
+      throw new Error("LAST_ADMIN_PROTECTED");
+    }
+  }
+
   user.role = role;
 
   if (role === "creator") {
@@ -84,10 +96,26 @@ const updateUserRole = async ({ userId, role, adminId, comment = "" }) => {
 };
 
 const toggleUserBan = async ({ userId, isBanned, adminId, comment = "" }) => {
+  if (userId.toString() === adminId.toString()) {
+    throw new Error("CANNOT_UPDATE_OWN_BAN");
+  }
+
   const user = await User.findById(userId);
 
   if (!user) {
     throw new Error("USER_NOT_FOUND");
+  }
+
+  if (user.role === "admin" && isBanned && !user.isBanned) {
+    const activeAdminsCount = await User.countDocuments({
+      role: "admin",
+      isBanned: false,
+      isDeleted: false,
+    });
+
+    if (activeAdminsCount <= 1) {
+      throw new Error("LAST_ADMIN_PROTECTED");
+    }
   }
 
   user.isBanned = isBanned;
