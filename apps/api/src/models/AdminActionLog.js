@@ -18,6 +18,7 @@ const adminActionLogSchema = new mongoose.Schema(
       type: String,
       required: true,
       enum: [
+        "ADMIN_CREATED",
         "ROLE_CHANGED",
         "USER_BANNED",
         "USER_UNBANNED",

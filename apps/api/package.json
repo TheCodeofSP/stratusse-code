@@ -7,7 +7,9 @@
     "start": "node src/server.js",
     "lint": "eslint src tests scripts --no-error-on-unmatched-pattern",
     "test": "node --test",
-    "migrate:library-index": "node scripts/migrate-library-index.js"
+    "migrate:library-index": "node scripts/migrate-library-index.js",
+    "admin:create": "node scripts/create-admin.js",
+    "admin:check": "node scripts/check-admin.js"
   },
   "keywords": [],
   "author": "",
