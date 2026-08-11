@@ -1,4 +1,5 @@
 const LibraryRecommendation = require("../models/LibraryRecommendation");
+const { createBookSchema } = require("../validations/library.validation");
 
 const normalizeBookField = (value) => {
   return value
@@ -19,6 +20,7 @@ const createBook = async (data) => {
   const existingBook = await LibraryRecommendation.findOne({
     normalizedTitle,
     normalizedAuthor,
+    recommendedBy: data.recommendedBy,
     isDeleted: false,
   });
 
@@ -83,6 +85,23 @@ const updateBook = async (bookId, updates, currentUser) => {
   const willBePublished = updates.status === "published";
   const wasDraft = book.status === "draft";
 
+  if (willBePublished) {
+    const currentBook =
+      typeof book.toObject === "function" ? book.toObject() : book;
+    const publicationValidation = createBookSchema.safeParse({
+      ...currentBook,
+      ...updates,
+      status: "published",
+    });
+
+    if (!publicationValidation.success) {
+      const validationError = new Error("INVALID_PUBLICATION");
+      validationError.validationMessage =
+        publicationValidation.error.issues[0].message;
+      throw validationError;
+    }
+  }
+
   if (book.hasBeenPublished) {
     if (updates.title && updates.title !== book.title) {
       throw new Error("BOOK_TITLE_LOCKED_AFTER_PUBLICATION");
@@ -103,6 +122,7 @@ const updateBook = async (bookId, updates, currentUser) => {
     const existingBook = await LibraryRecommendation.findOne({
       normalizedTitle,
       normalizedAuthor,
+      recommendedBy: book.recommendedBy,
       isDeleted: false,
       _id: { $ne: bookId },
     });

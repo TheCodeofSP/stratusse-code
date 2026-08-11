@@ -31,6 +31,7 @@ Toutes les évolutions importantes de Stratusse sont documentées dans ce fichie
 - Likes
 - Commentaires
 - Protection contre l’auto-résonance
+- Historique initial de publication fiabilisé
 
 ### Bibliothèque
 
@@ -39,6 +40,8 @@ Toutes les évolutions importantes de Stratusse sont documentées dans ce fichie
 - Likes
 - Commentaires
 - Protection contre l’auto-résonance
+- Validation complète avant le passage d’un brouillon à une Lecture publiée
+- Plusieurs Voix peuvent partager leur regard sur un même livre
 
 ### Profil
 

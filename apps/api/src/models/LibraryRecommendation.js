@@ -175,7 +175,7 @@ const libraryRecommendationSchema = new mongoose.Schema(
 );
 
 libraryRecommendationSchema.index(
-  { normalizedTitle: 1, normalizedAuthor: 1 },
+  { normalizedTitle: 1, normalizedAuthor: 1, recommendedBy: 1 },
   { unique: true },
 );
 

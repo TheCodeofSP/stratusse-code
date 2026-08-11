@@ -20,6 +20,8 @@ const createNote = async ({
   author,
 }) => {
   const slug = createSlug(title);
+  const isPublished = status === "published";
+  const publicationDate = isPublished ? new Date() : null;
 
   const existingNote = await Note.findOne({ slug });
 
@@ -36,6 +38,9 @@ const createNote = async ({
     cloudColor,
     status,
     author,
+    hasBeenPublished: isPublished,
+    firstPublishedAt: publicationDate,
+    lastPublishedAt: publicationDate,
   });
 
   return note;

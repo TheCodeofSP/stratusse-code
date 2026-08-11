@@ -31,6 +31,7 @@ Faire de Stratusse une V1 stable, cohérente et prête à être utilisée.
 - [x] Likes
 - [x] Commentaires
 - [x] Auto-résonance interdite
+- [x] Première publication datée et titre verrouillé
 
 ---
 
@@ -44,6 +45,8 @@ Faire de Stratusse une V1 stable, cohérente et prête à être utilisée.
 - [x] Likes
 - [x] Commentaires
 - [x] Auto-résonance interdite
+- [x] Validation métier lors de la publication d’un brouillon
+- [x] Regards multiples sur un même livre
 
 ---
 
