@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import { libraryService } from "../../api/library.service.js";
 import { profileContent } from "../../content/profile.content.js";
@@ -57,8 +58,12 @@ export default function ProfileLibraryList() {
 
       setIsDeleteModalOpen(false);
       setBookToDelete(null);
+      toast.success("Lecture supprimée.");
     } catch (error) {
       console.error(error);
+      toast.error(
+        error.response?.data?.message || "Impossible de supprimer la Lecture.",
+      );
     }
   };
 
@@ -71,9 +76,13 @@ export default function ProfileLibraryList() {
     try {
       await libraryService.update(book._id, { status });
 
-      fetchBooks();
+      await fetchBooks();
+      toast.success("Lecture partagée.");
     } catch (error) {
       console.error(error);
+      toast.error(
+        error.response?.data?.message || "Impossible de partager la Lecture.",
+      );
     }
   };
 
@@ -96,8 +105,13 @@ export default function ProfileLibraryList() {
 
       setIsUnpublishModalOpen(false);
       setBookToUnpublish(null);
+      toast.success("La Lecture est de nouveau un brouillon.");
     } catch (error) {
       console.error(error);
+      toast.error(
+        error.response?.data?.message ||
+          "Impossible de remettre la Lecture en brouillon.",
+      );
     }
   };
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 import { noteService } from "../../api/note.service.js";
 import { profileContent } from "../../content/profile.content.js";
@@ -59,8 +60,12 @@ export default function ProfileNotesList() {
 
       setIsDeleteModalOpen(false);
       setNoteToDelete(null);
+      toast.success("Note supprimée.");
     } catch (error) {
       console.error(error);
+      toast.error(
+        error.response?.data?.message || "Impossible de supprimer la Note.",
+      );
     }
   };
 
@@ -92,8 +97,13 @@ export default function ProfileNotesList() {
 
       setIsUnpublishModalOpen(false);
       setNoteToUnpublish(null);
+      toast.success("La Note est de nouveau un brouillon.");
     } catch (error) {
       console.error(error);
+      toast.error(
+        error.response?.data?.message ||
+          "Impossible de remettre la Note en brouillon.",
+      );
     }
   };
 
@@ -106,8 +116,12 @@ export default function ProfileNotesList() {
           note._id === noteId ? { ...note, status: "published" } : note,
         ),
       );
+      toast.success("Note partagée.");
     } catch (error) {
       console.error(error);
+      toast.error(
+        error.response?.data?.message || "Impossible de partager la Note.",
+      );
     }
   };
 

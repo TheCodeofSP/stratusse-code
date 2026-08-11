@@ -37,7 +37,7 @@ const create = async (req, res) => {
   } catch (error) {
     if (error.message === "BOOK_ALREADY_EXISTS") {
       return res.status(409).json({
-        message: "Ce livre existe déjà dans la bibliothèque.",
+        message: "Tu as déjà partagé une Lecture pour ce livre.",
       });
     }
 
@@ -102,7 +102,15 @@ const update = async (req, res) => {
 
     if (error.message === "BOOK_ALREADY_EXISTS") {
       return res.status(409).json({
-        message: "Ce livre existe déjà dans la bibliothèque.",
+        message: "Tu as déjà partagé une Lecture pour ce livre.",
+      });
+    }
+
+    if (error.message === "INVALID_PUBLICATION") {
+      return res.status(400).json({
+        message:
+          error.validationMessage ||
+          "Cette Lecture doit être complétée avant d’être partagée.",
       });
     }
 
