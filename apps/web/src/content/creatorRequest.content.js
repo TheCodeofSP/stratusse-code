@@ -35,7 +35,7 @@ export const creatorRequestContent = {
   philosophy: {
     title: "Pourquoi cette demande existe ?",
     introduction:
-      "La demande n’est pas un examen ni un jugement sur ton écriture. Elle permet de comprendre ton intention et de vérifier que l’esprit de Stratusse est compris avant de déposer un regard dans une Safe Place partagé.",
+      "La demande n’est pas un examen ni un jugement sur ton écriture. Elle permet de comprendre ton intention et de vérifier que l’esprit de Stratusse est compris avant de déposer un regard dans une Safe Place partagée.",
   },
 
   request: {

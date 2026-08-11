@@ -63,8 +63,7 @@ const getLibraryById = async (bookId) => {
 
 const assertCanManageBook = (book, currentUser) => {
   const isAdmin = currentUser.role === "admin";
-  const isOwner =
-    book.recommendedBy.toString() === currentUser._id.toString();
+  const isOwner = book.recommendedBy.toString() === currentUser._id.toString();
 
   if (!isAdmin && !isOwner) {
     throw new Error("FORBIDDEN");
@@ -171,6 +170,20 @@ const deleteLibrary = async (bookId, currentUser) => {
 };
 
 const likeBook = async (bookId, userId) => {
+  const existingBook = await LibraryRecommendation.findOne({
+    _id: bookId,
+    isDeleted: false,
+    status: "published",
+  });
+
+  if (!existingBook) {
+    throw new Error("BOOK_NOT_FOUND");
+  }
+
+  if (existingBook.recommendedBy.toString() === userId.toString()) {
+    throw new Error("SELF_REACTION_NOT_ALLOWED");
+  }
+
   const book = await LibraryRecommendation.findOneAndUpdate(
     {
       _id: bookId,

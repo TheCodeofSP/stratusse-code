@@ -1,12 +1,7 @@
 const { z } = require("zod");
 const { CONTENT_CATEGORIES } = require("../constants/contentCategories");
 
-const readingStatusSchema = z.enum([
-  "to_read",
-  "reading",
-  "finished",
-  "abandoned",
-]);
+const readingStatusSchema = z.enum(["reading", "finished", "abandoned"]);
 
 const publicationStatusSchema = z.enum(["draft", "published"]);
 

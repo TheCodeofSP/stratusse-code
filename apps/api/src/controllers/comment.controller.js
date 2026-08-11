@@ -5,9 +5,7 @@ const {
   likeComment,
   unlikeComment,
 } = require("../services/comment.service");
-const {
-  createCommentSchema,
-} = require("../validations/comment.validation");
+const { createCommentSchema } = require("../validations/comment.validation");
 
 const create = async (req, res) => {
   try {
@@ -101,6 +99,12 @@ const like = async (req, res) => {
     if (error.message === "COMMENT_NOT_FOUND") {
       return res.status(404).json({
         message: "Réponse introuvable.",
+      });
+    }
+
+    if (error.message === "SELF_REACTION_NOT_ALLOWED") {
+      return res.status(403).json({
+        message: "Tu ne peux pas faire résonner ta propre réponse.",
       });
     }
 

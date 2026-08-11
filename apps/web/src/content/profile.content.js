@@ -95,7 +95,7 @@ export const profileContent = {
     philosophy: {
       title: "Pourquoi cette demande existe ?",
       introduction:
-        "La demande n’est pas un examen ni un jugement sur ton écriture. Elle permet de comprendre ton intention et de vérifier que l’esprit de Stratusse est compris avant de publier dans une Safe Place partagé.",
+        "La demande n’est pas un examen ni un jugement sur ton écriture. Elle permet de comprendre ton intention et de vérifier que l’esprit de Stratusse est compris avant de publier dans une Safe Place partagée.",
     },
 
     request: {
@@ -442,8 +442,6 @@ export const profileContent = {
       deleteTextSuffix: "de ta Bibliothèque.",
       confirmDelete: "Supprimer",
       cancelDelete: "Garder cette lecture",
-      toReadCannotPublish:
-        "Une lecture à venir ne peut pas encore être partagée.",
     },
   },
 

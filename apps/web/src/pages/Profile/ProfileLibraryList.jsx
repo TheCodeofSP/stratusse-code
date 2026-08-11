@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
 
 import { libraryService } from "../../api/library.service.js";
 import { profileContent } from "../../content/profile.content.js";
@@ -69,10 +68,6 @@ export default function ProfileLibraryList() {
   };
 
   const handleStatus = async (book, status) => {
-    if (status === "published" && book.readingStatus === "to_read") {
-      toast.error(profileLibraryContent.messages.toReadCannotPublish);
-      return;
-    }
     try {
       await libraryService.update(book._id, { status });
 

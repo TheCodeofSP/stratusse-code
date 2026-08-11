@@ -92,6 +92,8 @@ const libraryRecommendationSchema = new mongoose.Schema(
 
     readingStatus: {
       type: String,
+      // `to_read` reste accepté uniquement pour les anciennes données.
+      // Les validations d’entrée V1 empêchent désormais de le créer.
       enum: ["to_read", "reading", "finished", "abandoned"],
       default: "finished",
     },

@@ -87,11 +87,7 @@ const update = async (req, res) => {
       });
     }
 
-    const book = await updateBook(
-      req.params.id,
-      parsedBody.data,
-      req.user,
-    );
+    const book = await updateBook(req.params.id, parsedBody.data, req.user);
 
     return res.status(200).json({
       message: "Recommandation modifiée.",
@@ -174,6 +170,12 @@ const like = async (req, res) => {
     if (error.message === "BOOK_NOT_FOUND") {
       return res.status(404).json({
         message: "Livre introuvable.",
+      });
+    }
+
+    if (error.message === "SELF_REACTION_NOT_ALLOWED") {
+      return res.status(403).json({
+        message: "Tu ne peux pas faire résonner ta propre Lecture.",
       });
     }
 

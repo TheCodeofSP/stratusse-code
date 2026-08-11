@@ -8,7 +8,7 @@ Toutes les évolutions importantes de Stratusse sont documentées dans ce fichie
 
 ## Date
 
-À compléter
+1er octobre 2026
 
 ---
 
@@ -30,6 +30,7 @@ Toutes les évolutions importantes de Stratusse sont documentées dans ce fichie
 - Brouillons
 - Likes
 - Commentaires
+- Protection contre l’auto-résonance
 
 ### Bibliothèque
 
@@ -37,6 +38,7 @@ Toutes les évolutions importantes de Stratusse sont documentées dans ce fichie
 - Classement par livre
 - Likes
 - Commentaires
+- Protection contre l’auto-résonance
 
 ### Profil
 

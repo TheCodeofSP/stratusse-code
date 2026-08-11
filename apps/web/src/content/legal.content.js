@@ -19,7 +19,7 @@ export const legalContent = {
       {
         title: "Directrice de la publication",
         paragraphs: [
-          "La directrice de la publication est Sandrine [Nom], créatrice de Stratusse.",
+          "La direction de la publication est assurée par The Code of SP, créatrice de Stratusse.",
         ],
       },
       {
@@ -35,9 +35,9 @@ export const legalContent = {
       {
         title: "Nom de domaine",
         paragraphs: [
-          "Nom de domaine : À compléter.",
+          "Nom de domaine : stratusse.fr.",
           "Registrar : À compléter.",
-          "Date de mise en ligne : À compléter.",
+          "Date de mise en ligne : 01/10/2026.",
         ],
       },
       {
@@ -84,7 +84,7 @@ export const legalContent = {
       },
       {
         title: "Dernière mise à jour",
-        paragraphs: ["À compléter."],
+        paragraphs: ["01/10/2026."],
       },
     ],
   },
@@ -129,7 +129,7 @@ export const legalContent = {
       },
       {
         title: "Dernière mise à jour",
-        paragraphs: ["À compléter."],
+        paragraphs: ["01/10/2026."],
       },
     ],
   },
@@ -183,7 +183,7 @@ export const legalContent = {
       },
       {
         title: "Dernière mise à jour",
-        paragraphs: ["À compléter."],
+        paragraphs: ["01/10/2026."],
       },
     ],
   },
@@ -221,7 +221,7 @@ export const legalContent = {
       },
       {
         title: "Dernière mise à jour",
-        paragraphs: ["À compléter."],
+        paragraphs: ["01/10/2026."],
       },
     ],
   },

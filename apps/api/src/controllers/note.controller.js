@@ -181,6 +181,12 @@ const like = async (req, res) => {
       });
     }
 
+    if (error.message === "SELF_REACTION_NOT_ALLOWED") {
+      return res.status(403).json({
+        message: "Tu ne peux pas faire résonner ta propre Note.",
+      });
+    }
+
     return res.status(500).json({
       message: "Erreur serveur.",
     });

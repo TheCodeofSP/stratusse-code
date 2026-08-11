@@ -30,6 +30,7 @@ Faire de Stratusse une V1 stable, cohérente et prête à être utilisée.
 - [x] Suppression
 - [x] Likes
 - [x] Commentaires
+- [x] Auto-résonance interdite
 
 ---
 
@@ -42,6 +43,7 @@ Faire de Stratusse une V1 stable, cohérente et prête à être utilisée.
 - [x] Suppression
 - [x] Likes
 - [x] Commentaires
+- [x] Auto-résonance interdite
 
 ---
 
@@ -151,8 +153,17 @@ Administration
 - [x] Frontend Vercel
 - [x] MongoDB Atlas
 - [x] Emails
-- [ ] Domaine
-- [ ] SEO
-- [ ] Templates emails
+- [x] Domaine
+- [x] SEO technique
+- [x] Templates emails
 - [ ] Release GitHub
 - [ ] Tag v1.0.0
+
+---
+
+# 8. Informations à compléter avant l’ouverture
+
+- [ ] Adresse professionnelle après obtention de la boîte postale
+- [ ] Nom du cluster MongoDB Atlas
+- [ ] Fournisseur et région du cluster MongoDB Atlas
+- [ ] Registrar de `stratusse.fr`
