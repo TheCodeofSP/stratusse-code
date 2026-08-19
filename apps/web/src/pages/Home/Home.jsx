@@ -59,10 +59,15 @@ export default function Home() {
             </p>
           )}
 
-          <h1>{homeContent.hero.title}</h1>
+          <h1
+            className={
+              user?.pseudo ? "home-hero__title--with-welcome" : undefined
+            }
+          >
+            {homeContent.hero.title}
+          </h1>
 
           <p className="home-hero__subtitle">{homeContent.hero.subtitle}</p>
-
           <div className="home-hero__intro">
             {homeContent.hero.introduction.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>

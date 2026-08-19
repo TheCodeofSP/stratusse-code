@@ -9,19 +9,33 @@
 }
 
 .home-hero__badge,
-.home-world__eyebrow,
-.hero-welcome {
+.home-world__eyebrow {
   @include eyebrow;
 
   color: var(--color-forest);
 }
 
-.hero-welcome {
-  margin-bottom: var(--space-sm);
+.home-hero .hero-welcome {
+  margin: 18px 0 var(--space-base);
 
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  color: var(--color-forest);
+
+  font-family: var(--font-title);
+  font-size: clamp(3.4rem, 10vw, 8.4rem);
+  font-weight: inherit;
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+}
+
+.home-hero h1.home-hero__title--with-welcome {
+  margin: var(--space-base) 0 var(--space-xs);
+
+
+  font-size: clamp(1.8rem, 4vw, 4.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+    color: var(--color-forest-soft);
+
 }
 
 .home-hero__intro {
@@ -545,7 +559,11 @@
   border-radius: 50%;
 
   background:
-    radial-gradient(circle, rgba(var(--color-forest-rgb), 0.16) 0 4px, transparent 5px),
+    radial-gradient(
+      circle,
+      rgba(var(--color-forest-rgb), 0.16) 0 4px,
+      transparent 5px
+    ),
     var(--color-paper-light);
 
   box-shadow: var(--shadow-soft);
