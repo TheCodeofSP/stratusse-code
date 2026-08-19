@@ -7,37 +7,37 @@ export const legalContent = {
       {
         title: "Éditeur du site",
         paragraphs: [
-          "Le site Stratusse est édité par The Code of SP.",
-          "Statut : auto-entrepreneur.",
+          "Le site Stratusse est édité par Sandrine Pham, entrepreneure individuelle exerçant sous le nom commercial The Code of SP.",
+          "Statut : entreprise individuelle soumise au régime de la micro-entreprise.",
           "SIREN : 101 510 444.",
           "SIRET : 101 510 444 00017.",
-          "Siège social : Nancy, France.",
-          "Adresse postale : À compléter.",
+          "TVA non applicable, article 293 B du Code général des impôts.",
+          "Adresse de l’entreprise : 12 rue Giorné Viard, 54000 Nancy, France.",
           "Adresse électronique : contact@stratusse.fr.",
+          "Téléphone : 07 63 08 07 56.",
         ],
       },
       {
         title: "Directrice de la publication",
         paragraphs: [
-          "La direction de la publication est assurée par The Code of SP, créatrice de Stratusse.",
+          "La directrice de la publication est Sandrine Pham, créatrice de Stratusse.",
         ],
       },
       {
         title: "Hébergement",
         paragraphs: [
-          "Frontend : Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis.",
-          "Backend : Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis.",
-          "Base de données : MongoDB Atlas, MongoDB, Inc.",
-          "Cluster : À compléter.",
-          "Région d’hébergement : À compléter.",
+          "Le frontend et l’API de Stratusse sont hébergés par Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis — téléphone : +1 559 288 7060.",
+          "La base de données est hébergée avec MongoDB Atlas, service opéré par MongoDB, Inc., 1633 Broadway, 38th Floor, New York, NY 10019, États-Unis — téléphone : +1 866 237 8815.",
+          "Cluster MongoDB Atlas : Cluster0.",
+          "Infrastructure cloud : Amazon Web Services (AWS), région Europe (Paris), eu-west-3.",
         ],
       },
       {
         title: "Nom de domaine",
         paragraphs: [
           "Nom de domaine : stratusse.fr.",
-          "Registrar : À compléter.",
-          "Date de mise en ligne : 01/10/2026.",
+          "Bureau d’enregistrement : OVH SAS, 2 rue Kellermann, 59100 Roubaix, France — téléphone : 1007 depuis la France ou +33 9 72 10 10 07 depuis l’étranger.",
+          "Mise en ligne officielle prévue le 01/10/2026.",
         ],
       },
       {
@@ -84,7 +84,7 @@ export const legalContent = {
       },
       {
         title: "Dernière mise à jour",
-        paragraphs: ["01/10/2026."],
+        paragraphs: ["19/08/2026."],
       },
     ],
   },
