@@ -479,8 +479,8 @@
 @mixin subtitle {
   color: var(--color-muted);
 
-  font-family: var(--font-title);
-  font-size: clamp(1.2rem, 4vw, 3.4rem);
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 3vw, 3.4rem);
   line-height: 1.08;
   letter-spacing: -0.035em;
 }
@@ -518,6 +518,7 @@
   margin-top: 18px;
 
   color: var(--color-muted);
+
 }
 
 @mixin soft-reveal($delay: 0ms) {
