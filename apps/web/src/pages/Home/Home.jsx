@@ -53,11 +53,13 @@ export default function Home() {
         <header className="home-hero">
           <span className="home-hero__badge">{homeContent.hero.badge}</span>
 
-          <h1>
-            {user?.pseudo
-              ? `${user.pseudo.charAt(0).toUpperCase()}${user.pseudo.slice(1)}, ${homeContent.hero.userWelcomeSuffix}`
-              : homeContent.hero.title}
-          </h1>
+          {user?.pseudo && (
+            <p className="hero-welcome">
+              {`${user.pseudo.charAt(0).toUpperCase()}${user.pseudo.slice(1)}, ${homeContent.hero.userWelcomeSuffix}`}
+            </p>
+          )}
+
+          <h1>{homeContent.hero.title}</h1>
 
           <p className="home-hero__subtitle">{homeContent.hero.subtitle}</p>
 
@@ -82,11 +84,9 @@ export default function Home() {
             </Link>
           </div>
         </header>
-
         <div className="home-interlude" aria-hidden="true">
           <span />
         </div>
-
         <section className="home-spotlight">
           <header className="home-spotlight__header">
             <span className="home-spotlight__eyebrow">
@@ -117,7 +117,6 @@ export default function Home() {
             {homeContent.spotlight.buttonLabel}
           </Link>
         </section>
-
         <section className="home-invitation">
           <span className="home-invitation__eyebrow">
             {homeContent.invitation.eyebrow}
@@ -139,7 +138,6 @@ export default function Home() {
             {homeContent.invitation.buttonLabel}
           </Link>
         </section>
-
         <section className="home-worlds">
           <article className="home-world home-world--notes">
             <div className="home-world__content">

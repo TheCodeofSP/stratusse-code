@@ -68,7 +68,7 @@ export default function Footer() {
           >
             <span>Une application imaginée et développée par</span>
             <img
-              src="/LogoTheCodeOfSP.svg"
+              src="/images/brand/LogoTheCodeOfSP.svg"
               alt="The Code of SP"
               className="footer__credit-logo"
             />
