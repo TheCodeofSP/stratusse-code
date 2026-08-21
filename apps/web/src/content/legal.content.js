@@ -104,6 +104,15 @@ export const legalContent = {
         title: "Finalités",
         paragraphs: [
           "Les données sont utilisées pour permettre la création du compte, la connexion, la validation de l’adresse email, la publication de contenus, la modération, la sécurité de la plateforme et le bon fonctionnement des services proposés.",
+          "Avec le consentement de l’utilisateur, des données de navigation sont également traitées avec Google Analytics afin de mesurer l’audience et d’améliorer Stratusse.",
+        ],
+      },
+      {
+        title: "Mesure d’audience",
+        paragraphs: [
+          "Stratusse utilise Google Analytics 4, un service fourni par Google, uniquement après consentement. Les fonctions publicitaires et Google Signals sont désactivés dans l’intégration de Stratusse.",
+          "L’utilisateur peut refuser cette mesure d’audience ou retirer son consentement à tout moment grâce au lien « Gérer mes cookies » présent dans le pied de page.",
+          "Pour en savoir plus sur le traitement réalisé par Google, l’utilisateur peut consulter les règles de confidentialité de Google.",
         ],
       },
       {
@@ -129,7 +138,7 @@ export const legalContent = {
       },
       {
         title: "Dernière mise à jour",
-        paragraphs: ["01/10/2026."],
+        paragraphs: ["21/08/2026."],
       },
     ],
   },
@@ -208,20 +217,36 @@ export const legalContent = {
       {
         title: "Mesure d’audience",
         paragraphs: [
-          "À ce stade, Stratusse ne prévoit pas d’utiliser d’outil de mesure d’audience intrusif.",
-          "Si un outil d’analyse respectueux de la vie privée est ajouté ultérieurement, cette politique sera mise à jour.",
+          "Avec l’accord de l’utilisateur, Stratusse utilise Google Analytics 4, fourni par Google, afin de connaître les pages consultées et de mesurer l’utilisation générale de la plateforme.",
+          "L’identifiant de mesure utilisé par Stratusse est G-2732E9Z57E. Les fonctions publicitaires et Google Signals sont désactivés dans l’intégration.",
+          "La balise Google Analytics n’est pas chargée avant l’acceptation. En cas de refus, aucune mesure d’audience Google n’est déclenchée.",
+        ],
+      },
+      {
+        title: "Cookies déposés avec votre accord",
+        paragraphs: [
+          "Google Analytics peut notamment déposer le cookie _ga, utilisé pour distinguer les visiteurs, ainsi qu’un cookie propre à la propriété sous la forme _ga_<identifiant>. Leur durée de conservation peut aller jusqu’à treize mois.",
+          "Le choix d’accepter ou de refuser la mesure d’audience est mémorisé localement pendant six mois afin de ne pas solliciter l’utilisateur à chaque visite.",
         ],
       },
       {
         title: "Gestion des cookies",
         paragraphs: [
-          "L’utilisateur peut configurer son navigateur afin de bloquer ou supprimer les cookies.",
+          "Lors de la première visite, l’utilisateur peut accepter ou refuser la mesure d’audience avec la même simplicité.",
+          "Le choix peut être modifié à tout moment grâce au lien « Gérer mes cookies » présent dans le pied de page. En cas de retrait du consentement, Stratusse demande à Google Analytics de cesser la mesure et supprime les cookies Google Analytics accessibles depuis le site.",
+          "L’utilisateur peut également configurer son navigateur afin de bloquer ou supprimer les cookies.",
           "Le blocage de certains cookies nécessaires peut toutefois empêcher le bon fonctionnement de la plateforme.",
         ],
       },
       {
+        title: "En savoir plus",
+        paragraphs: [
+          "Google peut traiter certaines données en dehors de l’Espace économique européen selon les garanties décrites dans ses règles de confidentialité. Pour toute question sur les données personnelles, vous pouvez écrire à contact@stratusse.fr.",
+        ],
+      },
+      {
         title: "Dernière mise à jour",
-        paragraphs: ["01/10/2026."],
+        paragraphs: ["21/08/2026."],
       },
     ],
   },

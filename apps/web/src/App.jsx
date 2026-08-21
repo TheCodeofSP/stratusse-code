@@ -3,6 +3,8 @@ import { RouterProvider } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import { router } from "./router/router.jsx";
+import AnalyticsRouteTracker from "./components/analytics/AnalyticsRouteTracker.jsx";
+import CookieConsentBanner from "./components/cookies/CookieConsentBanner.jsx";
 import LoadingState from "./components/ui/LoadingState.jsx";
 
 import "./styles/toaster.scss";
@@ -10,9 +12,11 @@ import "./styles/toaster.scss";
 function App() {
   return (
     <>
+      <AnalyticsRouteTracker />
       <Suspense fallback={<LoadingState />}>
         <RouterProvider router={router} />
       </Suspense>
+      <CookieConsentBanner />
 
       <Toaster
         position="top-right"

@@ -80,7 +80,8 @@
     text-decoration: underline;
   }
 
-  a {
+  a,
+  .footer__cookie-settings {
     color: rgba(255, 250, 241, 0.82);
 
     transition:
@@ -93,6 +94,15 @@
       text-decoration: underline;
     }
   }
+}
+
+.footer__cookie-settings {
+  width: fit-content;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
 }
 
 .footer__bottom {

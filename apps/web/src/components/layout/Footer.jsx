@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 
 import { footerContent } from "../../content/footer.content.js";
+import { useCookieConsent } from "../../contexts/CookieConsentContext.jsx";
 
 import "../../styles/layouts/footer.scss";
 
 export default function Footer() {
+  const { openPreferences } = useCookieConsent();
+
   return (
     <footer className="footer">
       <div className="page-container footer__container">
@@ -52,6 +55,13 @@ export default function Footer() {
                   {link.label}
                 </Link>
               ))}
+              <button
+                className="footer__cookie-settings"
+                type="button"
+                onClick={openPreferences}
+              >
+                Gérer mes cookies
+              </button>
             </nav>
           </div>
         </div>
