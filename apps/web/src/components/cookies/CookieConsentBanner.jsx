@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import { useCookieConsent } from "../../contexts/CookieConsentContext.jsx";
 import { isAnalyticsConfigured } from "../../services/analytics.service.js";
 
@@ -30,7 +28,7 @@ export default function CookieConsentBanner() {
             votre accord, Google Analytics nous aide aussi à comprendre quelles
             pages sont consultées. Aucun cookie publicitaire n’est utilisé.
           </p>
-          <Link to="/cookie-policy">Consulter la politique de cookies</Link>
+          <a href="/cookie-policy">Consulter la politique de cookies</a>{" "}
         </div>
 
         <div className="cookie-consent__actions">
