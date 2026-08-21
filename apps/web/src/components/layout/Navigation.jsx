@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import { navigationContent } from "../../content/navigation.content.js";
@@ -19,7 +20,9 @@ export default function Navigation() {
   const writeMenuRef = useRef(null);
   const navigationRef = useRef(null);
 
-  const canWrite = user?.role === "creator" || user?.role === "admin";
+  const canWrite =
+    user?.role === "admin" ||
+    (user?.role === "creator" && user?.isApprovedCreator === true);
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -77,14 +80,12 @@ export default function Navigation() {
                 alt="Stratusse"
               />
             </NavLink>
-
             <p className="navigation__slogan">{navigationContent.slogan}</p>
           </div>
-
           <button
             className={`navigation__burger ${isOpen ? "is-open" : ""}`}
             type="button"
-            onClick={() => setIsOpen((previous) => !previous)}
+            onClick={() => setIsOpen((prev) => !prev)}
             aria-label={
               isOpen
                 ? navigationContent.aria.closeMenu
@@ -116,8 +117,7 @@ export default function Navigation() {
                 <button
                   className="navigation__link navigation__profile-button"
                   type="button"
-                  onClick={() => setIsWriteOpen((previous) => !previous)}
-                  aria-expanded={isWriteOpen}
+                  onClick={() => setIsWriteOpen((prev) => !prev)}
                 >
                   <span>{navigationContent.writeMenu.label}</span>
 
@@ -125,7 +125,6 @@ export default function Navigation() {
                     className={`navigation__profile-arrow ${
                       isWriteOpen ? "is-open" : ""
                     }`}
-                    aria-hidden="true"
                   >
                     ▸
                   </span>
@@ -163,8 +162,7 @@ export default function Navigation() {
                 <button
                   className="navigation__link navigation__profile-button"
                   type="button"
-                  onClick={() => setIsProfileOpen((previous) => !previous)}
-                  aria-expanded={isProfileOpen}
+                  onClick={() => setIsProfileOpen((prev) => !prev)}
                 >
                   <span>{navigationContent.profileMenu.label}</span>
 
@@ -172,7 +170,6 @@ export default function Navigation() {
                     className={`navigation__profile-arrow ${
                       isProfileOpen ? "is-open" : ""
                     }`}
-                    aria-hidden="true"
                   >
                     ▸
                   </span>
@@ -185,9 +182,7 @@ export default function Navigation() {
                         key={link.path}
                         to={link.path}
                         className="navigation__submenu-link"
-                        onClick={(event) =>
-                          handleMenuLinkClick(event, link.path)
-                        }
+                        onClick={closeMenu}
                       >
                         {link.label}
                       </NavLink>
@@ -197,12 +192,7 @@ export default function Navigation() {
                       <NavLink
                         to={navigationContent.profileMenu.adminLink.path}
                         className="navigation__submenu-link"
-                        onClick={(event) =>
-                          handleMenuLinkClick(
-                            event,
-                            navigationContent.profileMenu.adminLink.path,
-                          )
-                        }
+                        onClick={closeMenu}
                       >
                         {navigationContent.profileMenu.adminLink.label}
                       </NavLink>
@@ -235,6 +225,7 @@ export default function Navigation() {
                   toast.success(navigationContent.logout.successMessage);
 
                   closeMenu();
+
                   navigate(navigationContent.logout.redirectTo);
                 }}
               >

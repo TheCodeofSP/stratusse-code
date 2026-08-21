@@ -10,7 +10,9 @@ import "../../styles/pages/editor.scss";
 export default function Editor() {
   const { isAuthenticated, user } = useAuth();
 
-  const canWrite = user?.role === "creator" || user?.role === "admin";
+  const canWrite =
+    user?.role === "admin" ||
+    (user?.role === "creator" && user?.isApprovedCreator === true);
   const writingsContent = editorContent.writings;
 
   return (
