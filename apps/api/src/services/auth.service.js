@@ -71,6 +71,7 @@ const registerUser = async ({
       email: user.email,
       pseudo: user.pseudo,
       role: user.role,
+      isApprovedCreator: user.isApprovedCreator,
     },
     emailVerificationToken: rawToken,
   };
@@ -115,6 +116,7 @@ const loginUser = async ({ email, password }) => {
       email: user.email,
       pseudo: user.pseudo,
       role: user.role,
+      isApprovedCreator: user.isApprovedCreator,
       isEmailVerified: user.isEmailVerified,
     },
   };
@@ -157,6 +159,7 @@ const verifyEmail = async (token) => {
       pseudo: user.pseudo,
       email: user.email,
       role: user.role,
+      isApprovedCreator: user.isApprovedCreator,
       isEmailVerified: user.isEmailVerified,
       hasAcceptedCharter: user.hasAcceptedCharter,
     },
