@@ -175,7 +175,7 @@ export default function NoteEditorForm({ noteId }) {
           </label>
 
           <textarea
-            className="comment-form__textarea"
+            className="form-textarea editor-textarea--compact"
             name="excerpt"
             placeholder={noteEditorContent.form.excerptPlaceholder}
             value={formData.excerpt}

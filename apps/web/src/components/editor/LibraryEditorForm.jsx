@@ -148,7 +148,7 @@ export default function LibraryEditorForm({ bookId }) {
           </label>
 
           <select
-            className="form-select"
+            className="form-input"
             name="readingStatus"
             value={formData.readingStatus}
             onChange={handleChange}
@@ -220,7 +220,7 @@ export default function LibraryEditorForm({ bookId }) {
           </label>
 
           <textarea
-            className="comment-form__textarea"
+            className="form-textarea editor-textarea--compact"
             name="subject"
             placeholder={libraryEditorContent.form.subjectPlaceholder}
             value={formData.subject}
@@ -261,7 +261,7 @@ export default function LibraryEditorForm({ bookId }) {
               </label>
 
               <textarea
-                className="comment-form__textarea"
+                className="form-textarea editor-textarea--compact"
                 name="startedBecause"
                 placeholder={
                   libraryEditorContent.form.startedBecausePlaceholder
@@ -278,7 +278,7 @@ export default function LibraryEditorForm({ bookId }) {
               </label>
 
               <textarea
-                className="comment-form__textarea"
+                className="form-textarea editor-textarea--compact"
                 name="readingExpectation"
                 placeholder={
                   libraryEditorContent.form.readingExpectationPlaceholder
@@ -299,7 +299,7 @@ export default function LibraryEditorForm({ bookId }) {
               </label>
 
               <textarea
-                className="comment-form__textarea"
+                className="form-textarea editor-textarea--compact"
                 name="opinion"
                 placeholder={libraryEditorContent.form.opinionPlaceholder}
                 value={formData.opinion}
@@ -333,7 +333,7 @@ export default function LibraryEditorForm({ bookId }) {
               </label>
 
               <textarea
-                className="comment-form__textarea"
+                className="form-textarea editor-textarea--compact"
                 name="abandonedReason"
                 placeholder={
                   libraryEditorContent.form.abandonedReasonPlaceholder
@@ -350,7 +350,7 @@ export default function LibraryEditorForm({ bookId }) {
               </label>
 
               <textarea
-                className="comment-form__textarea"
+                className="form-textarea editor-textarea--compact"
                 name="disappointment"
                 placeholder={
                   libraryEditorContent.form.disappointmentPlaceholder
