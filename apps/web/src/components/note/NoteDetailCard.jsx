@@ -113,7 +113,7 @@ export default function NoteDetailCard({ note }) {
                 className="note-detail-author-link"
                 to={`/creator/${note.author.pseudo}`}
               >
-                {notesContent.detail.creatorLinkPrefix} {note.author.pseudo}
+                {notesContent.detail.creatorLinkPrefix}
               </Link>
             )}
           </div>
