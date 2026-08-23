@@ -16,6 +16,9 @@ import "../../styles/pages/home.scss";
 
 export default function Home() {
   const { user } = useAuth();
+  const canWrite =
+    user?.role === "admin" ||
+    (user?.role === "creator" && user?.isApprovedCreator === true);
 
   const [latestNote, setLatestNote] = useState(null);
   useEffect(() => {
@@ -82,7 +85,7 @@ export default function Home() {
               {homeContent.hero.primaryAction.label}
             </Link>
             <Link
-              to={homeContent.hero.secondaryAction.to}
+              to={canWrite ? "/editor" : homeContent.hero.secondaryAction.to}
               className="btn btn-secondary"
             >
               {homeContent.hero.secondaryAction.label}
