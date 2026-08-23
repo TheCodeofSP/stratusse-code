@@ -54,7 +54,7 @@ export const notesContent = {
   detail: {
     authorPrefix: "Déposée par",
     signaturePrefix: "Signé :",
-    creatorLinkPrefix: "Découvrir les autres pensées de",
+    creatorLinkPrefix: "Découvrir ces autres pensées",
     likeLoginMessage: "Connecte-toi pour dire que cette Note résonne avec toi.",
     ownNoteMessage:
       "Cette Note est la tienne. Les résonances appartiennent aux autres regards.",
