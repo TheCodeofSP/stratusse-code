@@ -9,6 +9,8 @@ import CommentForm from "../comment/CommentForm.jsx";
 import LoadingState from "../ui/LoadingState.jsx";
 import ErrorState from "../ui/ErrorState.jsx";
 
+import "../../styles/components/comment-section.scss";
+
 export default function LibraryCommentSection({ bookId }) {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -81,15 +83,15 @@ export default function LibraryCommentSection({ bookId }) {
   };
 
   return (
-    <section className="comment-section stack-md">
+    <section className="comment-section">
       <div className="comment-section__header">
-      <h2 className="comment-section__title">
-        Échanges autour de cette lecture
-      </h2>
-      <p className="comment-section__invitation">
-        Si cette lecture fait écho à quelque chose en toi, tu peux laisser une
-        réponse.
-      </p>
+        <h2 className="comment-section__title">
+          Échanges autour de cette lecture
+        </h2>
+        <p className="comment-section__invitation">
+          Si cette lecture fait écho à quelque chose en toi, tu peux laisser une
+          réponse.
+        </p>
       </div>
 
       <CommentList
