@@ -179,7 +179,7 @@ export default function LibraryDetailCard({ book }) {
               </Link>
 
               <Link className="library-detail" to={`/creator/${creatorPseudo}`}>
-                {libraryContent.detail.creatorLinkPrefix} {creatorPseudo}
+                {libraryContent.detail.creatorLinkPrefix}
               </Link>
             </div>
           </footer>
