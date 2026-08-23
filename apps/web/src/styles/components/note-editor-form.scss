@@ -3,23 +3,38 @@
 .editor-form {
   @include stack(var(--space-base));
 
+  min-width: 0;
   padding: var(--space-base) var(--space-md);
+
+  > *,
+  .form-group,
+  .stack-sm {
+    min-width: 0;
+  }
 }
 
 .editor-title-input {
+  display: block;
+
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
 
   border: none;
   background: transparent;
 
   font: inherit;
 
-  font-size: clamp(2rem, 8vw, 3.8rem);
+  font-size: clamp(1.5rem, 6vw, 2rem);
 
   font-weight: 700;
   line-height: 0.95;
 
   color: var(--color-ink);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &::placeholder {
     color: rgba(80, 72, 60, 0.32);
@@ -28,6 +43,10 @@
   &:focus {
     outline: none;
   }
+}
+
+.editor-textarea--compact {
+  min-height: 96px;
 }
 
 .editor-content-input {
@@ -67,6 +86,14 @@
 @include tablet {
   .editor-form {
     padding: var(--space-xl);
+  }
+
+  .editor-title-input {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+  }
+
+  .editor-textarea--compact {
+    min-height: 130px;
   }
 
   .editor-content-input {
