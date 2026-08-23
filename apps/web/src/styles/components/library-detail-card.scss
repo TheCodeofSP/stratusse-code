@@ -112,7 +112,6 @@
   margin-top: var(--space-md);
 }
 
-.library-detail-reader__name,
 .library-detail-signature__name {
   color: var(--color-terracotta);
 
@@ -121,12 +120,6 @@
   font-style: italic;
 }
 
-.library-detail-reader__prefix {
-  color: var(--color-muted);
-  font-size: 1rem;
-}
-
-.library-detail-reader__link,
 .library-detail-signature__name {
   color: var(--color-terracotta);
   text-decoration: none;
@@ -168,5 +161,3 @@
     color: var(--color-forest);
   }
 }
-
-

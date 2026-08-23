@@ -89,24 +89,11 @@ export default function LibraryDetailCard({ book }) {
             {libraryContent.detail.authorPrefix} {book.author}
           </p>
 
-          {creatorPseudo && (
-            <div className="library-detail-reader">
-              <div className="library-detail-reader__name">
-                <span className="library-detail-reader__prefix">Par </span>
-
-                <Link
-                  className="library-detail-reader__link"
-                  to={`/creator/${creatorPseudo}`}
-                >
-                  {creatorPseudo}
-                </Link>
-              </div>
-
-              <span className="library-detail-reader__date">
-                Lecture déposée le {publishedDate}
-              </span>
-            </div>
-          )}
+          <div className="library-detail-reader">
+            <span className="library-detail-reader__date">
+              Lecture déposée le {publishedDate}
+            </span>
+          </div>
         </header>
 
         <div className="library-detail-divider" />
@@ -191,10 +178,7 @@ export default function LibraryDetailCard({ book }) {
                 {creatorPseudo}
               </Link>
 
-              <Link
-                className="library-detail"
-                to={`/creator/${creatorPseudo}`}
-              >
+              <Link className="library-detail" to={`/creator/${creatorPseudo}`}>
                 {libraryContent.detail.creatorLinkPrefix} {creatorPseudo}
               </Link>
             </div>
