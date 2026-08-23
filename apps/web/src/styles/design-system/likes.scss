@@ -3,6 +3,9 @@
 .note-like,
 .library-detail-like,
 .comment-card__like {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   color: var(--color-muted);
   text-align: left;
   transition: color 0.2s ease;
