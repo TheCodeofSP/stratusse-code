@@ -30,12 +30,10 @@
 .home-hero h1.home-hero__title--with-welcome {
   margin: var(--space-base) 0 var(--space-xs);
 
-
   font-size: clamp(1.8rem, 4vw, 4.2rem);
   line-height: 1.02;
   letter-spacing: -0.045em;
-    color: var(--color-forest-soft);
-
+  color: var(--color-forest-soft);
 }
 
 .home-hero__intro {
@@ -78,6 +76,20 @@
 .home-spotlight__eyebrow,
 .home-invitation__eyebrow {
   @include eyebrow;
+}
+
+.home-spotlight__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 14px;
+
+  border: 1px solid rgba(var(--color-brass-rgb), 0.28);
+  border-radius: 999px;
+
+  background: rgba(var(--color-brass-rgb), 0.08);
+  color: var(--color-brass);
 }
 
 .home-spotlight__header,

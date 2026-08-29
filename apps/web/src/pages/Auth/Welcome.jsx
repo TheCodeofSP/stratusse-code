@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { authContent } from "../../content/auth.content.js";
 
-import PageFooterNavigation from "../../components/navigation/PageFooterNavigation.jsx";
+import "../../styles/components/page-footer-navigation.scss";
 
 export default function Welcome() {
   return (
@@ -24,6 +24,10 @@ export default function Welcome() {
           {authContent.welcome.primaryAction}
         </Link>
 
+        <Link className="btn btn-secondary" to={authContent.welcome.homeTo}>
+          {authContent.welcome.homeAction}
+        </Link>
+
         <Link
           className="btn btn-secondary"
           to={authContent.welcome.secondaryTo}
@@ -31,8 +35,6 @@ export default function Welcome() {
           {authContent.welcome.secondaryAction}
         </Link>
       </div>
-
-      <PageFooterNavigation />
     </section>
   );
 }

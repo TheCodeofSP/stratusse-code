@@ -90,6 +90,12 @@ export default function Home() {
             >
               {homeContent.hero.secondaryAction.label}
             </Link>
+            <Link
+              to={homeContent.hero.libraryAction.to}
+              className="btn btn-secondary"
+            >
+              {homeContent.hero.libraryAction.label}
+            </Link>
           </div>
         </header>
         <div className="home-interlude" aria-hidden="true">

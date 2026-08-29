@@ -133,6 +133,9 @@ export const authContent = {
     primaryAction: "Découvrir les Notes",
     primaryTo: "/notes",
 
+    homeAction: "Retour à l’accueil",
+    homeTo: "/",
+
     secondaryAction: "Explorer la Bibliothèque",
     secondaryTo: "/library",
   },

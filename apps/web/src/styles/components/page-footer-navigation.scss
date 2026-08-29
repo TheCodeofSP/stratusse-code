@@ -8,15 +8,19 @@
 }
 
 .page-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-sm);
 
   margin-top: var(--space-base);
   margin-bottom: var(--space-base);
 
   padding-top: var(--space-base);
+
+  .btn {
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 .page-footer-navigation--home-only {
@@ -24,6 +28,11 @@
 }
 
 @include tablet {
+  .page-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+  }
+
   .page-footer-navigation {
     justify-content: space-between;
     margin-top: var(--space-lg);
