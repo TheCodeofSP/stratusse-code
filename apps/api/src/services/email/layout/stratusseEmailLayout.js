@@ -5,6 +5,11 @@ function stratusseEmailLayout({
   buttonUrl,
   secondaryText,
 }) {
+  const frontendUrl = (
+    process.env.FRONTEND_URL || "https://www.stratusse.fr"
+  ).replace(/\/$/, "");
+  const logoUrl = `${frontendUrl}/images/brand/LogoStratusse.png`;
+
   const paragraphsHtml = paragraphs
     .map((paragraph) => `<p>${paragraph}</p>`)
     .join("");
@@ -67,11 +72,14 @@ function stratusseEmailLayout({
 
           .brand {
             margin: 0;
-            font-size: 34px;
-            line-height: 1;
-            letter-spacing: -0.04em;
-            font-family: Cormorant Garamond, serif;
-            color: #ffffff;
+          }
+
+          .brand-logo {
+            display: block;
+            width: 190px;
+            max-width: 72%;
+            height: auto;
+            margin: 0 auto;
           }
 
           .tagline {
@@ -153,7 +161,14 @@ function stratusseEmailLayout({
         <div class="wrapper">
           <div class="card">
             <header class="header">
-              <p class="brand">Stratusse</p>
+              <p class="brand">
+                <img
+                  class="brand-logo"
+                  src="${logoUrl}"
+                  width="190"
+                  alt="Stratusse"
+                />
+              </p>
               <p class="tagline">
                 Une Safe Place où les pensées peuvent respirer.
               </p>

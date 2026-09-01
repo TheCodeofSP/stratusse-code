@@ -4,8 +4,7 @@ export const homeContent = {
     userWelcomeSuffix: "bienvenue sur Stratusse !",
     title:
       "Il y a des pensées qui ont simplement besoin d’un endroit où exister.",
-    subtitle:
-      "Stratusse leur fait une place.",
+    subtitle: "Stratusse leur fait une place.",
     introduction: [
       "Ici, tu peux lire ce que d’autres ont traversé, laisser résonner leurs mots ou, lorsque tu te sens prêt·e, déposer les tiens.",
       "Tu n’as pas besoin d’avoir une réponse. Seulement quelque chose de sincère à partager.",
@@ -17,6 +16,10 @@ export const homeContent = {
     secondaryAction: {
       label: "J’aimerais écrire ici",
       to: "/observer-to-creator",
+    },
+    libraryAction: {
+      label: "Découvrir une recommandation livre",
+      to: "/library",
     },
   },
 
@@ -31,15 +34,14 @@ export const homeContent = {
 
   invitation: {
     eyebrow: "Et toi ?",
-    title: "Qu’est-ce qui reste dans tes pensées aujourd’hui ?",
+    title: "Qu’est-ce qui reste dans ta tête aujourd’hui ?",
     prompts: [
       "Une chose que tu n’arrives pas à dire…",
       "Une question qui revient souvent…",
       "Une expérience qui a changé ton regard…",
       "Un livre qui a laissé une trace…",
     ],
-    text:
-      "Tu n’as pas besoin d’écrire parfaitement. Tes mots ont seulement besoin d’être vrais.",
+    text: "Tu n’as pas besoin d’écrire parfaitement. Tes mots ont seulement besoin d’être vrais.",
     buttonLabel: "Découvrir comment écrire sur Stratusse",
     buttonTo: "/observer-to-creator",
   },
@@ -120,7 +122,7 @@ export const homeContent = {
     ],
 
     philosophy: {
-      title: "Pourquoi une demande pour devenir une Voix ?",
+      title: "Pourquoi faire une demande pour devenir une Voix ?",
       text: [
         "Les Notes et les Lectures sont visibles par tous. Elles participent à l’atmosphère de Stratusse.",
         "La demande pour devenir une Voix n’est pas un jugement sur ton écriture.",
